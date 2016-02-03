@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/03 22:29:37 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/03 23:32:44 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,9 @@ $(NAME): $(OBJET)
 	@echo "$(YELLOW)Linkage in progress.."
 	@$(CC_FLAGS) $(OBJET) $(LD_PATH) $(LD_LIB) -o $(NAME) > /dev/null
 	@echo "$(BLUE)Linkage is complete.\n"
+	@make -C libft/ fclean > /dev/null
+	@echo "$(RED)Deleting of object files in libft directory"
+	@echo "$(RED)Remove the library\n"
 	@echo "$(GREEN)Done."
 
 %.o: %.c
