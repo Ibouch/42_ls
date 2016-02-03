@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/03 22:59:33 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/03 23:02:36 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/01/04 18:12:48 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/01/24 21:07:17 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <libft.h>
-#include <ft_ls.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 2048
 
-int	main(void)
-{
-	printf("Salut les gens\n");
-	ft_putstr("ok");
-	return (0);
-}
+int get_next_line(int const fd, char **line);
+
+#endif

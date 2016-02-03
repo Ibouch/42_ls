@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/03 22:59:33 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/03 23:02:36 by ibouchla         ###   ########.fr       */
+/*   Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/02/03 23:04:31 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <libft.h>
-#include <ft_ls.h>
+#ifndef FT_LS_H
+# define FT_LS_H
+# include <dirent.h>
 
-int	main(void)
-{
-	printf("Salut les gens\n");
-	ft_putstr("ok");
-	return (0);
-}
+# endif
