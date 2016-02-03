@@ -6,11 +6,13 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/03 17:15:18 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/03 22:29:37 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ft_ls
+
+INC_PATH = -I includes
 
 SRC_PATH = src
 
@@ -48,8 +50,8 @@ $(NAME): $(OBJET)
 	@echo "$(GREEN)Done."
 
 %.o: %.c
-	@$(CC_FLAGS) -c $< -o $@ > /dev/null
-	@echo "$(GREEN)Compilation of object file : Success"
+	@$(CC_FLAGS) -c $< $(INC_PATH) -o $@ > /dev/null
+	@echo "\033[1;32mCompilation of object file : $(GREEN)Success"
 clean:
 	@echo "\n$(RED)Deleting of object files"
 	@$(RM) $(OBJET) > /dev/null
