@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 22:59:33 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/05 00:43:41 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/05 00:58:00 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void	ft_init_struct(t_env e, t_flags opt)
 	e.x = 0;
 	e.err = 0;
 	opt.aff = '1';
-	opt.R_val = 0;
+	opt.rec_val = 0;
 	opt.a_val = 0;
 	opt.r_val = 0;
 	opt.t_val = 0;
 }
 
-static void	ft_check_flags(t_env e, char **av)
+static void	ft_check_flags(t_env e, t_flags opt, char **av)
 {
 	int	id;
 
@@ -43,7 +43,7 @@ static void	ft_check_flags(t_env e, char **av)
 		else if (av[e.x][id] == 'l')
 			opt.aff = 'l';
 		else if (av[e.x][id] == 'R')
-			opt.R_val = 1;
+			opt.rec_val = 1;
 		else if (av[e.x][id] == 'a')
 			opt.a_val = 1;
 		else if (av[e.x][id] == 'r')
@@ -65,7 +65,7 @@ int	main(int ac, char **av)
 	while (++e.x < ac)
 	{
 		if (av[e.x][0] == '-')
-			ft_check_flags(e, av);
+			ft_check_flags(e, opt, av);
 		else
 		{
 			stat(av[e.x], &s);
