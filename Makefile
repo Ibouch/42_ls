@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/03 23:32:44 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/04 12:56:15 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,27 +40,25 @@ YELLOW = \033[1;33m
 all: $(NAME)
 
 $(NAME): $(OBJET)
-	@echo "$(BLUE)Compilation of object files is complete.\n"
-	@echo "$(YELLOW)Compilation of the library in progress.."
-	@make -C libft/ re > /dev/null
-	@echo "$(BLUE)Compilation is complete.\n"
-	@echo "$(YELLOW)Linkage in progress.."
-	@$(CC_FLAGS) $(OBJET) $(LD_PATH) $(LD_LIB) -o $(NAME) > /dev/null
+	@echo "$(BLUE)Compilation of object files in project directory is complete.\n"
+	@echo "$(YELLOW)Recompilation of the library in progress.."
+	@make -C libft/ re
+	@echo "$(BLUE)Compilation of the library is complete.\n"
+	@echo "$(YELLOW)Linkage of object files with the library is in progress.."
+	@$(CC_FLAGS) $(OBJET) $(LD_PATH) $(LD_LIB) -o $(NAME)
 	@echo "$(BLUE)Linkage is complete.\n"
-	@make -C libft/ fclean > /dev/null
-	@echo "$(RED)Deleting of object files in libft directory"
-	@echo "$(RED)Remove the library\n"
+	@make -C libft/ fclean
 	@echo "$(GREEN)Done."
 
 %.o: %.c
-	@$(CC_FLAGS) -c $< $(INC_PATH) -o $@ > /dev/null
-	@echo "\033[1;32mCompilation of object file : $(GREEN)Success"
+	@$(CC_FLAGS) -c $< $(INC_PATH) -o $@
+	@echo "\033[1;32mCompilation of object file from the project source file : $(GREEN)Success"
 clean:
-	@echo "\n$(RED)Deleting of object files"
-	@$(RM) $(OBJET) > /dev/null
+	@echo "\n$(RED)Deleting object files of the project"
+	@$(RM) $(OBJET)
 
 fclean: clean
 	@echo "$(RED)Remove the executable\n"
-	@$(RM) $(NAME) > /dev/null
+	@$(RM) $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/03 20:26:33 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/04 12:46:54 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,24 +101,23 @@ YELLOW = \033[1;33m
 all: $(NAME)
 
 $(NAME): $(OBJET)
-	@echo "$(BLUE)Compilation of object files is complete.\n"
+	@echo "$(BLUE)Compilation of object files in libft directory is complete.\n"
 	@echo "$(YELLOW)Creation of the library in progress.."
-	@$(CREATE_LIB) > /dev/null
+	@$(CREATE_LIB)
 	@echo "$(BLUE)Creation of the library is complete.\n"
 	@echo "$(YELLOW)Indexing of the library in process.."
-	@$(ID_LIB) > /dev/null
+	@$(ID_LIB)
 	@echo "$(BLUE)Indexing of the library is complete.\n"
-	@echo "$(GREEN)Done."
 
 %.o: %.c
-	@$(CC_FLAGS) -c $< $(INC_PATH) -o $@ > /dev/null
-	@echo "\033[1;32mCompilation of object file : $(GREEN)Success"
+	@$(CC_FLAGS) -c $< $(INC_PATH) -o $@
+	@echo "\033[1;32mCompilation of object file from the library source file : $(GREEN)Success"
 clean:
-	@echo "\n$(RED)Deleting of object files"
-	@$(RM) $(OBJET) > /dev/null
+	@echo "\n$(RED)Deleting object files of the library"
+	@$(RM) $(OBJET)
 
 fclean: clean
 	@echo "$(RED)Remove the library\n"
-	@$(RM) $(NAME) > /dev/null
+	@$(RM) $(NAME)
 
 re: fclean all
