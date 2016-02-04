@@ -2,8 +2,9 @@
 #1.	Faire un Makefile -- Done.
 
 #2.	Pour les options [-options] :
-	/|\ On considere que un nom de fichier ne commencera jamais par un tiret '-'
+	/|\ On considere que un nom de fichier ne commencera jamais par un tiret '-' et voir stat (S_ISREG)
 	- il faudra determiner si on m'envoie un path ou un file, si je n'ai ni path ni file je traite dans rep courant.
 	- en fnt du nb d'argc, pour chaque arg, verif des opts ex : (-la -a -aall -l -XXX)
 	- des que parmis les opts gerer une d'elle est rencontrer on incremente sa presence. Pour eviter les doublons etc..
 	- differencier les opts d'affichage, des opts de tries, -l = affichage lister, sinon si aucun 'l' affichage normal.
+	- pour -R le faire en recursif, a chaque appel dès qu'un repertoire est lister rappeller la fnt avec le new path of dir.
