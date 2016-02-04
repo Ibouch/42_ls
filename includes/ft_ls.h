@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/04 18:17:13 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/05 00:40:56 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,25 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <errno.h>
+# include <stdio.h>
 
 typedef struct	dirent	t_dir;
 typedef struct	stat	t_st;
+
+typedef struct		s_flags
+{
+	char			aff;
+	unsigned int	R_val;
+	unsigned int	a_val;
+	unsigned int	r_val;
+	unsigned int	t_val;
+}					t_flags;
+
+typedef struct		s_env
+{
+	DIR				*dir;
+	int				x;
+	int				err;
+}					t_env;
 
 # endif

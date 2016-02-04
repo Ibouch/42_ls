@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/04 18:22:14 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/05 00:12:06 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ all: $(NAME)
 $(NAME): $(OBJET)
 	@echo "$(BLUE)Compilation of object files in project directory is complete.\n"
 	@echo "$(YELLOW)Recompilation of the library in progress.."
-	@make -C libft/ re
+	@make -C libft/ re > /dev/null
 	@echo "$(BLUE)Compilation of the library is complete.\n"
 	@echo "$(YELLOW)Linkage of object files with the library is in progress.."
 	@$(CC_FLAGS) $(OBJET) $(LD_PATH) $(LD_LIB) -o $(NAME)
