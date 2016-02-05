@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/05 00:57:25 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/05 23:19:30 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,26 @@ typedef struct stat		t_st;
 
 typedef struct			s_flags
 {
-	char				aff;
-	unsigned int		rec_val;
-	unsigned int		a_val;
-	unsigned int		r_val;
-	unsigned int		t_val;
+	t_bool				opt_all;
+	t_bool				opt_rec;
+	t_bool				opt_rev;
+	t_bool				opt_time;
+	char				opt_aff;
+	t_bool				is_file;
+	t_bool				is_dir;
+	t_bool				is_chr;
+	t_bool				is_blk;
+	t_bool				is_fifo;
+	t_bool				is_lnk;
+	t_bool				is_sock;
 }						t_flags;
 
 typedef struct			s_env
 {
-	DIR					*dir;
 	int					x;
-	int					err;
+	t_bool				error;
+	char				*path;
+	DIR					*dir;
 }						t_env;
 
 #endif

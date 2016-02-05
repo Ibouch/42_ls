@@ -6,15 +6,19 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:47:12 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/03 23:10:01 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/05 21:52:05 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define TRUE 1
+# define FALSE 0
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+typedef int			t_bool;
 
 typedef struct		s_list
 {
