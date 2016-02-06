@@ -3,8 +3,8 @@
 
 #2.	Pour les options [-options] :
 
-	- structure de flags -> chaque flag a sa presence en bool
-	- la derniere option d'affichage entre -1 et -l sera prise en compte ce qui est auto.
+	- structure de flags -> chaque flag a sa presence en bool [-- Done.]
+	- la derniere option d'affichage entre -1 et -l sera prise en compte ce qui est auto. [-- Done.]
 	- Au tout debut de mon main, je recupere pour x < ac chaque av[x] si IS_DIR alr le nom est stocker
 	  dans une liste chainee par exemple ou dans un char **. Par la suite les trier par ordre alphanumeric (ascii)
 	  donc renvoyer les nouveaux paths a traiter. Soit dans une struct soit renvoyer un char ** qui malloc du nb de path reel,
@@ -47,4 +47,10 @@
 
 #6. Affichage
 	Une fois recuperer tout les path si sont nb > 1 display_path == TRUE
+	format path:
+			...
+			...
 	merci BISOU.s
+
+IL FAUT TOUT LISTER DES LE DEBUT avoir une fonction qui parcout des repertoires les tries
+et les affiches ensuite afin en boucle de rentrer au prochain dir renconter le lister puis revenir au actions avant.
