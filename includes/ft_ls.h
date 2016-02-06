@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/05 23:19:30 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/06 08:33:49 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,12 @@ typedef struct			s_env
 {
 	int					x;
 	t_bool				error;
+	t_bool				display_path;
 	char				*path;
 	DIR					*dir;
 }						t_env;
+
+int						ft_print_error(char *str, char c, int type_error);
+int						ft_check_fsys(t_flags *flg, t_env *e, char *str);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/05 18:36:28 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/06 07:59:43 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ INC_PATH = -I includes
 
 SRC_PATH = src
 
-SRC_NAME =	main.c
+SRC_NAME =	main.c \
+			ft_print_error.c \
+			ft_check_fsys.c
 
 CC_FLAGS = clang -Wall -Wextra -Werror
 

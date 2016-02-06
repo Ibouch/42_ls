@@ -3,16 +3,21 @@
 
 #2.	Pour les options [-options] :
 
-	- structure de flags -> chaque flag a sa presence unsigned int
-	- la derniere option d'affichage entre -1 et -l sera prise en compte
+	- structure de flags -> chaque flag a sa presence en bool
+	- la derniere option d'affichage entre -1 et -l sera prise en compte ce qui est auto.
+	- Au tout debut de mon main, je recupere pour x < ac chaque av[x] si IS_DIR alr le nom est stocker
+	  dans une liste chainee par exemple ou dans un char **. Par la suite les trier par ordre alphanumeric (ascii)
+	  donc renvoyer les nouveaux paths a traiter. Soit dans une struct soit renvoyer un char ** qui malloc du nb de path reel,
+	  donc on ajoute dans notre tableau chaque string malloc de la strlen du path.
 
 #3.	Tools :
 
 	- /|\ On considere que un nom de fichier ne commencera jamais par un tiret '-' et voir stat (S_ISREG)
-	- il faudra determiner si on m'envoie un path ou un file, si je n'ai ni path ni file je traite dans rep courant.
-	- en fnt du nb d'argc, pour chaque arg, verif des opts ex : (-la -a -aall -l -XXX)
-	- des que parmis les opts gerer une d'elle est rencontrer on incremente sa presence. Pour eviter les doublons etc..
-	- differencier les opts d'affichage, des opts de tries, -l = affichage lister, sinon si aucun 'l' affichage normal.
+	- il faudra determiner si on m'envoie un path ou un file, si je n'ai ni path ni file je traite dans rep courant. OUI
+	- en fnt du nb d'argc, pour chaque arg, verif des opts ex : (-la -a -aall -l -XXX) [-- Done.]
+	- des que parmis les opts gerer une d'elle est rencontrer on incremente sa presence. Pour eviter les doublons etc.. [-- Done.]
+	- differencier les opts d'affichage, des opts de tries, -l = affichage lister, sinon si aucun 'l' affichage normal. [-- Done.]
+		// si rien ne correspond au IS_XXX alors affichage erreur [-- Done.]
 	- pour -R le faire en recursif, a chaque appel dès qu'un repertoire est lister rappeller la fnt avec le new path of dir.
 
 	- /|\ "drwxrwxr-x+" ou "drwxr-xr-x@"
@@ -20,3 +25,26 @@
 	  que le simple "user/groupe/autres".
 	- Le @ quant à lui signifie qu'il y a des attributs étendus sur le fichier / dossier.
 	  Pour celle là, test la commande système xattr depuis ton shell...
+
+#4. Gestion d'erreur
+
+	- Askip pour les no such file or directory type_error 1 faire une gestion en interne
+	et sortir l'affichage par ordre alphanumeric (ascii) au tout debut.
+
+	- Askip2 le permission denied doit etre afficher tout a la fin donc pareil le stocker
+	  puis le trier par ordre alpha (ascii).
+
+	(Pour info)
+	 ls . . . abd abcxyz
+	 ls: abcxyz: No such file or directory
+	 ls: abd: No such file or directory
+	 le trie se fait sur la premiere difference (en valeur ascii) du char.
+
+#5.	A implementer vite
+
+	- if (ac == 1)
+	  juste faire un opendir du repertoire courant et quitter proprement.
+
+#6. Affichage
+	Une fois recuperer tout les path si sont nb > 1 display_path == TRUE
+	merci BISOU.s
