@@ -3,11 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/06 20:24:48 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/06 20:24:52 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/06 22:51:55 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ft_ls.h>
 
+int main(int ac, char **av)
+{
+	ft_parsing()
+	return (0);
+}

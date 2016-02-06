@@ -18,7 +18,13 @@
 	- des que parmis les opts gerer une d'elle est rencontrer on incremente sa presence. Pour eviter les doublons etc.. [-- Done.]
 	- differencier les opts d'affichage, des opts de tries, -l = affichage lister, sinon si aucun 'l' affichage normal. [-- Done.]
 		// si rien ne correspond au IS_XXX alors affichage erreur [-- Done.]
-	- pour -R le faire en recursif, a chaque appel dès qu'un repertoire est lister rappeller la fnt avec le new path of dir.
+	- pour -R le faire en recursif, a chaque appel des que le path est ouvert et qu'on accede a tout ce qu'il contient
+	  on va trier tout ce qu'il contient par ordre lexico, ON L'AFFICHE, puis a chaque fois on va rentrer dans le premier path rencontrer et ainsi de suite.
+	  Pour l'affichage pour chaque listing d'un dir je fait dir/sub_dir/sub_dir:
+	  et comme pour de l'affichage general si j'ai 2 repertoire minimum dans mon parsing alors tout mes paths:  *(voir ici)
+	  sinon faire un listing simple sans affichage du repertoire.
+
+	  (Voir si c'est possible en arbre binaire).
 
 	- /|\ "drwxrwxr-x+" ou "drwxr-xr-x@"
 	- Le + signifie qu'il y a des ACL sur le fichier/répertoire, c'est a dire une gestion des droits plus complètes
@@ -47,10 +53,38 @@
 
 #6. Affichage
 	Une fois recuperer tout les path si sont nb > 1 display_path == TRUE
-	format path:
+	format path: *(voir ici)
 			...
 			...
 	merci BISOU.s
 
 IL FAUT TOUT LISTER DES LE DEBUT avoir une fonction qui parcout des repertoires les tries
 et les affiches ensuite afin en boucle de rentrer au prochain dir renconter le lister puis revenir au actions avant.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Au debut on parse tout ce qu'on nous envoie, on fait la gestion des erreurs des options et '--' (end option)
+   et dans un second temps tout ce qu'on nous envoi on le trie lexicographiquement.
+   Il faut savoir que les fichiers ont la priorite dans l'affichage sur les dossier mais cela uniquement au moment de
+   // rajouter au debut de ma liste chainee la liste des fichiers triees pour qu'ils soient aff en premier ?
+   // et par la meme occasion afficher les erreurs au debut de la liste chainee.
+
+	trie des paths
+
+	Ceci est notre sorte de nouvelle av mais trier lexico avec les erreurs les options et les paths :)
+	(les opts ne seront pas afficher donc elles sont prises en compte mais uniquement dans leur values).
+	donc fnt qui ajoute une data en debut de liste et une en fin de liste notamment pour les erreurs de forbidden access qui sont tout a la fin trier. (En recursif il ne faut pas le mettre a la fin uniquement lors du parsing)
+	erreur.1->erreur.2->file.1->file.2->path.1->path.2->NULL
+
+   parser ce qu'on nous envoie.
