@@ -76,7 +76,7 @@ et les affiches ensuite afin en boucle de rentrer au prochain dir renconter le l
 
 -- Au debut on parse tout ce qu'on nous envoie, on fait la gestion des erreurs des options et '--' (end option)
    et dans un second temps tout ce qu'on nous envoi on le trie lexicographiquement.
-   Il faut savoir que les fichiers ont la priorite dans l'affichage sur les dossier mais cela uniquement au moment de
+   Il faut savoir que les fichiers ont la priorite dans l'affichage sur les dossier!
    // rajouter au debut de ma liste chainee la liste des fichiers triees pour qu'ils soient aff en premier ?
    // et par la meme occasion afficher les erreurs au debut de la liste chainee.
 
@@ -84,7 +84,8 @@ et les affiches ensuite afin en boucle de rentrer au prochain dir renconter le l
 
 	Ceci est notre sorte de nouvelle av mais trier lexico avec les erreurs les options et les paths :)
 	(les opts ne seront pas afficher donc elles sont prises en compte mais uniquement dans leur values).
-	donc fnt qui ajoute une data en debut de liste et une en fin de liste notamment pour les erreurs de forbidden access qui sont tout a la fin trier. (En recursif il ne faut pas le mettre a la fin uniquement lors du parsing)
-	erreur.1->erreur.2->file.1->file.2->path.1->path.2->NULL
+	donc fnt qui ajoute une data en debut de liste et une en fin de liste notamment pour les erreurs de forbidden access qui sont tout a la fin trier. (En recursif les erreurs sont afficher au moment de leur arriver donc avec perror pas de trie a faire)
 
-   parser ce qu'on nous envoie.
+	no_such.1 -> no_such.2 -> file.1 -> file.2 -> path.1 -> path.2 -> perm_denied.1 -> perm_denied.2 -> NULL
+
+	/!\ 1 & 2 correspondent a leur ordre ascii (croissant).

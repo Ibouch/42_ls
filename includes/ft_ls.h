@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/06 20:10:07 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/10 20:29:15 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,24 @@
 typedef struct dirent	t_dir;
 typedef struct stat		t_st;
 
-typedef struct			s_flags
+typedef struct			s_err
 {
+	char				*str;
+	t_err				*next;
+}						t_err;
+
+typedef struct			s_env
+{
+	DIR					*dir;
+	t_bool				error;
+	t_bool				display_path;
+	int					x;
+	char				*path;
+	char				opt_aff;
 	t_bool				opt_all;
 	t_bool				opt_rec;
 	t_bool				opt_rev;
 	t_bool				opt_time;
-	char				opt_aff;
 	t_bool				is_file;
 	t_bool				is_dir;
 	t_bool				is_chr;
@@ -36,15 +47,6 @@ typedef struct			s_flags
 	t_bool				is_fifo;
 	t_bool				is_lnk;
 	t_bool				is_sock;
-}						t_flags;
-
-typedef struct			s_env
-{
-	int					x;
-	t_bool				error;
-	t_bool				display_path;
-	char				*path;
-	DIR					*dir;
 }						t_env;
 
 int						ft_print_error(char *str, char c, int type_error);
