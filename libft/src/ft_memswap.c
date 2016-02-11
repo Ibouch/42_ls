@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_memswap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/13 18:08:35 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/11 02:56:26 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/11 03:05:35 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_swap(void *a, void *b, size_t size)
+void	ft_memswap(void *a, void *b, size_t size)
 {
 	size_t			i;
 	unsigned char	*bytes_a;

@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:47:12 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/05 21:52:05 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/11 03:04:58 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
-void				ft_swap(void *a, void *b, size_t type_a, size_t type_b);
+void				ft_memswap(void *a, void *b, size_t size);
 void				ft_strrev(char *str);
 int					ft_biggest_str(char *s1, char *s2, char *to_check);
 int					ft_isspace(int c);

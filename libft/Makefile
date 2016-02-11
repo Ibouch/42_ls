@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/04 12:46:54 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/11 03:05:53 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ SRC_NAME =	ft_bzero.c \
 		ft_lstiter.c \
 		ft_lstnew.c \
 		ft_lstmap.c \
-		ft_swap.c \
+		ft_memswap.c \
 		ft_strrev.c \
 		ft_biggest_str.c \
 		ft_isspace.c \
