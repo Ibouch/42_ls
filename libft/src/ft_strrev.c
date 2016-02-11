@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 13:09:57 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/03 19:48:13 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/11 03:00:31 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	ft_strrev(char *str)
 	end = ft_strlen(str) - 1;
 	n = ft_strlen(str) / 2;
 	while ((int)start < n)
-		ft_swap(&str[start++], &str[end--], 1, 1);
+		ft_swap(&str[start++], &str[end--], 1);
 }

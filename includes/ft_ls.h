@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/10 20:29:15 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/11 03:27:22 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct stat		t_st;
 
 typedef struct			s_err
 {
+	struct s_err		*next;
 	char				*str;
-	t_err				*next;
 }						t_err;
 
 typedef struct			s_env
@@ -50,5 +50,7 @@ typedef struct			s_env
 }						t_env;
 
 int						ft_print_error(char *str, char c, int type_error);
+int	ft_str_sort_ascii(char **tab, int len);
+void	ft_swap_str(char *s1, char *s2);
 
 #endif
