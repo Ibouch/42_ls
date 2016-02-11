@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/11 03:05:53 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/11 05:07:46 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,8 @@ SRC_NAME =	ft_bzero.c \
 		ft_strrev.c \
 		ft_biggest_str.c \
 		ft_isspace.c \
+		ft_strswap.c \
+		ft_strsort.c \
 		get_next_line.c
 
 CREATE_LIB = ar rc $(NAME) $(OBJET)
