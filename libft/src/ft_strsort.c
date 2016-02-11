@@ -19,7 +19,7 @@ int	ft_strsort(char **as, int len)
 
 	i = 0;
 	x = (-1);
-	if (!(*as))
+	if (!(*as) || len < 2)
 		return (-1);
 	while (i++ < (len - 1))
 	{
