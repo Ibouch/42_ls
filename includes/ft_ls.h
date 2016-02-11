@@ -20,26 +20,27 @@
 # include <stdio.h>
 
 typedef struct dirent	t_dir;
-typedef struct stat		t_st;
+typedef struct stat		t_stat;
 
 typedef struct			s_err
 {
-	struct s_err		*next;
 	char				*str;
+	struct s_err		*next;
 }						t_err;
+
+typedef struct			s_flg
+{
+	char				aff;
+	t_bool				all;
+	t_bool				rec;
+	t_bool				rev;
+	t_bool				t;
+}						t_flg;
 
 typedef struct			s_env
 {
-	DIR					*dir;
-	t_bool				error;
 	t_bool				display_path;
-	int					x;
-	char				*path;
-	char				opt_aff;
-	t_bool				opt_all;
-	t_bool				opt_rec;
-	t_bool				opt_rev;
-	t_bool				opt_time;
+	t_bool				end_opt;
 	t_bool				is_file;
 	t_bool				is_dir;
 	t_bool				is_chr;
@@ -47,10 +48,12 @@ typedef struct			s_env
 	t_bool				is_fifo;
 	t_bool				is_lnk;
 	t_bool				is_sock;
+	DIR					*dir;
+	char				*path;
+	struct s_flg		*flg;
+	struct s_err		*err;
 }						t_env;
 
 int						ft_print_error(char *str, char c, int type_error);
-int	ft_str_sort_ascii(char **tab, int len);
-void	ft_swap_str(char *s1, char *s2);
 
 #endif
