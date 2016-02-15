@@ -80,6 +80,7 @@ SRC_NAME =	ft_bzero.c \
 		ft_isspace.c \
 		ft_strswap.c \
 		ft_strsort.c \
+		ft_lst_sort.c \
 		get_next_line.c
 
 CREATE_LIB = ar rc $(NAME) $(OBJET)

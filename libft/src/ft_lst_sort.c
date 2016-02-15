@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsort.c                                       :+:      :+:    :+:   */
+/*   ft_lst_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 05:31:34 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/11 18:38:51 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/02/15 04:45:34 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/02/15 04:50:20 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-int	ft_strsort(char **as, int len)
+void	ft_lst_sort(t_list **alist, int (*f_cmp)())
 {
-	int	i;
-	int x;
+	t_list	*begin_list;
+	t_list	*tmp;
+	void	*swap;
 
-	i = 0;
-	x = (-1);
-	if (!(*as) || len < 2)
-		return (-1);
-	while (i++ < (len - 1))
+	begin_list = *alist;
+	while (*alist != NULL)
 	{
-		while (++x < (len - 1))
-			if ((ft_strcmp(as[x], as[x + 1])) > 0)
-				ft_strswap(&as[x], &as[x + 1]);
-		x = (-1);
+		tmp = begin_list;
+		while (tmp->next != NULL)
+		{
+			if ((f_cmp(tmp->content, tmp->next->content)) > 0)
+			{
+				swap = tmp->content;
+				tmp->content = tmp->next->content;
+				tmp->next->content = swap;
+			}
+			tmp = tmp->next;
+		}
+		*alist = (*alist)->next;
 	}
-	return (0);
+	*alist = begin_list;
 }
