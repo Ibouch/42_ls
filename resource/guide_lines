@@ -49,7 +49,8 @@
 #5.	A implementer vite
 
 	- if (ac == 1)
-	  juste faire un opendir du repertoire courant et quitter proprement.
+	  juste faire un opendir du repertoire courant,
+	  trier lexico tout ce qu'il y a dedans et quitter proprement.
 
 #6. Affichage
 	Une fois recuperer tout les path si sont nb > 1 display_path == TRUE
@@ -84,8 +85,12 @@ et les affiches ensuite afin en boucle de rentrer au prochain dir renconter le l
 
 	Ceci est notre sorte de nouvelle av mais trier lexico avec les erreurs les options et les paths :)
 	(les opts ne seront pas afficher donc elles sont prises en compte mais uniquement dans leur values).
-	donc fnt qui ajoute une data en debut de liste et une en fin de liste notamment pour les erreurs de forbidden access qui sont tout a la fin trier. (En recursif les erreurs sont afficher au moment de leur arriver donc avec perror pas de trie a faire)
+	donc fnt qui ajoute une data en debut de liste.
 
-	no_such.1 -> no_such.2 -> file.1 -> file.2 -> path.1 -> path.2 -> perm_denied.1 -> perm_denied.2 -> NULL
+	no_such.1 -> no_such.2 -> file.1 -> file.2 -> path.1 -> permission denied -> path.2 -> permission denied -> NULL
 
 	/!\ 1 & 2 correspondent a leur ordre ascii (croissant).
+	Et les permission denied arrivent selon leur ordre d'arriver aucun ajout a la fin !
+	Et vu que la recuperation des paths est deja trier par odre ascii l'affichage du permission denied (si affichage il y a)
+	sera egalement dans le bon ordre.
+

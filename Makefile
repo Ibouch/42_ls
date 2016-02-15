@@ -16,7 +16,8 @@ INC_PATH = -I includes
 
 SRC_PATH = src
 
-SRC_NAME =	main.c
+SRC_NAME =	main.c \
+			ft_print_error.c
 
 CC_FLAGS = clang -Wall -Wextra -Werror
 

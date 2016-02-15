@@ -12,11 +12,6 @@
 
 #include <ft_ls.h>
 
-int		ft_trie_lexico(char **buf, void *lst)
-{
-	return
-}
-
 void	ft_parsing(int ac, char	**av)
 {
 	int x;
