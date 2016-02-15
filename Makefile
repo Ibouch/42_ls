@@ -18,7 +18,7 @@ SRC_PATH = src
 
 SRC_NAME =	main.c \
 			ft_params_parsing.c \
-			ft_print_error.c
+			ft_fmode_parsing.c
 
 CC_FLAGS = clang -Wall -Wextra -Werror
 
