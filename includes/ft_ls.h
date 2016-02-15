@@ -28,6 +28,12 @@ typedef struct			s_err
 	struct s_err		*next;
 }						t_err;
 
+typedef struct 			s_path
+{
+	char				*str;
+	struct s_path		*next;
+}						t_path;
+
 typedef struct			s_flg
 {
 	char				aff;
@@ -37,10 +43,8 @@ typedef struct			s_flg
 	t_bool				t;
 }						t_flg;
 
-typedef struct			s_env
+typedef struct 			s_fmode
 {
-	t_bool				display_path;
-	t_bool				end_opt;
 	t_bool				is_file;
 	t_bool				is_dir;
 	t_bool				is_chr;
@@ -48,12 +52,18 @@ typedef struct			s_env
 	t_bool				is_fifo;
 	t_bool				is_lnk;
 	t_bool				is_sock;
+}						t_fmode;
+typedef struct			s_env
+{
+	t_bool				display_path;
 	DIR					*dir;
-	char				*path;
-	struct s_flg		*flg;
 	struct s_err		*err;
+	struct s_path		*path;
+	struct s_flg		*flg;
+	struct s_fmode		*fmode;
 }						t_env;
 
+int						ft_params_parsing(int ac, char **av);
 int						ft_print_error(char *str, char c, int type_error);
 
 #endif
