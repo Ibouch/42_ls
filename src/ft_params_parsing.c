@@ -61,11 +61,13 @@ static void	ft_flags_parsing(char *av, t_env *e, t_bool *end_opt)
 		ft_check_flags(av, e);
 }
 
-void 		ft_print_list(t_list *lst)
+static void	ft_print_list_err(t_list *lst)
 {
 	while (lst != NULL)
 	{
-		ft_putendl((char *)lst->content);
+		ft_putstr("ft_ls: ");
+		ft_putstr((char *)lst->content);
+		ft_putendl(": No such file or directory");
 		lst = lst->next;
 	}
 }
@@ -90,7 +92,7 @@ void		ft_params_parsing(int ac, char **av, t_env *e)
 	ft_lst_sort((t_list **)&e->err, &ft_strcmp);
 	ft_lst_sort((t_list **)&e->file, &ft_strcmp);
 	ft_lst_sort((t_list **)&e->path, &ft_strcmp);
-	ft_print_list((t_list *)e->err);
+	ft_print_list_err((t_list *)e->err);
 	ft_print_list((t_list *)e->file);
 	ft_print_list((t_list *)e->dir);
 }

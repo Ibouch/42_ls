@@ -33,4 +33,5 @@ void	ft_fmode_parsing(const char *s, t_env *e)
 		ft_lstadd(&e->file, ft_lstnew(s, ft_strlen(s) + 1));
 	else
 		ft_lstadd((t_list **)&e->err, ft_lstnew(s, ft_strlen(s) + 1));
+	ft_bzero(&st, sizeof(t_stat));
 }
