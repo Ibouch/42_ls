@@ -6,7 +6,7 @@
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 18:29:23 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/15 18:30:23 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/16 03:18:32 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void		ft_params_parsing(int ac, char **av, t_env *e)
 	ft_lst_sort((t_list **)&e->file, &ft_strcmp);
 	ft_lst_sort((t_list **)&e->path, &ft_strcmp);
 	ft_print_list_err((t_list *)e->err);
-	ft_print_list((t_list *)e->file);
-	ft_print_list((t_list *)e->dir);
+	ft_print_lst((t_list *)e->file);
+	ft_print_lst((t_list *)e->dir);
 }
