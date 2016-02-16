@@ -28,7 +28,7 @@ typedef struct			s_err
 	struct s_err		*next;
 }						t_err;
 
-typedef struct 			s_path
+typedef struct			s_path
 {
 	char				*str;
 	struct s_path		*next;
@@ -42,19 +42,7 @@ typedef struct			s_flg
 	t_bool				rev;
 	t_bool				t;
 }						t_flg;
-/*
-typedef struct 			s_fmode
-{
-	t_bool				is_file;
-	t_bool				is_dir;
-	t_bool				is_chr;
-	t_bool				is_blk;
-	t_bool				is_fifo;
-	t_bool				is_lnk;
-	t_bool				is_sock;
-}
-						t_fmode;
-*/
+
 typedef struct			s_env
 {
 	t_bool				display_path;
@@ -63,7 +51,6 @@ typedef struct			s_env
 	struct s_err		*err;
 	struct s_path		*path;
 	t_list				*file;
-//	struct s_fmode		*fmode;
 }						t_env;
 
 void					ft_params_parsing(int ac, char **av, t_env *e);

@@ -94,3 +94,18 @@ et les affiches ensuite afin en boucle de rentrer au prochain dir renconter le l
 	Et vu que la recuperation des paths est deja trier par odre ascii l'affichage du permission denied (si affichage il y a)
 	sera egalement dans le bon ordre.
 
+
+
+
+
+
+
+	typedef struct 			s_fmode
+	{
+		t_bool				is_file;
+		t_bool				is_dir;
+		t_bool				is_chr;
+		t_bool				is_blk;
+		t_bool				is_fifo;
+		t_bool				is_lnk;
+		t_bool				is_sock;

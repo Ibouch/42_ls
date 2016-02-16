@@ -18,8 +18,5 @@ int	main(int ac, char **av)
 
 	e = ft_memalloc(sizeof(t_env));
 	ft_params_parsing(ac, av, e);
-
-	/* codage ensuite de tout les options */
-
 	return (0);
 }
