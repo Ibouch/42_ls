@@ -55,5 +55,6 @@ typedef struct			s_env
 
 void					ft_params_parsing(int ac, char **av, t_env *e);
 void					ft_fmode_parsing(const char *s, t_env *e);
+void                    ft_delimit_flags(t_env *e);
 
 #endif

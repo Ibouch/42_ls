@@ -1,104 +1,30 @@
 
-#1.	Faire un Makefile -- Done.
+#1.		Faire un Makefile -- Done.
 
-#2.	Pour les options [-options] :
+#2. 	Gestion d'erreur -- Done.
 
-	- structure de flags -> chaque flag a sa presence en bool [-- Done.]
-	- la derniere option d'affichage entre -1 et -l sera prise en compte ce qui est auto. [-- Done.]
-	- Au tout debut de mon main, je recupere pour x < ac chaque av[x] si IS_DIR alr le nom est stocker
-	  dans une liste chainee par exemple ou dans un char **. Par la suite les trier par ordre alphanumeric (ascii)
-	  donc renvoyer les nouveaux paths a traiter. Soit dans une struct soit renvoyer un char ** qui malloc du nb de path reel,
-	  donc on ajoute dans notre tableau chaque string malloc de la strlen du path.
+		2.1	Parser les options [-options] -- Done.
+		2.2 Parser les files ou directory -- Done.
 
-#3.	Tools :
+#3. 	Implementation des fonctions d'affichages [current].
 
-	- /|\ On considere que un nom de fichier ne commencera jamais par un tiret '-' et voir stat (S_ISREG)
-	- il faudra determiner si on m'envoie un path ou un file, si je n'ai ni path ni file je traite dans rep courant. OUI
-	- en fnt du nb d'argc, pour chaque arg, verif des opts ex : (-la -a -aall -l -XXX) [-- Done.]
-	- des que parmis les opts gerer une d'elle est rencontrer on incremente sa presence. Pour eviter les doublons etc.. [-- Done.]
-	- differencier les opts d'affichage, des opts de tries, -l = affichage lister, sinon si aucun 'l' affichage normal. [-- Done.]
-		// si rien ne correspond au IS_XXX alors affichage erreur [-- Done.]
-	- pour -R le faire en recursif, a chaque appel des que le path est ouvert et qu'on accede a tout ce qu'il contient
-	  on va trier tout ce qu'il contient par ordre lexico, ON L'AFFICHE, puis a chaque fois on va rentrer dans le premier path rencontrer et ainsi de suite.
-	  Pour l'affichage pour chaque listing d'un dir je fait dir/sub_dir/sub_dir:
-	  et comme pour de l'affichage general si j'ai 2 repertoire minimum dans mon parsing alors tout mes paths:  *(voir ici)
-	  sinon faire un listing simple sans affichage du repertoire.
+#4. 	Implementation des fonctions de tries [not current].
 
-	  (Voir si c'est possible en arbre binaire).
+##.		Affichage a implementer
+		- if (ac == 1)
+	  	juste faire un opendir du repertoire courant,
+	  	trier lexico tout ce qu'il y a dedans et quitter proprement.
+	  	format path:
+  					...
+  					...
+
+###.	Tools :
 
 	- /|\ "drwxrwxr-x+" ou "drwxr-xr-x@"
 	- Le + signifie qu'il y a des ACL sur le fichier/répertoire, c'est a dire une gestion des droits plus complètes
 	  que le simple "user/groupe/autres".
 	- Le @ quant à lui signifie qu'il y a des attributs étendus sur le fichier / dossier.
 	  Pour celle là, test la commande système xattr depuis ton shell...
-
-#4. Gestion d'erreur
-
-	- Askip pour les no such file or directory type_error 1 faire une gestion en interne
-	et sortir l'affichage par ordre alphanumeric (ascii) au tout debut.
-
-	- Askip2 le permission denied doit etre afficher tout a la fin donc pareil le stocker
-	  puis le trier par ordre alpha (ascii).
-
-	(Pour info)
-	 ls . . . abd abcxyz
-	 ls: abcxyz: No such file or directory
-	 ls: abd: No such file or directory
-	 le trie se fait sur la premiere difference (en valeur ascii) du char.
-
-#5.	A implementer vite
-
-	- if (ac == 1)
-	  juste faire un opendir du repertoire courant,
-	  trier lexico tout ce qu'il y a dedans et quitter proprement.
-
-#6. Affichage
-	Une fois recuperer tout les path si sont nb > 1 display_path == TRUE
-	format path: *(voir ici)
-			...
-			...
-	merci BISOU.s
-
-IL FAUT TOUT LISTER DES LE DEBUT avoir une fonction qui parcout des repertoires les tries
-et les affiches ensuite afin en boucle de rentrer au prochain dir renconter le lister puis revenir au actions avant.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- Au debut on parse tout ce qu'on nous envoie, on fait la gestion des erreurs des options et '--' (end option)
-   et dans un second temps tout ce qu'on nous envoi on le trie lexicographiquement.
-   Il faut savoir que les fichiers ont la priorite dans l'affichage sur les dossier!
-   // rajouter au debut de ma liste chainee la liste des fichiers triees pour qu'ils soient aff en premier ?
-   // et par la meme occasion afficher les erreurs au debut de la liste chainee.
-
-	trie des paths
-
-	Ceci est notre sorte de nouvelle av mais trier lexico avec les erreurs les options et les paths :)
-	(les opts ne seront pas afficher donc elles sont prises en compte mais uniquement dans leur values).
-	donc fnt qui ajoute une data en debut de liste.
-
-	no_such.1 -> no_such.2 -> file.1 -> file.2 -> path.1 -> permission denied -> path.2 -> permission denied -> NULL
-
-	/!\ 1 & 2 correspondent a leur ordre ascii (croissant).
-	Et les permission denied arrivent selon leur ordre d'arriver aucun ajout a la fin !
-	Et vu que la recuperation des paths est deja trier par odre ascii l'affichage du permission denied (si affichage il y a)
-	sera egalement dans le bon ordre.
-
-
-
-
-
-
 
 	typedef struct 			s_fmode
 	{

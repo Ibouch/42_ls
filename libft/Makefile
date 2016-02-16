@@ -14,7 +14,7 @@ NAME = libft.a
 
 INC_PATH = -I includes
 
-SRC_PATH = src
+SRC_PATH = srcs
 
 SRC_NAME =	ft_bzero.c \
 		ft_isalnum.c \
