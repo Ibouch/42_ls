@@ -59,15 +59,14 @@ typedef struct			s_env
 {
 	t_bool				display_path;
 	DIR					*dir;
+	struct s_flg		*flg;
 	struct s_err		*err;
 	struct s_path		*path;
-	struct s_flg		*flg;
 	t_list				*file;
 //	struct s_fmode		*fmode;
 }						t_env;
 
 void					ft_params_parsing(int ac, char **av, t_env *e);
 void					ft_fmode_parsing(const char *s, t_env *e);
-int						ft_print_error(char *str, char c, int type_error);
 
 #endif

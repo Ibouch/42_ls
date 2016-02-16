@@ -23,25 +23,27 @@ static void	ft_print_iusage(char c)
 
 static void	ft_check_flags(char *av, t_env *e)
 {
-	int	id;
+	int		id;
+	t_flg	flg;
 
 	id = 0;
 	while (av[++id] != '\0')
 	{
 		if (av[id] == '1')
-			e->flg->aff = '1';
+			flg.aff = '1';
 		else if (av[id] == 'l')
-			e->flg->aff = 'l';
+			flg.aff = 'l';
 		else if (av[id] == 'R')
-			e->flg->rec = TRUE;
+			flg.rec = TRUE;
 		else if (av[id] == 'a')
-			e->flg->all = TRUE;
+			flg.all = TRUE;
 		else if (av[id] == 'r')
-			e->flg->rev = TRUE;
+			flg.rev = TRUE;
 		else if (av[id] == 't')
-			e->flg->t = TRUE;
+			flg.t = TRUE;
 		else
 			ft_print_iusage(av[id]);
+		e->flg = &flg;
 	}
 }
 
