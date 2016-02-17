@@ -19,7 +19,7 @@ SRC_PATH = srcs
 SRC_NAME =	main.c \
 			ft_params_parsing.c \
 			ft_fmode_parsing.c \
-		#	ft_delimit_flags.c
+			ft_delimit_flags.c
 
 CC_FLAGS = clang -Wall -Wextra -Werror
 

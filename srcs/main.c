@@ -18,6 +18,6 @@ int	main(int ac, char **av)
 
 	e = ft_memalloc(sizeof(t_env));
 	ft_params_parsing(ac, av, e);
-	//ft_delimit_flags(e);
+	ft_delimit_flags(e);
 	return (0);
 }

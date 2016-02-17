@@ -35,3 +35,14 @@
 		t_bool				is_fifo;
 		t_bool				is_lnk;
 		t_bool				is_sock;
+
+ls -1 :
+(no such file)
+(FILES)
+(paths)
+
+ls -l :
+(no such file)
+Premier trie lexico
+(Faire pointer le dernier maillon d'une de mes listes chainée vers la suivante)
+(Retrier la liste pointant vers la suivante).
