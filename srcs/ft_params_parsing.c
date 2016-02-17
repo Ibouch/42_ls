@@ -18,7 +18,7 @@ static void	ft_print_iusage(char c)
 	ft_putchar_fd(c, 2);
 	ft_putchar_fd('\n', 2);
 	ft_putendl_fd("usage: ft_ls [-Ralrt1] [file ...]", 2);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 static void	ft_check_flags(char *av, t_env *e)

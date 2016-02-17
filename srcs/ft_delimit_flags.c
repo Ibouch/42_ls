@@ -12,19 +12,33 @@
 
 #include <ft_ls.h>
 
-DIR		*ft_myopendir(const char *path)
+DIR		*ft_myopendir(const char *path, t_env *e)
 {
-	if ((e->dir = opendir(path)) == NULL)
+	DIR	*directory;
+
+	if ((directory = opendir(path)) == NULL)
 	{
 		ft_putstr("ft_ls: ");
-		perror(av[e->x]);
-		return ;
+		perror(path);
+		return (NULL);
 	}
-	while ((elem_dir = readdir(e->dir)))
-		ft_putendl(elem_dir->d_name);
-	if ((closedir(e->dir)) == (-1))
-		exit(-1);
-	if (e->flg->all == FALSE)
+	if (e->flg->all == TRUE)
+		return (directory);
+	while ((e->e_dir = readdir(directory)) != NULL)
+		if (e_dir->d_name[0] != '.')
+			return (directory);
+	return (NULL);
+}
+/*
+int		ft_search_recursive()
+{
+
+}
+*/
+
+int		ft_listing_flag(e)
+{
+	
 }
 
 void	ft_delimit_flags(t_env *e)

@@ -51,6 +51,7 @@ typedef struct			s_env
 	struct s_err		*err;
 	struct s_path		*path;
 	t_list				*file;
+	t_dir				*e_dir;
 }						t_env;
 
 void					ft_params_parsing(int ac, char **av, t_env *e);
