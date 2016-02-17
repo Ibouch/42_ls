@@ -14,10 +14,10 @@
 
 static void	ft_print_iusage(char c)
 {
-	ft_putstr("ft_ls: illegal option -- ");
-	ft_putchar(c);
-	ft_putchar('\n');
-	ft_putendl("usage: ft_ls [-Ralrt1] [file ...]");
+	ft_putstr_fd("ft_ls: illegal option -- ", 2);
+	ft_putchar_fd(c, 2);
+	ft_putchar_fd('\n', 2);
+	ft_putendl_fd("usage: ft_ls [-Ralrt1] [file ...]", 2);
 	exit(1);
 }
 
@@ -55,7 +55,7 @@ static void	ft_flags_parsing(char *av, t_env *e, t_bool *end_opt)
 			ft_print_iusage('-');
 		*end_opt = TRUE;
 	}
-	else if (*end_opt == TRUE)
+	else if (*end_opt == TRUE || av[1] == '\0')
 		ft_lstadd((t_list **)&e->err, ft_lstnew(av, ft_strlen(av) + 1));
 	else if (*end_opt == FALSE)
 		ft_check_flags(av, e);

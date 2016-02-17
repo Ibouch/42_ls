@@ -12,7 +12,22 @@
 
 #include <ft_ls.h>
 
+DIR		*ft_myopendir(const char *path)
+{
+	if ((e->dir = opendir(path)) == NULL)
+	{
+		ft_putstr("ft_ls: ");
+		perror(av[e->x]);
+		return ;
+	}
+	while ((elem_dir = readdir(e->dir)))
+		ft_putendl(elem_dir->d_name);
+	if ((closedir(e->dir)) == (-1))
+		exit(-1);
+	if (e->flg->all == FALSE)
+}
+
 void	ft_delimit_flags(t_env *e)
 {
-
+	ft_listing_flag(e);
 }
