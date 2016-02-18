@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/11 05:07:46 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/18 15:29:00 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRC_NAME =	ft_bzero.c \
 		ft_strswap.c \
 		ft_strsort.c \
 		ft_lst_sort.c \
+		ft_lstadd_back.c \
 		ft_print_lst.c \
 		get_next_line.c
 

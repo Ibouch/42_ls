@@ -57,33 +57,9 @@ if (!e)
 
 void	ft_delimit_flags(t_env *e)
 {
-	ft_putstr("Valeure de l'option aff : ");
-	ft_putchar(e->flg->aff);
-	ft_putchar('\n');
-	ft_putstr("Valeure de l'option -a : ");
-	ft_putnbr(e->flg->all);
-	ft_putchar('\n');
-	ft_putstr("Valeure de l'option -r : ");
-	ft_putnbr(e->flg->rev);
-	ft_putchar('\n');
-	ft_putstr("Valeure de l'option -R : ");
-	ft_putnbr(e->flg->rec);
-	ft_putchar('\n');
-	ft_putstr("Valeure de l'option -t : ");
-	ft_putnbr(e->flg->t);
-	ft_putchar('\n');
-
-
-
-
-//	if (e->flg->aff == 'l')
-//	{
-		/* a mettre dans une fonction de ma libft c ft_push_back voir j11 psicine). */
-//		while (e->file != NULL)
-//			e->file = e->file->next;
-//		e->file->next = e->path;
-		/*		*/
-//		ft_lst_sort(e->file);
-	//	ft_listing_flag(e);
-//	}
+	if (e->flg->aff == 'l')
+	{
+		ft_lst_sort(e->file);
+		ft_listing_flag(e);
+	}
 }
