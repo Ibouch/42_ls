@@ -28,12 +28,6 @@ typedef struct			s_err
 	struct s_err		*next;
 }						t_err;
 
-typedef struct			s_path
-{
-	char				*str;
-	struct s_path		*next;
-}						t_path;
-
 typedef struct			s_flg
 {
 	char				aff;
@@ -45,17 +39,14 @@ typedef struct			s_flg
 
 typedef struct			s_env
 {
-	t_bool				display_path;
 	DIR					*dir;
 	struct s_flg		*flg;
 	struct s_err		*err;
-	struct s_path		*path;
 	t_list				*file;
 	t_dir				*e_dir;
 }						t_env;
-
-void					ft_params_parsing(int ac, char **av, t_env *e);
-void					ft_fmode_parsing(const char *s, t_env *e);
-void                    ft_delimit_flags(t_env *e);
+void					params_parsing(int ac, char **av, t_env *e);
+void					print_lst_err(t_list *lst);
+void					delimit_flags(t_env *e);
 
 #endif

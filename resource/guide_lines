@@ -36,13 +36,22 @@
 		t_bool				is_lnk;
 		t_bool				is_sock;
 
-ls -1 :
-(no such file)
-(FILES)
-(paths)
-
-ls -l :
-(no such file)
-Premier trie lexico
 (Faire pointer le dernier maillon d'une de mes listes chainée vers la suivante)
 (Retrier la liste pointant vers la suivante).
+
+ft_putendl("......... DEGUG ZONE .........");
+ft_putstr("Option d'affichage : ");
+ft_putchar(e->flg->aff);
+ft_putchar('\n');
+ft_putstr("option -a : ");
+ft_putnbr(e->flg->all);
+ft_putchar('\n');
+ft_putstr("option -R : ");
+ft_putnbr(e->flg->rec);
+ft_putchar('\n');
+ft_putstr("option -r : ");
+ft_putnbr(e->flg->rev);
+ft_putchar('\n');
+ft_putstr("option -t : ");
+ft_putnbr(e->flg->t);
+ft_putchar('\n');

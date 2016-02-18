@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_lst_err.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/15 02:19:53 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/15 02:19:57 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/02/19 00:45:49 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/02/19 00:46:04 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ls.h>
 
-int	main(int ac, char **av)
+void	print_lst_err(t_list *lst)
 {
-	t_env	*e;
-	t_flg	*flg;
-
-	e = ft_memalloc(sizeof(t_env));
-	flg = ft_memalloc(sizeof(t_flg));
-	e->flg = flg;
-	params_parsing(ac, av, e);
-	delimit_flags(e);
-	return (0);
+	while (lst != NULL)
+	{
+		ft_putstr("ft_ls: ");
+		ft_putstr((char *)lst->content);
+		ft_putendl(": No such file or directory");
+		lst = lst->next;
+	}
 }

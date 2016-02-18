@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_delimit_flags.c                                 :+:      :+:    :+:   */
+/*   delimit_flags.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/16 05:46:53 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/16 05:47:16 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/02/19 00:52:11 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/02/19 00:52:18 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		ft_search_recursive()
 
 }
 
-
 int		ft_listing_flag(t_env *e)
 {
 	t_stat	st;
@@ -55,11 +54,7 @@ if (!e)
 
 */
 
-void	ft_delimit_flags(t_env *e)
+void	delimit_flags(t_env *e)
 {
-	if (e->flg->aff == 'l')
-	{
-		ft_lst_sort(e->file);
-		ft_listing_flag(e);
-	}
+	ft_print_lst(e->file);
 }
