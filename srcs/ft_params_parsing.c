@@ -24,27 +24,28 @@ static void	ft_print_iusage(char c)
 static void	ft_check_flags(char *av, t_env *e)
 {
 	int		id;
-	t_flg	flg;
+	t_flg	*flg;
 
 	id = 0;
+	flg = ft_memalloc(sizeof(t_flg));
 	while (av[++id] != '\0')
 	{
 		if (av[id] == '1')
-			flg.aff = '1';
+			flg->aff = '1';
 		else if (av[id] == 'l')
-			flg.aff = 'l';
+			flg->aff = 'l';
 		else if (av[id] == 'R')
-			flg.rec = TRUE;
+			flg->rec = TRUE;
 		else if (av[id] == 'a')
-			flg.all = TRUE;
+			flg->all = TRUE;
 		else if (av[id] == 'r')
-			flg.rev = TRUE;
+			flg->rev = TRUE;
 		else if (av[id] == 't')
-			flg.t = TRUE;
+			flg->t = TRUE;
 		else
 			ft_print_iusage(av[id]);
-		e->flg = &flg;
 	}
+	e->flg = flg;
 }
 
 static void	ft_flags_parsing(char *av, t_env *e, t_bool *end_opt)
@@ -56,7 +57,10 @@ static void	ft_flags_parsing(char *av, t_env *e, t_bool *end_opt)
 		*end_opt = TRUE;
 	}
 	else if (*end_opt == TRUE || av[1] == '\0')
+	{
 		ft_lstadd((t_list **)&e->err, ft_lstnew(av, ft_strlen(av) + 1));
+		*end_opt = TRUE;
+	}
 	else if (*end_opt == FALSE)
 		ft_check_flags(av, e);
 }

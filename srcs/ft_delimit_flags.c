@@ -11,8 +11,8 @@
 /* ************************************************************************** */
 
 #include <ft_ls.h>
-
-DIR		*ft_myopendir(const char *path, t_env *e)
+/*
+static DIR		*ft_myopendir(const char *path, t_env *e)
 {
 	DIR	*directory;
 
@@ -28,14 +28,14 @@ DIR		*ft_myopendir(const char *path, t_env *e)
 		if (e->e_dir->d_name[0] != '.')
 			return (directory);
 	return (NULL);
-	/* si e_dir != 0 il contient alors les infos du premier directory */
+	 si e_dir != 0 il contient alors les infos du premier directory
 }
-/*
+
 int		ft_search_recursive()
 {
 
 }
-*/
+
 
 int		ft_listing_flag(t_env *e)
 {
@@ -44,25 +44,46 @@ int		ft_listing_flag(t_env *e)
 	stat(e->file->content, &st);
 if (!e)
 	;
-	printf("%o\n", S_IFMT(st.st_mode));
-	/*
+	printf("%o\n", S_IFMT);
 	ft_print_modes(e);
 	ft_print_guid(e);
 	ft_print_uid(e);
 	ft_print_date(e);
-	*/
+
+	return 0;
 }
+
+*/
 
 void	ft_delimit_flags(t_env *e)
 {
-	if (e->flg->aff == 'l')
-	{
+	ft_putstr("Valeure de l'option aff : ");
+	ft_putchar(e->flg->aff);
+	ft_putchar('\n');
+	ft_putstr("Valeure de l'option -a : ");
+	ft_putnbr(e->flg->all);
+	ft_putchar('\n');
+	ft_putstr("Valeure de l'option -r : ");
+	ft_putnbr(e->flg->rev);
+	ft_putchar('\n');
+	ft_putstr("Valeure de l'option -R : ");
+	ft_putnbr(e->flg->rec);
+	ft_putchar('\n');
+	ft_putstr("Valeure de l'option -t : ");
+	ft_putnbr(e->flg->t);
+	ft_putchar('\n');
+
+
+
+
+//	if (e->flg->aff == 'l')
+//	{
 		/* a mettre dans une fonction de ma libft c ft_push_back voir j11 psicine). */
 //		while (e->file != NULL)
 //			e->file = e->file->next;
 //		e->file->next = e->path;
 		/*		*/
 //		ft_lst_sort(e->file);
-		ft_listing_flag(e);
-	}
+	//	ft_listing_flag(e);
+//	}
 }
