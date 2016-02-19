@@ -48,7 +48,7 @@ $(NAME): $(OBJET)
 	@echo "$(BLUE)Compilation of the library is complete.\n"
 	@echo "$(YELLOW)Linkage of object files with the library is in progress.."
 	@$(CC_FLAGS) $(OBJET) $(LD_PATH) $(LD_LIB) -o $(NAME)
-	@echo "$(BLUE)Linkage is complete.\n"
+	@echo "$(BLUE)Linkage is complete."
 	@make -C libft/ fclean
 	@echo "$(GREEN)Done."
 
