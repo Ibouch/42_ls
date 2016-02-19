@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/18 15:29:00 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/19 18:54:22 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,9 @@ SRC_NAME =	ft_bzero.c \
 		ft_putendl.c \
 		ft_putendl_fd.c \
 		ft_putnbr.c \
+		ft_putnbr_long.c \
 		ft_putnbr_fd.c \
+		ft_putnbr_long_fd.c \
 		ft_putstr.c \
 		ft_putstr_fd.c \
 		ft_strcat.c \

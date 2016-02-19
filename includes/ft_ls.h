@@ -24,9 +24,22 @@ typedef struct stat		t_stat;
 
 typedef struct			s_err
 {
-	char				*str;
+	char				*name;
 	struct s_err		*next;
 }						t_err;
+
+typedef struct 			s_file
+{
+	long				inoeud;
+	unsigned long		rights;
+	long				n_lnk;
+	long				uid;
+	long				gid;
+	long long			f_size;
+	long long			bocks;
+	char				*name;
+	struct s_file		*next;
+}						t_file;
 
 typedef struct			s_flg
 {
@@ -35,6 +48,7 @@ typedef struct			s_flg
 	t_bool				rec;
 	t_bool				rev;
 	t_bool				t;
+	t_bool				i;
 }						t_flg;
 
 typedef struct			s_env

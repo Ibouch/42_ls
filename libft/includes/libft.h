@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:47:12 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/16 03:09:02 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/19 18:55:39 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
+void				ft_putnbr_long(long n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+void				ft_putnbr_long_fd(long n, int fd);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);

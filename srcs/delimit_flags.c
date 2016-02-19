@@ -56,5 +56,9 @@ if (!e)
 
 void	delimit_flags(t_env *e)
 {
+	/*
+	if (e->flg->aff == 'l')
+		listing_fag(e);
+	*/
 	ft_print_lst(e->file);
 }

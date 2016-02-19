@@ -17,7 +17,7 @@ static void	print_iusage(char c)
 	ft_putstr_fd("ft_ls: illegal option -- ", 2);
 	ft_putchar_fd(c, 2);
 	ft_putchar_fd('\n', 2);
-	ft_putendl_fd("usage: ft_ls [-Ralrt1] [file ...]", 2);
+	ft_putendl_fd("usage: ft_ls [-Railrt1] [file ...]", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -40,6 +40,8 @@ static void	check_flags(char *av, t_env *e)
 			e->flg->rev = TRUE;
 		else if (av[id] == 't')
 			e->flg->t = TRUE;
+		else if (av[id] == 'i')
+			e->flg->i = TRUE;
 		else
 			print_iusage(av[id]);
 	}
@@ -84,7 +86,7 @@ void		params_parsing(int ac, char **av, t_env *e)
 	end_opt = FALSE;
 	while (++x < ac)
 	{
-		if (av[x][0] == '-')
+		if (av[x][0] == '-' && end_opt == FALSE)
 			flags_parsing(av[x], e, &end_opt);
 		else
 		{
