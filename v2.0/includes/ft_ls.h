@@ -28,7 +28,13 @@ typedef struct			s_err
 	struct s_err		*next;
 }						t_err;
 
-typedef struct 			s_file
+typedef struct			s_path
+{
+	char				*name;
+	struct s_path		*next;
+}						t_path;
+
+typedef struct			s_file
 {
 	long				inoeud;
 	unsigned long		rights;
@@ -56,13 +62,17 @@ typedef struct			s_env
 	DIR					*dir;
 	struct s_flg		*flg;
 	struct s_err		*err;
+	struct s_path		*path;
 	struct s_file		*file;
-	t_dir				*e_dir;
 }						t_env;
 
 void					params_parsing(int ac, char **av, t_env *e);
-void					file_lstadd(t_file **alst, t_file *new);
-t_file					*new_fstats(char *name, t_stat *st);
-void					delimit_flags(t_env *e, t_file *file);
+int						file_lst_rev(t_file **alst);
+void					delimit_flags(t_env *e);
+void					mystat(char *path, t_env *e);
+void					myopendir(char *path, t_env *e);
+void					file_lstadd(t_file **alst, char *path, t_stat *st);
+void					file_addback(t_file **alst, char *path, t_stat *st);
+t_file					*new_fstat(char *name, t_stat *st);
 
 #endif

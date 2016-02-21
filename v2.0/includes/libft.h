@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:47:12 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/19 18:55:39 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/21 12:18:14 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ typedef struct		s_list
 
 void				ft_print_lst(t_list *lst);
 t_list				*ft_lstnew(void const *content, size_t content_size);
+t_list				*ft_lst_at(t_list *begin_lst, unsigned int id);
+int					ft_lst_size(t_list *begin_lst);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
-void				ft_lstadd(t_list **alst, t_list *new);
-void				ft_lstadd_back(t_list **begin_lst, t_list *lst);
+void				ft_lstadd(t_list **alst, void *data, size_t size);
+void				ft_lstadd_back(t_list **begin_lst, void *data, size_t size);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lst_sort(t_list **alst, int (*f_cmp)());

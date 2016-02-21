@@ -14,9 +14,6 @@
 		- if (ac == 1)
 	  	juste faire un opendir du repertoire courant,
 	  	trier lexico tout ce qu'il y a dedans et quitter proprement.
-	  	format path:
-  					...
-  					...
 
 ###.	Tools :
 

@@ -1,7 +1,7 @@
 
 #include <ft_ls.h>
 
-t_file	*new_fstats(char *name, t_stat *st)
+t_file	*new_fstat(char *name, t_stat *st)
 {
 	t_file	*new_node;
 

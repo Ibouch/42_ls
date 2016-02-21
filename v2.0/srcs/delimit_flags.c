@@ -12,31 +12,6 @@
 
 #include <ft_ls.h>
 /*
-static DIR		*ft_myopendir(const char *path, t_env *e)
-{
-	DIR	*directory;
-
-	if ((directory = opendir(path)) == NULL)
-	{
-		ft_putstr("ft_ls: ");
-		perror(path);
-		return (NULL);
-	}
-	if (e->flg->all == TRUE)
-		return (directory);
-	while ((e->e_dir = readdir(directory)) != NULL)
-		if (e->e_dir->d_name[0] != '.')
-			return (directory);
-	return (NULL);
-	 si e_dir != 0 il contient alors les infos du premier directory
-}
-
-int		ft_search_recursive()
-{
-
-}
-*/
-
 void	listing_flag(t_file *file)
 {
 	while (file != NULL)
@@ -50,6 +25,7 @@ void	listing_flag(t_file *file)
 		file = file->next;
 	}
 }
+
 void	print_total(t_file *file)
 {
 	long long total;
@@ -63,18 +39,26 @@ void	print_total(t_file *file)
 	ft_putstr("total ");
 	ft_putendl(ft_itoa(total));
 }
+*/
 
-void	delimit_flags(t_env *e, t_file *file)
-{
-	if (e->flg->aff == 'l')
-		print_total(file);
-	if (e->flg->i == TRUE)
+void	delimit_flags(t_env *e)
+{/*
+	while (e->path != NULL)
 	{
-		ft_putnbr_long(file->inoeud);
-		ft_putchar(' ');
+		mystat(e->path->name, e);
+		e->path = e->path->next;
 	}
+*/
+//	if (e->file == NULL)
+		mystat(".", e);
+//		fonction de trie reverse
+		/*while (e->file)
+		{
+			ft_putendl(e->file->name);
+			e->file = e->file->next;
+		}*/
+/*
 	if (e->flg->aff == 'l')
-	{
-		listing_flag(file);
-	}
+		listing_flag(e);
+*/
 }

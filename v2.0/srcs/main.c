@@ -9,6 +9,6 @@ int main(int ac, char **av)
     flg = ft_memalloc(sizeof(t_flg));
     e->flg = flg;
     params_parsing(ac, av, e);
-	delimit_flags(e, e->file);
+	delimit_flags(e);
     return (0);
 }

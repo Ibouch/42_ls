@@ -46,7 +46,7 @@ static void	check_flags(char *av, t_env *e)
 			print_iusage(av[id]);
 	}
 }
-
+/*
 static void	fmode_parsing(char *s, t_env *e)
 {
 	t_stat	st;
@@ -65,7 +65,7 @@ static void	fmode_parsing(char *s, t_env *e)
 	}
 	ft_bzero(&st, sizeof(t_stat));
 }
-
+*/
 static void	flags_parsing(char *av, t_env *e, t_bool *end_opt)
 {
 	if (av[1] == '-' && *end_opt == FALSE)
@@ -76,7 +76,7 @@ static void	flags_parsing(char *av, t_env *e, t_bool *end_opt)
 	}
 	else if (*end_opt == TRUE || av[1] == '\0')
 	{
-		fmode_parsing(av, e);
+		ft_lstadd((t_list **)&e->path, (char *)av, (ft_strlen(av) + 1));
 		*end_opt = TRUE;
 	}
 	else if (*end_opt == FALSE)
@@ -97,9 +97,8 @@ void		params_parsing(int ac, char **av, t_env *e)
 		else
 		{
 			end_opt = TRUE;
-			fmode_parsing(av[x], e);
+			ft_lstadd((t_list **)&e->path, (char *)av[x], ft_strlen(av[x]) + 1);
 		}
 	}
-	ft_lst_sort((t_list **)&e->err, &ft_strcmp);
-	ft_print_lst((t_list *)e->err);
+	ft_lst_sort((t_list **)&e->path, &ft_strcmp);
 }
