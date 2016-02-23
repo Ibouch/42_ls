@@ -12,12 +12,12 @@
 
 #include <ft_ls.h>
 
-void	file_addback(t_file **alst, char *path, t_stat *st)
+void	file_addback(t_file **alst, char *path, char *name)
 {
 	t_file	*tmp;
 	t_file	*new;
 
-	new = new_fstat(path, st);
+	new = new_fstat(path, name, 1);
 	if (*alst != NULL)
 	{
 		tmp = *alst;

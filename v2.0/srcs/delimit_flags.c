@@ -11,54 +11,36 @@
 /* ************************************************************************** */
 
 #include <ft_ls.h>
-/*
-void	listing_flag(t_file *file)
+
+void	print_file_lst(t_file *lst)
 {
-	while (file != NULL)
+	while (lst)
 	{
-	//	print_rights(file->rights);
-		ft_putnbr_long(file->n_lnk);
-	//	print_uid(file->uid);
-	//	print_gid(file->gid);
-		ft_putnbr_long(file->f_size);
-		ft_putendl(file->name);
-		file = file->next;
+		ft_putnbr(lst->inoeud);
+		ft_putstr(" ");
+		ft_putstr(lst->rights);
+		ft_putstr("   ");
+		ft_putnbr_long(lst->n_lnk);
+		ft_putstr(" ");
+		ft_putstr(lst->uid);
+		ft_putstr("   ");
+		ft_putstr(lst->gid);
+		ft_putstr("   ");
+		ft_putendl(lst->name);
+		lst = lst->next;
 	}
 }
 
-void	print_total(t_file *file)
+void	delimit_flags(t_env *e, int nb_arg)
 {
-	long long total;
-
-	total = 0;
-	while (file != NULL)
-	{
-		total += file->blocks;
-		file = file->next;
-	}
-	ft_putstr("total ");
-	ft_putendl(ft_itoa(total));
-}
-*/
-
-void	delimit_flags(t_env *e)
-{/*
-	while (e->path != NULL)
-	{
-		mystat(e->path->name, e);
-		e->path = e->path->next;
-	}
-*/
-//	if (e->file == NULL)
+	if (nb_arg == 1)
 		mystat(".", e);
-//		fonction de trie reverse
-		/*while (e->file)
+	else
+		while (e->path != NULL)
 		{
-			ft_putendl(e->file->name);
-			e->file = e->file->next;
-		}*/
-/*
-	if (e->flg->aff == 'l')
-		listing_flag(e);
-*/
+			mystat(e->path->content, e);
+			ft_putchar('\n');
+			e->path = e->path->next;
+		}
+	print_file_lst(e->file);
 }

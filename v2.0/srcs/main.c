@@ -8,7 +8,7 @@ int main(int ac, char **av)
     e = ft_memalloc(sizeof(t_env));
     flg = ft_memalloc(sizeof(t_flg));
     e->flg = flg;
-    params_parsing(ac, av, e);
-	delimit_flags(e);
+	params_parsing(ac, av, e);
+	delimit_flags(e, ac);
     return (0);
 }
