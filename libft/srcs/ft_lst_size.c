@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_lst_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/12 20:56:14 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/21 00:04:03 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/02/21 12:15:50 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/02/21 12:30:29 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_lstadd(t_list **alst, void *data, size_t size)
+int	ft_lst_size(t_list *begin_lst)
 {
-	t_list	*new;
+	t_list	*tmp;
+	int		nb;
 
-	new = ft_lstnew(data, size);
-	if (*alst != NULL)
+	tmp = begin_lst;
+	nb = 0;
+	while (tmp != NULL)
 	{
-		new->next = *alst;
-		*alst = new;
+		tmp = tmp->next;
+		++nb;
 	}
-	else
-		*alst = new;
+	return (nb);
 }

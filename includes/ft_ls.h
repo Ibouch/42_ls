@@ -18,26 +18,27 @@
 # include <sys/stat.h>
 # include <errno.h>
 # include <stdio.h>
+# include <time.h>
+# include <grp.h>
+# include <pwd.h>
 
-typedef struct dirent	t_dir;
 typedef struct stat		t_stat;
 
-typedef struct			s_err
-{
-	char				*name;
-	struct s_err		*next;
-}						t_err;
-
-typedef struct 			s_file
+typedef struct			s_file
 {
 	long				inoeud;
-	unsigned long		rights;
+	char				*rights;
 	long				n_lnk;
-	long				uid;
-	long				gid;
+	long				num_uid;
+	long				num_gid;
+	char				*uid;
+	char				*gid;
 	long long			f_size;
-	long long			bocks;
+	long long			blocks;
+	char				*etime;
+	char				*mtime;
 	char				*name;
+	char				*path;
 	struct s_file		*next;
 }						t_file;
 
@@ -53,14 +54,39 @@ typedef struct			s_flg
 
 typedef struct			s_env
 {
-	DIR					*dir;
 	struct s_flg		*flg;
-	struct s_err		*err;
-	t_list				*file;
-	t_dir				*e_dir;
+	struct s_list		*err;
+	struct s_list		*den;
+	struct s_list		*path;
+	struct s_file		*file;
 }						t_env;
+
 void					params_parsing(int ac, char **av, t_env *e);
-void					print_lst_err(t_list *lst);
 void					delimit_flags(t_env *e);
+void					mystat(char *path, t_env *e);
+void					myopendir(char *path, t_env *e);
+void					file_lstadd(t_file **alst, char *path_file);
+void					file_addback(t_file **alst, char *path, char *name);
+void					file_sort(t_file **alst, char *field, int (*f_cmp)());
+t_file					*new_fstat(char *path, char *name, int dir);
+void					convert_rights(t_file *new_node, t_stat *st);
 
 #endif
+/*
+typedef				s_sub
+{
+	struct	s_file	*detail;
+	struct	s_sub	*next;
+}
+
+typedef				s_arg
+{
+	struct s_file	detail;
+	struct s_flg	options;
+	char			*name;
+	int				len;
+	struct	s_sub	*begin_list;
+	struct	s_arg	*next;
+}
+
+*/

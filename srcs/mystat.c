@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_lst_err.c                                    :+:      :+:    :+:   */
+/*   mystat.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/19 00:45:49 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/19 00:46:04 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/02/24 04:30:23 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/02/24 04:30:29 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ls.h>
 
-void	print_lst_err(t_list *lst)
+void 	mystat(char *path, t_env *e)
 {
-	while (lst != NULL)
+	t_stat	st;
+
+	if ((lstat(path, &st)) == 0)
 	{
-		ft_putstr("ft_ls: ");
-		ft_putstr((char *)lst->content);
-		ft_putendl(": No such file or directory");
-		lst = lst->next;
+		if ((S_ISDIR(st.st_mode)) == TRUE)
+			myopendir(path, e);
+		else
+			file_lstadd(&(*e).file, path); // On add au debut tout != DIR
 	}
+	else
+		exit(EXIT_FAILURE);
 }

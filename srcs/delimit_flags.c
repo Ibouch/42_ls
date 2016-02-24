@@ -11,54 +11,35 @@
 /* ************************************************************************** */
 
 #include <ft_ls.h>
-/*
-static DIR		*ft_myopendir(const char *path, t_env *e)
-{
-	DIR	*directory;
 
-	if ((directory = opendir(path)) == NULL)
+void	print_file_lst(t_file *lst)
+{
+	while (lst)
 	{
-		ft_putstr("ft_ls: ");
-		perror(path);
-		return (NULL);
+		ft_putnbr(lst->inoeud);
+		ft_putstr(" ");
+		ft_putstr(lst->rights);
+		ft_putstr("   ");
+		ft_putnbr_long(lst->n_lnk);
+		ft_putstr(" ");
+		ft_putstr(lst->uid);
+		ft_putstr("   ");
+		ft_putstr(lst->gid);
+		ft_putstr("   ");
+		ft_putendl(lst->name);
+		lst = lst->next;
 	}
-	if (e->flg->all == TRUE)
-		return (directory);
-	while ((e->e_dir = readdir(directory)) != NULL)
-		if (e->e_dir->d_name[0] != '.')
-			return (directory);
-	return (NULL);
-	 si e_dir != 0 il contient alors les infos du premier directory
 }
-
-int		ft_search_recursive()
-{
-
-}
-
-int		ft_listing_flag(t_env *e)
-{
-	t_stat	st;
-
-	stat(e->file->content, &st);
-if (!e)
-	;
-	printf("%o\n", S_IFMT);
-	ft_print_modes(e);
-	ft_print_guid(e);
-	ft_print_uid(e);
-	ft_print_date(e);
-
-	return 0;
-}
-
-*/
 
 void	delimit_flags(t_env *e)
 {
-	/*
-	if (e->flg->aff == 'l')
-		listing_fag(e);
-	*/
-	ft_print_lst(e->file);
+	if (e->path == NULL && e->err == NULL)
+		mystat(".", e);
+	else
+		while (e->path != NULL)
+		{
+			mystat(e->path->content, e);
+			e->path = e->path->next;
+		}
+	print_file_lst(e->file);
 }

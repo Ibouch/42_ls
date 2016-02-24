@@ -14,9 +14,6 @@
 		- if (ac == 1)
 	  	juste faire un opendir du repertoire courant,
 	  	trier lexico tout ce qu'il y a dedans et quitter proprement.
-	  	format path:
-  					...
-  					...
 
 ###.	Tools :
 
@@ -55,3 +52,19 @@ ft_putchar('\n');
 ft_putstr("option -t : ");
 ft_putnbr(e->flg->t);
 ft_putchar('\n');
+
+
+l'option -S et -h -i -G sont tres simple -n egalement ;)
+Ne pas oublier print list error de le faire en fd 2
+
+**********(./ft_ls -l) ***********
+
+[
+	Si dans les arguments on a minimum 1 dossier valide alors les fichiers sont print avant.
+		-- Si quelque chose a ete print une erreur ou un file ou un dossier alors (ce qui fait mini 2 en somme):
+			path:
+			total xx
+			...
+]
+-- Si on a que des fichiers on ne met pas le total
+-- Sinon si on nous passe uniquement des options donc ni fichier ou dossier valide on traite repertoire courant.

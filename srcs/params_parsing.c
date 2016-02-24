@@ -47,6 +47,23 @@ static void	check_flags(char *av, t_env *e)
 	}
 }
 
+static void	check_argument(char *path, t_env *e, t_bool *end_opt)
+{
+	t_stat	st;
+	char	*er;
+
+	*end_opt = TRUE;
+	if ((lstat(path, &st)) == 0)
+		ft_lstadd(&e->path, path, ft_strlen(path) + 1);
+	else
+	{
+		er = ft_strjoin("ft_ls: ", path);
+		er = ft_strjoin(er, ": ");
+		er = ft_strjoin(er, strerror(errno));
+		ft_lstadd(&(*e).err, (char *)er, ft_strlen(er) + 1);
+	}
+}
+
 static void	flags_parsing(char *av, t_env *e, t_bool *end_opt)
 {
 	if (av[1] == '-' && *end_opt == FALSE)
@@ -56,30 +73,14 @@ static void	flags_parsing(char *av, t_env *e, t_bool *end_opt)
 		*end_opt = TRUE;
 	}
 	else if (*end_opt == TRUE || av[1] == '\0')
-	{
-		ft_lstadd((t_list **)&e->err, ft_lstnew(av, ft_strlen(av) + 1));
-		*end_opt = TRUE;
-	}
+		check_argument(av, e, end_opt);
 	else if (*end_opt == FALSE)
 		check_flags(av, e);
-}
-
-static void	fmode_parsing(char *s, t_env *e)
-{
-	t_stat	st;
-
-	stat(s, &st);
-	if ((st.st_mode) > 0)
-		ft_lstadd(&e->file, ft_lstnew(s, ft_strlen(s) + 1));
-	else
-		ft_lstadd((t_list **)&e->err, ft_lstnew(s, ft_strlen(s) + 1));
-	ft_bzero(&st, sizeof(t_stat));
 }
 
 void		params_parsing(int ac, char **av, t_env *e)
 {
 	int		x;
-
 	t_bool	end_opt;
 
 	x = 0;
@@ -89,12 +90,9 @@ void		params_parsing(int ac, char **av, t_env *e)
 		if (av[x][0] == '-' && end_opt == FALSE)
 			flags_parsing(av[x], e, &end_opt);
 		else
-		{
-			end_opt = TRUE;
-			fmode_parsing(av[x], e);
-		}
+			check_argument(av[x], e, &end_opt);
 	}
-	ft_lst_sort((t_list **)&e->err, &ft_strcmp);
-	ft_lst_sort(&e->file, &ft_strcmp);
-	print_lst_err((t_list *)e->err);
+	ft_lst_sort(&e->err, &ft_strcmp);
+	ft_lst_sort(&e->path, &ft_strcmp);
+	ft_print_lst(e->err);
 }

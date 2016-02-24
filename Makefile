@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/11 05:36:50 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/02/21 12:36:40 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,13 @@ SRC_PATH = srcs
 
 SRC_NAME =	main.c \
 			params_parsing.c \
-			print_lst_err.c \
-			delimit_flags.c
+			delimit_flags.c \
+			file_lstadd.c \
+			file_addback.c \
+			new_fstat.c \
+			mystat.c \
+			myopendir.c \
+			convert_rights.c
 
 CC_FLAGS = clang -Wall -Wextra -Werror
 

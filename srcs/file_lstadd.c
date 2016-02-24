@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   file_lstadd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/12 20:56:14 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/21 00:04:03 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/02/24 04:31:17 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/02/24 04:31:20 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_ls.h>
 
-void	ft_lstadd(t_list **alst, void *data, size_t size)
+void	file_lstadd(t_file **alst, char *path_file)
 {
-	t_list	*new;
+	t_file	*new;
 
-	new = ft_lstnew(data, size);
+	new = new_fstat(path_file, "NULL", 0);
 	if (*alst != NULL)
 	{
 		new->next = *alst;
