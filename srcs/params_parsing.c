@@ -29,19 +29,19 @@ static void	check_flags(char *av, t_env *e)
 	while (av[++id] != '\0')
 	{
 		if (av[id] == '1')
-			e->flg->aff = '1';
+			(*e).flg->aff = '1';
 		else if (av[id] == 'l')
-			e->flg->aff = 'l';
+			(*e).flg->aff = 'l';
 		else if (av[id] == 'R')
-			e->flg->rec = TRUE;
+			(*e).flg->rec = TRUE;
 		else if (av[id] == 'a')
-			e->flg->all = TRUE;
+			(*e).flg->all = TRUE;
 		else if (av[id] == 'r')
-			e->flg->rev = TRUE;
+			(*e).flg->rev = TRUE;
 		else if (av[id] == 't')
-			e->flg->t = TRUE;
+			(*e).flg->t = TRUE;
 		else if (av[id] == 'i')
-			e->flg->i = TRUE;
+			(*e).flg->i = TRUE;
 		else
 			print_iusage(av[id]);
 	}
@@ -54,7 +54,12 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 
 	*end_opt = TRUE;
 	if ((lstat(path, &st)) == 0)
-		ft_lstadd(&e->path, path, ft_strlen(path) + 1);
+	{
+		if ((S_ISDIR(st.st_mode)))
+			ft_lstadd(&(*e).arg, (char *)path, (ft_strlen(path) + 1));
+		else
+			file_lstadd(&(*e).file, path);
+	}
 	else
 	{
 		er = ft_strjoin("ft_ls: ", path);
@@ -92,7 +97,7 @@ void		params_parsing(int ac, char **av, t_env *e)
 		else
 			check_argument(av[x], e, &end_opt);
 	}
-	ft_lst_sort(&e->err, &ft_strcmp);
-	ft_lst_sort(&e->path, &ft_strcmp);
-	ft_print_lst(e->err);
+	ft_lst_sort(&(*e).err, &ft_strcmp);
+	ft_lst_sort(&(*e).arg, &ft_strcmp);
+	ft_print_lst((*e).err, 2);
 }

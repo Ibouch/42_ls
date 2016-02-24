@@ -12,6 +12,12 @@
 
 #include <ft_ls.h>
 
+static void	convert_time(t_file *new_node, t_stat *st)
+{
+	(*new_node).etime = ft_strdup(ctime(&((*st).st_ctime)));
+	(*new_node).mtime = ft_strdup(ctime(&((*st).st_mtime)));
+}
+
 static void	convert_id(t_file *new_node, t_stat *st)
 {
 	struct passwd	*uid;
@@ -45,7 +51,7 @@ static void	storage_path(char *path, char *name, t_file *new, int dir)
 	}
 	else
 	{
-		(*new).name = ft_strdup(name);
+		(*new).name = ft_strdup(path);
 		(*new).path = ft_strdup(path);
 	}
 }
@@ -60,14 +66,13 @@ t_file		*new_fstat(char *path, char *name, int dir)
 	storage_path(path, name, new_node, dir);
 	if ((lstat((*new_node).path, &st)) != 0)
 		exit(EXIT_FAILURE);
-	(*new_node).inoeud = st.st_ino;
 	convert_rights(new_node, &st);
-	(*new_node).n_lnk = st.st_nlink;
 	convert_id(new_node, &st);
+	convert_time(new_node, &st);
+	(*new_node).inoeud = st.st_ino;
+	(*new_node).n_lnk = st.st_nlink;
 	(*new_node).f_size = st.st_size;
 	(*new_node).blocks = st.st_blocks;
-	(*new_node).etime = ctime(&(st.st_ctime));
-	(*new_node).mtime = ctime(&(st.st_mtime));
 	(*new_node).next = NULL;
 	return (new_node);
 }

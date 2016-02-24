@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:47:12 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/21 12:18:14 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/24 23:09:08 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-void				ft_print_lst(t_list *lst);
+void				ft_print_lst(t_list *lst, int fd);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lst_at(t_list *begin_lst, unsigned int id);
 int					ft_lst_size(t_list *begin_lst);

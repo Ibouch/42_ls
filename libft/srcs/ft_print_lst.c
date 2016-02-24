@@ -6,17 +6,17 @@
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 03:09:37 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/16 03:14:25 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/02/24 23:09:33 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_print_lst(t_list *lst)
+void	ft_print_lst(t_list *lst, int fd)
 {
 	while (lst != NULL)
 	{
-		ft_putendl((char *)lst->content);
+		ft_putendl_fd((char *)lst->content, fd);
 		lst = lst->next;
 	}
 }

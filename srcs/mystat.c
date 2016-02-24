@@ -14,15 +14,22 @@
 
 void 	mystat(char *path, t_env *e)
 {
-	t_stat	st;
+	if (e)
+		;
+	//t_stat	st;
 
-	if ((lstat(path, &st)) == 0)
+/*	if ((e->path->l = (t_file *)malloc(sizeof(t_file))) == NULL)
+		exit(EXIT_FAILURE);
+*//*	if ((lstat(path, &st)) == 0)
 	{
 		if ((S_ISDIR(st.st_mode)) == TRUE)
 			myopendir(path, e);
 		else
-			file_lstadd(&(*e).file, path); // On add au debut tout != DIR
+			file_lstadd(&e->path->l, path); // On add au debut tout != DIR
 	}
 	else
 		exit(EXIT_FAILURE);
+*/
+ft_putendl(path);
+ft_putendl("c'est cii ??");
 }

@@ -14,18 +14,31 @@
 
 void	print_file_lst(t_file *lst)
 {
-	while (lst)
+	size_t	sp;
+
+	while (lst != NULL)
 	{
-		ft_putnbr(lst->inoeud);
-		ft_putstr(" ");
 		ft_putstr(lst->rights);
-		ft_putstr("   ");
+		sp = 3 - ft_strlen(ft_itoa(lst->n_lnk));
+		while (sp-- != 0)
+			ft_putchar(' ');
+		sp = 0;
 		ft_putnbr_long(lst->n_lnk);
-		ft_putstr(" ");
+		ft_putchar(' ');
 		ft_putstr(lst->uid);
-		ft_putstr("   ");
+		sp = 10 - ft_strlen(lst->uid);
+		while (sp-- != 0)
+			ft_putchar(' ');
+		sp = 0;
 		ft_putstr(lst->gid);
-		ft_putstr("   ");
+		sp = 11 - ft_strlen(ft_itoa(lst->f_size));
+		while (sp-- != 0)
+			ft_putchar(' ');
+		ft_putchar(' ');
+		ft_putnbr_long(lst->f_size);
+		ft_putchar(' ');
+		//ft_putstr(lst->mtime);
+		//ft_putchar(' ');
 		ft_putendl(lst->name);
 		lst = lst->next;
 	}
@@ -33,13 +46,15 @@ void	print_file_lst(t_file *lst)
 
 void	delimit_flags(t_env *e)
 {
-	if (e->path == NULL && e->err == NULL)
+	/*
+	if ((e->arg == NULL && e->err == NULL) && e->file == NULL)
 		mystat(".", e);
 	else
-		while (e->path != NULL)
+		while (e->arg != NULL)
 		{
-			mystat(e->path->content, e);
-			e->path = e->path->next;
+			mystat((char *)e->arg->content, e);
+			print_file_lst(e->dir->l);
 		}
+	*/
 	print_file_lst(e->file);
 }

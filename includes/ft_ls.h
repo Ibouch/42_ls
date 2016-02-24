@@ -52,13 +52,19 @@ typedef struct			s_flg
 	t_bool				i;
 }						t_flg;
 
+typedef struct			s_dir
+{
+	struct s_file		*l;
+	struct s_dir		*next;
+}						t_dir;
+
 typedef struct			s_env
 {
 	struct s_flg		*flg;
 	struct s_list		*err;
-	struct s_list		*den;
-	struct s_list		*path;
+	struct s_list		*arg;
 	struct s_file		*file;
+	struct s_dir		*path;
 }						t_env;
 
 void					params_parsing(int ac, char **av, t_env *e);
@@ -72,21 +78,3 @@ t_file					*new_fstat(char *path, char *name, int dir);
 void					convert_rights(t_file *new_node, t_stat *st);
 
 #endif
-/*
-typedef				s_sub
-{
-	struct	s_file	*detail;
-	struct	s_sub	*next;
-}
-
-typedef				s_arg
-{
-	struct s_file	detail;
-	struct s_flg	options;
-	char			*name;
-	int				len;
-	struct	s_sub	*begin_list;
-	struct	s_arg	*next;
-}
-
-*/

@@ -10,11 +10,6 @@
 
 #4. 	Implementation des fonctions de tries [not current].
 
-##.		Affichage a implementer
-		- if (ac == 1)
-	  	juste faire un opendir du repertoire courant,
-	  	trier lexico tout ce qu'il y a dedans et quitter proprement.
-
 ###.	Tools :
 
 	- /|\ "drwxrwxr-x+" ou "drwxr-xr-x@"
@@ -23,18 +18,6 @@
 	- Le @ quant à lui signifie qu'il y a des attributs étendus sur le fichier / dossier.
 	  Pour celle là, test la commande système xattr depuis ton shell...
 
-	typedef struct 			s_fmode
-	{
-		t_bool				is_file;
-		t_bool				is_dir;
-		t_bool				is_chr;
-		t_bool				is_blk;
-		t_bool				is_fifo;
-		t_bool				is_lnk;
-		t_bool				is_sock;
-
-(Faire pointer le dernier maillon d'une de mes listes chainée vers la suivante)
-(Retrier la liste pointant vers la suivante).
 
 ft_putendl("......... DEGUG ZONE .........");
 ft_putstr("Option d'affichage : ");
@@ -68,3 +51,6 @@ Ne pas oublier print list error de le faire en fd 2
 ]
 -- Si on a que des fichiers on ne met pas le total
 -- Sinon si on nous passe uniquement des options donc ni fichier ou dossier valide on traite repertoire courant.
+
+Pour les espace : predfinition d'un sp de 2 admettons, et je vais lui ajouter de cb la plus grande taille a depassser
+sur la plus petite.
