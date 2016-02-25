@@ -37,7 +37,7 @@ ft_putnbr(e->flg->t);
 ft_putchar('\n');
 
 
-l'option -S et -h -i -G sont tres simple -n egalement ;)
+l'option -S et -h -i -G sont tres simple -n egalement ;) -d ya plus bidon juste dire qu'au debut les path vont avec les files
 Ne pas oublier print list error de le faire en fd 2 --Done
 
 **********(./ft_ls -l) ***********
