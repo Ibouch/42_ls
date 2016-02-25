@@ -58,7 +58,7 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 		if ((S_ISDIR(st.st_mode)))
 			ft_lstadd(&(*e).arg, (char *)path, (ft_strlen(path) + 1));
 		else
-			file_lstadd(&(*e).file, path);
+			file_lstadd(&(*e).file, path, "NULL", 0);
 	}
 	else
 	{
@@ -98,6 +98,5 @@ void		params_parsing(int ac, char **av, t_env *e)
 			check_argument(av[x], e, &end_opt);
 	}
 	ft_lst_sort(&(*e).err, &ft_strcmp);
-	ft_lst_sort(&(*e).arg, &ft_strcmp);
 	ft_print_lst((*e).err, 2);
 }

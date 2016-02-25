@@ -70,8 +70,8 @@ t_file		*new_fstat(char *path, char *name, int dir)
 	convert_id(new_node, &st);
 	convert_time(new_node, &st);
 	(*new_node).inoeud = st.st_ino;
-	(*new_node).n_lnk = st.st_nlink;
-	(*new_node).f_size = st.st_size;
+	(*new_node).n_lnk = ft_itoa(st.st_nlink);
+	(*new_node).f_size = ft_itoa(st.st_size);
 	(*new_node).blocks = st.st_blocks;
 	(*new_node).next = NULL;
 	return (new_node);

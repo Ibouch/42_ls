@@ -12,33 +12,112 @@
 
 #include <ft_ls.h>
 
-void	print_file_lst(t_file *lst)
+static void	print_sp(size_t min, size_t max, int print)
 {
 	size_t	sp;
 
+	sp = (max - min) + ((print == 1) ? 2 : 0);
+	while (sp-- > 0)
+		ft_putchar(' ');
+}
+
+static size_t	len_nlnk(t_file *file, size_t max_l)
+{
+	size_t		s_val;
+	size_t		max;
+	size_t		len;
+
+	s_val = ft_strlen(file->n_lnk);
+	max = ft_strlen(file->n_lnk);
+	while (file != NULL)
+	{
+		len = ft_strlen(file->n_lnk);
+		len = ((max_l > len) ? max_l : len);
+		max = ((len >= max) ? len : max);
+		file = file->next;
+	}
+	print_sp(s_val, max, 1);
+	return (max);
+}
+
+static size_t	len_uid(t_file *file, size_t max_l)
+{
+	size_t		s_val;
+	size_t		max;
+	size_t		len;
+
+	s_val = ft_strlen(file->uid);
+	max = ft_strlen(file->uid);
+	while (file != NULL)
+	{
+		len = ft_strlen(file->uid);
+		len = ((max_l > len) ? max_l : len);
+		max = ((len >= max) ? len : max);
+		file = file->next;
+	}
+	print_sp(s_val, max, 1);
+	return (max);
+}
+
+static size_t	len_gid(t_file *file, size_t max_l)
+{
+	size_t		s_val;
+	size_t		max;
+	size_t		len;
+
+	s_val = ft_strlen(file->gid);
+	max = ft_strlen(file->gid);
+	while (file != NULL)
+	{
+		len = ft_strlen(file->gid);
+		len = ((max_l > len) ? max_l : len);
+		max = ((len >= max) ? len : max);
+		file = file->next;
+	}
+	print_sp(s_val, max, 0);
+	return (max);
+}
+
+static size_t	len_fsize(t_file *file, size_t max_l)
+{
+	size_t		s_val;
+	size_t		max;
+	size_t		len;
+
+	s_val = ft_strlen(file->f_size);
+	max = ft_strlen(file->f_size);
+	while (file != NULL)
+	{
+		len = ft_strlen(file->f_size);
+		len = ((max_l > len) ? max_l : len);
+		max = ((len >= max) ? len : max);
+		file = file->next;
+	}
+	print_sp(s_val, max, 1);
+	return (max);
+}
+
+void	print_file_lst(t_file *lst)
+{
+	size_t	max_l[4];
+
+	max_l[0] = ft_strlen(lst->n_lnk);
+	max_l[1] = ft_strlen(lst->uid);
+	max_l[2] = ft_strlen(lst->gid);
+	max_l[3] = ft_strlen(lst->f_size);
 	while (lst != NULL)
 	{
 		ft_putstr(lst->rights);
-		sp = 3 - ft_strlen(ft_itoa(lst->n_lnk));
-		while (sp-- != 0)
-			ft_putchar(' ');
-		sp = 0;
-		ft_putnbr_long(lst->n_lnk);
+		max_l[0] = len_nlnk(lst, max_l[0]);
+		ft_putstr(lst->n_lnk);
 		ft_putchar(' ');
 		ft_putstr(lst->uid);
-		sp = 10 - ft_strlen(lst->uid);
-		while (sp-- != 0)
-			ft_putchar(' ');
-		sp = 0;
+		max_l[1] = len_uid(lst, max_l[1]);
 		ft_putstr(lst->gid);
-		sp = 11 - ft_strlen(ft_itoa(lst->f_size));
-		while (sp-- != 0)
-			ft_putchar(' ');
+		max_l[2] = len_gid(lst, max_l[2]);
+		max_l[3] = len_fsize(lst, max_l[3]);
+		ft_putstr(lst->f_size);
 		ft_putchar(' ');
-		ft_putnbr_long(lst->f_size);
-		ft_putchar(' ');
-		//ft_putstr(lst->mtime);
-		//ft_putchar(' ');
 		ft_putendl(lst->name);
 		lst = lst->next;
 	}
@@ -46,15 +125,17 @@ void	print_file_lst(t_file *lst)
 
 void	delimit_flags(t_env *e)
 {
-	/*
-	if ((e->arg == NULL && e->err == NULL) && e->file == NULL)
-		mystat(".", e);
-	else
-		while (e->arg != NULL)
-		{
-			mystat((char *)e->arg->content, e);
-			print_file_lst(e->dir->l);
-		}
-	*/
-	print_file_lst(e->file);
+	if (e->file != NULL)
+	{
+		print_file_lst(e->file);
+		file_lstdel(&(e->file));
+		ft_putchar('\n');
+	}
+	while (e->arg)
+	{
+		if ((myopendir((char *)e->arg->content, e)) == 0)
+			print_file_lst(e->file);
+		file_lstdel(&(e->file));
+		e->arg = e->arg->next;
+	}
 }

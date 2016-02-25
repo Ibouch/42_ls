@@ -20,9 +20,8 @@ SRC_NAME =	main.c \
 			params_parsing.c \
 			delimit_flags.c \
 			file_lstadd.c \
-			file_addback.c \
+			file_lstdel.c \
 			new_fstat.c \
-			mystat.c \
 			myopendir.c \
 			convert_rights.c
 

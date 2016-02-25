@@ -12,11 +12,11 @@
 
 #include <ft_ls.h>
 
-void	file_lstadd(t_file **alst, char *path_file)
+void	file_lstadd(t_file **alst, char *p, char *n, int dir)
 {
 	t_file	*new;
 
-	new = new_fstat(path_file, "NULL", 0);
+	new = new_fstat(p, n, dir);
 	if (*alst != NULL)
 	{
 		new->next = *alst;

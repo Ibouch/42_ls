@@ -38,7 +38,7 @@ ft_putchar('\n');
 
 
 l'option -S et -h -i -G sont tres simple -n egalement ;)
-Ne pas oublier print list error de le faire en fd 2
+Ne pas oublier print list error de le faire en fd 2 --Done
 
 **********(./ft_ls -l) ***********
 
@@ -54,3 +54,13 @@ Ne pas oublier print list error de le faire en fd 2
 
 Pour les espace : predfinition d'un sp de 2 admettons, et je vais lui ajouter de cb la plus grande taille a depassser
 sur la plus petite.
+
+/*
+	if ((e->arg == NULL && e->err == NULL) && e->file == NULL)
+	myopendr(".", e);
+*/
+
+Bon mainenant fonction de suppression -
+recuperation de la bonne date;
+recuperation des mineures majeures ainsi que aff link -> dir/
+Fonction de tries, lexico , -t et -r

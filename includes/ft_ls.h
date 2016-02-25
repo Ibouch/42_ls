@@ -28,12 +28,12 @@ typedef struct			s_file
 {
 	long				inoeud;
 	char				*rights;
-	long				n_lnk;
+	char				*n_lnk;
 	long				num_uid;
 	long				num_gid;
 	char				*uid;
 	char				*gid;
-	long long			f_size;
+	char				*f_size;
 	long long			blocks;
 	char				*etime;
 	char				*mtime;
@@ -69,12 +69,11 @@ typedef struct			s_env
 
 void					params_parsing(int ac, char **av, t_env *e);
 void					delimit_flags(t_env *e);
-void					mystat(char *path, t_env *e);
-void					myopendir(char *path, t_env *e);
-void					file_lstadd(t_file **alst, char *path_file);
-void					file_addback(t_file **alst, char *path, char *name);
+void					file_lstadd(t_file **alst, char *p, char *n, int dir);
 void					file_sort(t_file **alst, char *field, int (*f_cmp)());
+void					file_lstdel(t_file **alst);
 t_file					*new_fstat(char *path, char *name, int dir);
 void					convert_rights(t_file *new_node, t_stat *st);
+int						myopendir(char *path, t_env *e);
 
 #endif
