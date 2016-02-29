@@ -58,7 +58,7 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 		if ((S_ISDIR(st.st_mode)))
 			ft_lstadd(&(*e).arg, (char *)path, (ft_strlen(path) + 1));
 		else
-			file_lstadd(&(*e).file, path, "NULL", 0);
+			file_lstadd(&(*e).file, path);
 	}
 	else
 	{

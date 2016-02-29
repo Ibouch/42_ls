@@ -12,13 +12,13 @@
 
 #include <ft_ls.h>
 
-void	file_lstadd(t_file **alst, char *p, char *n, int dir)
+void	file_lstadd(t_file **alst, char *path_name)
 {
 	t_file	*new;
 	t_file	*begin;
 	t_file	*tmp;
 
-	new = new_fstat(p, n, dir);
+	new = new_fstat(path_name);
 	begin = *alst;
 	tmp = NULL;
 	while (begin != NULL && (ft_strcmp(new->name, begin->name)) > 0)

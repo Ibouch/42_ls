@@ -70,10 +70,10 @@ typedef struct			s_env
 void					params_parsing(int ac, char **av, t_env *e);
 void					delimit_flags(t_env *e);
 void					print_file_lst(t_file *lst);
-void					file_lstadd(t_file **alst, char *p, char *n, int dir);
+void					file_lstadd(t_file **alst, char *path_name);
 void					file_sort(t_file **alst, char *field, int (*f_cmp)());
 void					file_lstdel(t_file **alst);
-t_file					*new_fstat(char *path, char *name, int dir);
+t_file					*new_fstat(char *path_name);
 void					convert_rights(t_file *new_node, t_stat *st);
 int						myopendir(char *path, t_env *e);
 
