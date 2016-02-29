@@ -23,7 +23,8 @@ SRC_NAME =	main.c \
 			file_lstdel.c \
 			new_fstat.c \
 			myopendir.c \
-			convert_rights.c
+			convert_rights.c \
+			print_file_lst.c
 
 CC_FLAGS = clang -Wall -Wextra -Werror
 

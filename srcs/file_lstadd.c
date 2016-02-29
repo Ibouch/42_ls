@@ -15,13 +15,20 @@
 void	file_lstadd(t_file **alst, char *p, char *n, int dir)
 {
 	t_file	*new;
+	t_file	*begin;
+	t_file	*tmp;
 
 	new = new_fstat(p, n, dir);
-	if (*alst != NULL)
+	begin = *alst;
+	tmp = NULL;
+	while (begin != NULL && (ft_strcmp(new->name, begin->name)) > 0)
 	{
-		new->next = *alst;
-		*alst = new;
+		tmp = begin;
+		begin = begin->next;
 	}
+	new->next = begin;
+	if (tmp != NULL)
+		tmp->next = new;
 	else
 		*alst = new;
 }
