@@ -16,8 +16,6 @@ void	file_lstdel(t_file **alst)
 			ft_strdel(&(begin->uid));
 			ft_strdel(&(begin->gid));
 			ft_strdel(&(begin->f_size));
-			ft_strdel(&(begin->etime));
-			ft_strdel(&(begin->mtime));
 			ft_strdel(&(begin->name));
 			ft_strdel(&(begin->path));
 			to_free = begin;

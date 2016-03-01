@@ -40,11 +40,11 @@ int	myopendir(char *path, t_env *e)
 	}
 	if ((*e).flg->all == TRUE)
 		while ((e_dir = readdir(directory)) != NULL)
-			file_lstadd(&(*e).file, storage_path(path, e_dir->d_name));
+			file_lstadd(e, storage_path(path, e_dir->d_name));
 	else
 		while ((e_dir = readdir(directory)) != NULL)
 			if (e_dir->d_name[0] != '.')
-				file_lstadd(&(*e).file, storage_path(path, e_dir->d_name));
+				file_lstadd(e, storage_path(path, e_dir->d_name));
 	if ((closedir(directory)) == (-1))
 		exit(EXIT_FAILURE);
 	return (0);
