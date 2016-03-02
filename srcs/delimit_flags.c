@@ -16,13 +16,13 @@ void	delimit_flags(t_env *e)
 {
 	if (e->file != NULL)
 	{
-		print_file_lst(e->file);
+		print_file_lst(e->file, 0);
 		file_lstdel(&(e->file));
 	}
 	while (e->arg)
 	{
 		if ((myopendir((char *)e->arg->content, e)) == 0)
-			print_file_lst(e->file);
+			print_file_lst(e->file, 1);
 		file_lstdel(&(e->file));
 		e->arg = e->arg->next;
 	}

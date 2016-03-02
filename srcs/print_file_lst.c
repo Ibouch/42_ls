@@ -85,7 +85,7 @@ static size_t	len_fsize(t_file *file, size_t max_l)
 	return (max);
 }
 
-void			print_file_lst(t_file *lst)
+void			print_file_lst(t_file *lst, int dir)
 {
 	size_t	max_l[4];
 
@@ -108,7 +108,10 @@ void			print_file_lst(t_file *lst)
 		ft_putchar(' ');
 		//print_date(lst->mtime);
 		ft_putchar(' ');
-		ft_putendl(lst->name);
+		if (dir == 1)
+			ft_putendl(lst->name);
+		else
+			ft_putendl(lst->path);
 		lst = lst->next;
 	}
 }

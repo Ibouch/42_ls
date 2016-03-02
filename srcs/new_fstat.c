@@ -51,6 +51,7 @@ t_file		*new_fstat(char *path_name)
 	(*new_node).f_size = ft_itoa(st.st_size);
 	(*new_node).blocks = st.st_blocks;
 	(*new_node).mtime = st.st_mtime;
+	(*new_node).s_spec = st.st_mtimespec;
 	(*new_node).name = storage_name(path_name);
 	(*new_node).path = ft_strdup(path_name);
 	(*new_node).next = NULL;

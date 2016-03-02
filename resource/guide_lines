@@ -64,3 +64,5 @@ Bon mainenant fonction de suppression -
 recuperation de la bonne date;
 recuperation des mineures majeures ainsi que aff link -> dir/
 Fonction de tries, lexico , -t et -r
+
+// Il faudra revenir sur le trie par temps, Il ne trie pas correctement
