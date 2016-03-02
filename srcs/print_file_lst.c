@@ -90,6 +90,7 @@ void 			print_date(time_t mtime)
 	char	*date;
 
 	date = ft_strsub(ctime(&mtime), 4, 12);
+	//if (time(&mtime) > 15778800 || time(&mtime) < 15778800)
 	ft_putstr(date);
 	ft_strdel(&date);
 }
