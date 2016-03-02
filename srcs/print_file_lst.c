@@ -115,7 +115,7 @@ void			print_file_lst(t_file *lst, int dir)
 		max_l[3] = len_fsize(lst, max_l[3]);
 		ft_putstr(lst->f_size);
 		ft_putchar(' ');
-		print_date(lst->mtime);
+		print_date(lst->s_spec.tv_sec);
 		ft_putchar(' ');
 		if (dir == 1)
 			ft_putendl(lst->name);

@@ -35,7 +35,6 @@ typedef struct			s_file
 	char				*gid;
 	char				*f_size;
 	blkcnt_t			blocks;
-	time_t				mtime;
 	struct timespec		s_spec;
 	char				*name;
 	char				*path;

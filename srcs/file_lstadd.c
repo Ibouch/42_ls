@@ -38,25 +38,12 @@ static void 	sort_time(t_file **alst, t_file *new)
 
 	begin = *alst;
 	tmp = NULL;
-	while ((begin != NULL) && (new->mtime < begin->mtime))
+	while ((begin != NULL) && ((new->s_spec.tv_sec < begin->s_spec.tv_sec) || (((ft_strcmp(new->name, begin->name)) > 0) && (new->s_spec.tv_sec == begin->s_spec.tv_sec))))
 	{
 		tmp = begin;
 		begin = begin->next;
 	}
-	while ((begin != NULL) && (((new->mtime == begin->mtime) &&
-		(new->s_spec.tv_sec < begin->s_spec.tv_sec)) ||
-		(((ft_strcmp(new->name, begin->name)) > 0) &&
-		(new->mtime == begin->mtime))))
-	{
-		tmp = begin;
-		begin = begin->next;
-	}
-	while ((begin != NULL) && ((((new->mtime == begin->mtime) &&
-		(new->s_spec.tv_sec == begin->s_spec.tv_sec))
-		&& (new->s_spec.tv_nsec < begin->s_spec.tv_nsec)) ||
-		(((ft_strcmp(new->name, begin->name)) > 0) &&
-		((new->mtime == begin->mtime) &&
-		(new->s_spec.tv_sec == begin->s_spec.tv_sec)))))
+	while ((begin != NULL) && (((new->s_spec.tv_sec == begin->s_spec.tv_sec) && (new->s_spec.tv_nsec < begin->s_spec.tv_nsec)) || (((ft_strcmp(new->name, begin->name)) > 0) && (new->s_spec.tv_sec == begin->s_spec.tv_sec))))
 	{
 		tmp = begin;
 		begin = begin->next;
