@@ -85,6 +85,15 @@ static size_t	len_fsize(t_file *file, size_t max_l)
 	return (max);
 }
 
+void 			print_date(time_t mtime)
+{
+	char	*date;
+
+	date = ft_strsub(ctime(&mtime), 4, 12);
+	ft_putstr(date);
+	ft_strdel(&date);
+}
+
 void			print_file_lst(t_file *lst, int dir)
 {
 	size_t	max_l[4];
@@ -106,7 +115,7 @@ void			print_file_lst(t_file *lst, int dir)
 		max_l[3] = len_fsize(lst, max_l[3]);
 		ft_putstr(lst->f_size);
 		ft_putchar(' ');
-		//print_date(lst->mtime);
+		print_date(lst->mtime);
 		ft_putchar(' ');
 		if (dir == 1)
 			ft_putendl(lst->name);
