@@ -32,10 +32,13 @@ int	myopendir(char *path, t_env *e)
 {
 	DIR				*directory;
 	struct dirent	*e_dir;
+	char			*er;
 
 	if ((directory = opendir(path)) == NULL)
 	{
-		perror("ft_ls: ");
+		er = ft_strjoin("ft_ls: ", path);
+		er = ft_strjoin(er, ": ");
+		ft_putendl(ft_strjoin(er, strerror(errno)));
 		return (-1);
 	}
 	if ((*e).flg->all == TRUE)

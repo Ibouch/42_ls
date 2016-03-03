@@ -98,5 +98,6 @@ void		params_parsing(int ac, char **av, t_env *e)
 			check_argument(av[x], e, &end_opt);
 	}
 	ft_lst_sort(&(*e).err, &ft_strcmp);
+	ft_lst_sort(&(*e).arg, & ft_strcmp);
 	ft_print_lst((*e).err, 2);
 }
