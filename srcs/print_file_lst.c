@@ -87,9 +87,19 @@ static size_t	len_fsize(t_file *file, size_t max_l)
 
 void 			print_date(time_t mtime)
 {
+	char	*tmp;
 	char	*date;
 
-	date = ft_strsub(ctime(&mtime), 4, 12);
+	if ((mtime - time(NULL)) > 0)
+	{
+		date = ft_strnew(12);
+		tmp = ft_strsub(ctime(&mtime), 4, 20);
+		ft_strncpy(date, tmp, 7);
+		date = ft_strjoin(date, ft_strsub(tmp, 15, 5));
+		date[12] = '\0';
+	}
+	else
+		date = ft_strsub(ctime(&mtime), 4, 12);
 	ft_putstr(date);
 	ft_strdel(&date);
 }
@@ -98,29 +108,29 @@ void			print_file_lst(t_file *lst, int dir)
 {
 	size_t	max_l[4];
 
-	max_l[0] = ft_strlen(lst->n_lnk);
-	max_l[1] = ft_strlen(lst->uid);
-	max_l[2] = ft_strlen(lst->gid);
-	max_l[3] = ft_strlen(lst->f_size);
+	max_l[0] = ft_strlen((*lst).n_lnk);
+	max_l[1] = ft_strlen((*lst).uid);
+	max_l[2] = ft_strlen((*lst).gid);
+	max_l[3] = ft_strlen((*lst).f_size);
 	while (lst != NULL)
 	{
-		ft_putstr(lst->rights);
+		ft_putstr((*lst).rights);
 		max_l[0] = len_nlnk(lst, max_l[0]);
-		ft_putstr(lst->n_lnk);
+		ft_putstr((*lst).n_lnk);
 		ft_putchar(' ');
-		ft_putstr(lst->uid);
+		ft_putstr((*lst).uid);
 		max_l[1] = len_uid(lst, max_l[1]);
-		ft_putstr(lst->gid);
+		ft_putstr((*lst).gid);
 		max_l[2] = len_gid(lst, max_l[2]);
 		max_l[3] = len_fsize(lst, max_l[3]);
-		ft_putstr(lst->f_size);
+		ft_putstr((*lst).f_size);
 		ft_putchar(' ');
-		print_date(lst->s_spec.tv_nsec);
+		print_date(lst->s_spec.tv_sec);
 		ft_putchar(' ');
 		if (dir == 1)
-			ft_putendl(lst->name);
+			ft_putendl((*lst).name);
 		else
-			ft_putendl(lst->path);
-		lst = lst->next;
+			ft_putendl((*lst).path);
+		lst = (*lst).next;
 	}
 }
