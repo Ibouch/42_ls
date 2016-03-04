@@ -68,6 +68,7 @@ typedef struct			s_env
 
 void					params_parsing(int ac, char **av, t_env *e);
 void					delimit_flags(t_env *e);
+void					display_data(t_file *lst, char *path);
 void					print_file_lst(t_file *lst, int dir);
 void					file_lstadd(t_env *e, char *path_name);
 void					file_lstdel(t_file **alst);

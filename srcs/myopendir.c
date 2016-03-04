@@ -28,17 +28,29 @@ static char	*storage_path(char *path, char *name)
 	return (path_file);
 }
 
+static void 	print_error(char *path, t_env *e)
+{
+	if ((*e).display_data == TRUE)
+	{
+		ft_putstr(path);
+		ft_putendl(":");
+	}
+	ft_putstr("ft_ls: ");
+	ft_putstr(path);
+	ft_putstr(": ");
+	ft_putendl(strerror(errno));
+	if (e->arg->next != NULL)
+		ft_putchar('\n');
+}
+
 int	myopendir(char *path, t_env *e)
 {
 	DIR				*directory;
 	struct dirent	*e_dir;
-	char			*er;
 
 	if ((directory = opendir(path)) == NULL)
 	{
-		er = ft_strjoin("ft_ls: ", path);
-		er = ft_strjoin(er, ": ");
-		ft_putendl(ft_strjoin(er, strerror(errno)));
+		print_error(path, e);
 		return (-1);
 	}
 	if ((*e).flg->all == TRUE)
