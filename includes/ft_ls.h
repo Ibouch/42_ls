@@ -12,7 +12,7 @@
 
 #ifndef FT_LS_H
 # define FT_LS_H
-# define SIX_MONTH 15778800
+# define SIX_MONTH -15778800
 # include <libft.h>
 # include <dirent.h>
 # include <sys/types.h>

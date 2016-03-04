@@ -90,7 +90,7 @@ void 			print_date(time_t mtime)
 	char	*tmp;
 	char	*date;
 
-	if ((mtime - time(NULL)) > 0)
+	if ((mtime - time(NULL)) > 0 || (mtime - time(NULL)) < SIX_MONTH)
 	{
 		date = ft_strnew(12);
 		tmp = ft_strsub(ctime(&mtime), 4, 20);
