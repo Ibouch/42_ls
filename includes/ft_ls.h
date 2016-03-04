@@ -40,7 +40,7 @@ typedef struct			s_file
 	struct s_file		*next;
 }						t_file;
 
-typedef struct			s_flg
+typedef struct			s_flag
 {
 	char				aff;
 	t_bool				all;
@@ -48,7 +48,7 @@ typedef struct			s_flg
 	t_bool				rev;
 	t_bool				t;
 	t_bool				i;
-}						t_flg;
+}						t_flag;
 
 typedef struct			s_dir
 {
@@ -58,7 +58,7 @@ typedef struct			s_dir
 
 typedef struct			s_env
 {
-	struct s_flg		*flg;
+	struct s_flag		*flg;
 	struct s_list		*err;
 	struct s_list		*arg;
 	struct s_file		*file;
@@ -69,7 +69,8 @@ typedef struct			s_env
 void					params_parsing(int ac, char **av, t_env *e);
 void					delimit_flags(t_env *e);
 void					display_data(t_file *lst, char *path, char aff);
-void					print_file_lst(t_file *lst, int dir);
+void					print_file_lst(t_file *lst, t_flag *flg, int dir);
+void					print_file_endl(t_file *lst, t_flag *flg, int dir);
 void					file_lstadd(t_env *e, char *path_name);
 void					file_lstdel(t_file **alst);
 t_file					*new_fstat(char *path_name);

@@ -104,33 +104,44 @@ void 			print_date(time_t mtime)
 	ft_strdel(&date);
 }
 
-void			print_file_lst(t_file *lst, int dir)
+void			print_file_lst(t_file *lst, t_flag *flg, int dir)
 {
 	size_t	max_l[4];
 
-	max_l[0] = ft_strlen((*lst).n_lnk);
-	max_l[1] = ft_strlen((*lst).uid);
-	max_l[2] = ft_strlen((*lst).gid);
-	max_l[3] = ft_strlen((*lst).f_size);
-	while (lst != NULL)
+	if ((*flg).aff == 'l')
 	{
-		ft_putstr((*lst).rights);
-		max_l[0] = len_nlnk(lst, max_l[0]);
-		ft_putstr((*lst).n_lnk);
-		ft_putchar(' ');
-		ft_putstr((*lst).uid);
-		max_l[1] = len_uid(lst, max_l[1]);
-		ft_putstr((*lst).gid);
-		max_l[2] = len_gid(lst, max_l[2]);
-		max_l[3] = len_fsize(lst, max_l[3]);
-		ft_putstr((*lst).f_size);
-		ft_putchar(' ');
-		print_date(lst->s_spec.tv_sec);
-		ft_putchar(' ');
-		if (dir == 1)
-			ft_putendl((*lst).name);
-		else
-			ft_putendl((*lst).path);
-		lst = (*lst).next;
+		max_l[0] = ft_strlen((*lst).n_lnk);
+		max_l[1] = ft_strlen((*lst).uid);
+		max_l[2] = ft_strlen((*lst).gid);
+		max_l[3] = ft_strlen((*lst).f_size);
+		display_data(lst, NULL, 'l');
+		while (lst != NULL)
+		{
+			if ((*flg).i == TRUE)
+			{
+				ft_putnbr((*lst).inoeud);
+				ft_putchar(' ');
+			}
+			ft_putstr((*lst).rights);
+			max_l[0] = len_nlnk(lst, max_l[0]);
+			ft_putstr((*lst).n_lnk);
+			ft_putchar(' ');
+			ft_putstr((*lst).uid);
+			max_l[1] = len_uid(lst, max_l[1]);
+			ft_putstr((*lst).gid);
+			max_l[2] = len_gid(lst, max_l[2]);
+			max_l[3] = len_fsize(lst, max_l[3]);
+			ft_putstr((*lst).f_size);
+			ft_putchar(' ');
+			print_date(lst->s_spec.tv_sec);
+			ft_putchar(' ');
+			if (dir == 1)
+				ft_putendl((*lst).name);
+			else
+				ft_putendl((*lst).path);
+			lst = (*lst).next;
+		}
 	}
+	else
+		print_file_endl(lst, flg, dir);
 }

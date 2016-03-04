@@ -6,8 +6,6 @@ void	display_data(t_file *lst, char *path, char aff)
 	blkcnt_t	nb;
 
 	nb = 0;
-	ft_putstr(path);
-	ft_putendl(":");
 	if (aff == 'l' && lst != NULL)
 	{
 		while (lst != NULL)
@@ -17,5 +15,10 @@ void	display_data(t_file *lst, char *path, char aff)
 		}
 		ft_putstr("total ");
 		ft_putnbr_endl(nb);
+	}
+	else
+	{
+		ft_putstr(path);
+		ft_putendl(":");
 	}
 }

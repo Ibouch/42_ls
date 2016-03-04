@@ -19,23 +19,23 @@ void	delimit_flags(t_env *e)
 	i = 0;
 	if (e->file != NULL)
 	{
-		print_file_lst(e->file, 0);
+		print_file_lst(e->file, e->flg, 0);
 		file_lstdel(&(e->file));
 		(*e).display_data = TRUE;
 		if (e->arg != NULL)
 			ft_putchar('\n');
 	}
-	while (e->arg)
+	while (e->arg != NULL)
 	{
 		if ((myopendir((char *)e->arg->content, e)) == 0)
 		{
 			if (((*e).display_data == TRUE || i > 0) || e->arg->next != NULL)
 			{
-				display_data(e->file, e->arg->content, e->flg->aff);
+				display_data(e->file, e->arg->content, 0);
 				(*e).display_data = TRUE;
 			}
 			if (e->file != NULL)
-				print_file_lst(e->file, 1);
+				print_file_lst(e->file, e->flg, 1);
 			if ((*e).display_data == TRUE && e->arg->next != NULL)
 				ft_putchar('\n');
 		}

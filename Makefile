@@ -25,7 +25,8 @@ SRC_NAME =	main.c \
 			myopendir.c \
 			convert_rights.c \
 			print_file_lst.c \
-			display_data.c
+			display_data.c \
+			print_file_endl.c
 
 CC_FLAGS = clang -Wall -Wextra -Werror
 
