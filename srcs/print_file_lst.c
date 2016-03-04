@@ -114,7 +114,8 @@ void			print_file_lst(t_file *lst, t_flag *flg, int dir)
 		max_l[1] = ft_strlen((*lst).uid);
 		max_l[2] = ft_strlen((*lst).gid);
 		max_l[3] = ft_strlen((*lst).f_size);
-		display_data(lst, NULL, 'l');
+		if (dir == 1)
+			display_data(lst, NULL, 'l');
 		while (lst != NULL)
 		{
 			if ((*flg).i == TRUE)

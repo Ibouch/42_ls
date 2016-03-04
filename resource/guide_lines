@@ -68,4 +68,5 @@ recuperation des mineures majeures ainsi que aff link -> dir/
 Fonction de tries -r et -R.
 
 Ne pas oublier les permission avec un chmod 6000 par exemple.
-JE SEGVAULT SUR /volumes/data, je pense que je ne check pas suffisament stat.
+
+Pour l'option -i gerer les espaces.
