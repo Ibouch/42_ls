@@ -8,7 +8,7 @@ void	display_data(t_file *lst, char *path, char aff)
 	nb = 0;
 	ft_putstr(path);
 	ft_putendl(":");
-	if (aff == 'l')
+	if (aff == 'l' && lst != NULL)
 	{
 		while (lst != NULL)
 		{

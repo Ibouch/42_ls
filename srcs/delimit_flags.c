@@ -34,7 +34,8 @@ void	delimit_flags(t_env *e)
 				display_data(e->file, e->arg->content, e->flg->aff);
 				(*e).display_data = TRUE;
 			}
-			print_file_lst(e->file, 1);
+			if (e->file != NULL)
+				print_file_lst(e->file, 1);
 			if ((*e).display_data == TRUE && e->arg->next != NULL)
 				ft_putchar('\n');
 		}
