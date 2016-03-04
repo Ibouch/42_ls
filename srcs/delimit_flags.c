@@ -31,7 +31,7 @@ void	delimit_flags(t_env *e)
 		{
 			if (((*e).display_data == TRUE || i > 0) || e->arg->next != NULL)
 			{
-				display_data(e->file, e->arg->content);
+				display_data(e->file, e->arg->content, e->flg->aff);
 				(*e).display_data = TRUE;
 			}
 			print_file_lst(e->file, 1);

@@ -28,7 +28,7 @@ static char	*storage_path(char *path, char *name)
 	return (path_file);
 }
 
-static void 	print_error(char *path, t_env *e)
+static void	print_error(char *path, t_env *e)
 {
 	if ((*e).display_data == TRUE)
 	{
