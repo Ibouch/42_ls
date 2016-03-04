@@ -18,6 +18,7 @@ void	delimit_flags(t_env *e)
 	{
 		print_file_lst(e->file, 0);
 		file_lstdel(&(e->file));
+		(*e).display_data = TRUE;
 	}
 	while (e->arg)
 	{

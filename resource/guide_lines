@@ -66,3 +66,5 @@ Bon mainenant fonction de suppression -
 recuperation de la bonne date; -- Done
 recuperation des mineures majeures ainsi que aff link -> dir/
 Fonction de tries -r et -R.
+
+Ne pas oublier les permission avec un chmod 6000 par exemple.

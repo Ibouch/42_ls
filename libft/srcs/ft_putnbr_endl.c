@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_lst.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_endl.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/16 03:09:37 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/24 23:08:45 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/03/04 18:39:08 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/03/04 18:40:05 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	ft_print_lst(t_list *lst, int fd)
+void	ft_putnbr_endl(int nb)
 {
-	while (lst != NULL)
-	{
-		ft_putendl_fd((char *)lst->content, fd);
-		lst = lst->next;
-	}
+	ft_putnbr(nb);
+	ft_putchar('\n');
 }

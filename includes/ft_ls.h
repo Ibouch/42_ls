@@ -30,8 +30,6 @@ typedef struct			s_file
 	ino_t				inoeud;
 	char				*rights;
 	char				*n_lnk;
-	long				num_uid;
-	long				num_gid;
 	char				*uid;
 	char				*gid;
 	char				*f_size;
@@ -65,6 +63,7 @@ typedef struct			s_env
 	struct s_list		*arg;
 	struct s_file		*file;
 	struct s_dir		*path;
+	t_bool				display_data;
 }						t_env;
 
 void					params_parsing(int ac, char **av, t_env *e);

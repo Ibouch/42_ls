@@ -19,8 +19,6 @@ static void	convert_id(t_file *new_node, t_stat *st)
 
 	uid = getpwuid((*st).st_uid);
 	gid = getgrgid((*st).st_gid);
-	(*new_node).num_uid = (*st).st_uid;
-	(*new_node).num_gid = (*st).st_gid;
 	(*new_node).uid = ft_strdup((*uid).pw_name);
 	(*new_node).gid = ft_strdup((*gid).gr_name);
 }
