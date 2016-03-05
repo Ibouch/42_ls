@@ -90,6 +90,7 @@ void		params_parsing(int ac, char **av, t_env *e)
 
 	x = 0;
 	end_opt = FALSE;
+	e->flg = (t_flag *)ft_memalloc(sizeof(t_flag));
 	while (++x < ac)
 	{
 		if (av[x][0] == '-' && end_opt == FALSE)
