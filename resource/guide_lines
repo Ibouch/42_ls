@@ -70,3 +70,13 @@ Fonction de tries -r et -R.
 Ne pas oublier les permission avec un chmod 6000 par exemple.
 
 Pour l'option -i gerer les espaces.
+
+
+
+./-
+libft/
+include/
+last/  -> next ............................. ->next NULL
+
+
+Je perd un temps monstre sur l'affichage du -l donc voir pour l'optimiser
