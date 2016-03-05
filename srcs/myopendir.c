@@ -39,7 +39,7 @@ static void	print_error(char *path, t_env *e)
 	ft_putstr(path);
 	ft_putstr(": ");
 	ft_putendl(strerror(errno));
-	if (e->arg->next != NULL)
+	if (e->dir->next != NULL)
 		ft_putchar('\n');
 }
 

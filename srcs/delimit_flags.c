@@ -22,25 +22,26 @@ void	delimit_flags(t_env *e)
 		print_file_lst(e->file, e->flg, 0);
 		file_lstdel(&(e->file));
 		(*e).display_data = TRUE;
-		if (e->arg != NULL)
+		if (e->dir != NULL)
 			ft_putchar('\n');
 	}
-	while (e->arg != NULL)
+	while (e->dir != NULL)
 	{
-		if ((myopendir((char *)e->arg->content, e)) == 0)
+		if ((myopendir((char *)e->dir->path, e)) == 0)
 		{
-			if (((*e).display_data == TRUE || i > 0) || e->arg->next != NULL)
+			if (((*e).display_data == TRUE || i > 0) || e->dir->next != NULL)
 			{
-				display_data(e->file, e->arg->content, 0);
+				display_data(e->file, e->dir->path, 0);
 				(*e).display_data = TRUE;
 			}
 			if (e->file != NULL)
 				print_file_lst(e->file, e->flg, 1);
-			if ((*e).display_data == TRUE && e->arg->next != NULL)
+			if ((*e).display_data == TRUE && e->dir->next != NULL)
 				ft_putchar('\n');
 		}
 		file_lstdel(&(e->file));
-		e->arg = e->arg->next;
+		e->dir = e->dir->next;
 		++i;
 	}
+	//dir_lstdel(&(e->dir));
 }

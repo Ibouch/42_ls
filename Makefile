@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/02/21 12:36:40 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/03/05 19:10:38 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC_PATH = srcs
 SRC_NAME =	main.c \
 			params_parsing.c \
 			delimit_flags.c \
+			dir_lstadd.c \
 			file_lstadd.c \
 			file_lstdel.c \
 			new_fstat.c \

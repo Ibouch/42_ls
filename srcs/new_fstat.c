@@ -38,7 +38,7 @@ t_file		*new_fstat(char *path_name)
 	t_file			*new_node;
 	t_stat			st;
 
-	if ((new_node = (t_file *)malloc(sizeof(t_file))) == NULL)
+	if ((new_node = (t_file *)ft_memalloc(sizeof(t_file))) == NULL)
  		return (NULL);
 	if ((lstat(path_name, &st)) != 0)
 		exit(EXIT_FAILURE);

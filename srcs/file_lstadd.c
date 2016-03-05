@@ -19,7 +19,7 @@ static void		sort_lexico(t_file **alst, t_file *new)
 
 	begin = *alst;
 	tmp = NULL;
-	while ((begin != NULL) && ((ft_strcmp(new->name, begin->name)) > 0))
+	while ((begin != NULL) && ((ft_strcmp(new->path, begin->path)) > 0))
 	{
 		tmp = begin;
 		begin = begin->next;
@@ -39,7 +39,7 @@ static void		sort_time(t_file **alst, t_file *new)
 	begin = *alst;
 	tmp = NULL;
 	while ((begin != NULL) && ((new->s_spec.tv_sec < begin->s_spec.tv_sec) ||
-		(((ft_strcmp(new->name, begin->name)) > 0) &&
+		(((ft_strcmp(new->path, begin->path)) > 0) &&
 		(new->s_spec.tv_sec == begin->s_spec.tv_sec))))
 	{
 		tmp = begin;
@@ -47,7 +47,7 @@ static void		sort_time(t_file **alst, t_file *new)
 	}
 	while ((begin != NULL) && (((new->s_spec.tv_sec == begin->s_spec.tv_sec) &&
 		(new->s_spec.tv_nsec < begin->s_spec.tv_nsec)) ||
-		(((ft_strcmp(new->name, begin->name)) > 0) &&
+		(((ft_strcmp(new->path, begin->path)) > 0) &&
 		(new->s_spec.tv_sec == begin->s_spec.tv_sec))))
 	{
 		tmp = begin;
