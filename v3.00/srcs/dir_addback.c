@@ -6,7 +6,9 @@ void	dir_addback(t_dir **alst, char *dir_path)
 	t_dir	*new;
 	t_dir	*tmp;
 
-	new = new_dirstat(dir_path);
+	if ((new = (t_dir *)ft_memalloc(sizeof(t_dir))) == NULL)
+		return ;
+	(*new).path = ft_strdup(dir_path);
 	if (*alst != NULL)
 	{
 		tmp = *alst;

@@ -12,6 +12,7 @@ t_dir	*new_dirstat(char *dir_path)
 		exit(EXIT_FAILURE);
 	(*new_node).path = ft_strdup(dir_path);
 	(*new_node).s_spec = st.st_mtimespec;
+	(*new_node).rec = NULL;
 	(*new_node).next = NULL;
 	return (new_node);
 }

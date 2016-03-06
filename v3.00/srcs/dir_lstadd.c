@@ -26,17 +26,13 @@ static void		sort_time(t_dir **alst, t_dir *new)
 
 	begin = *alst;
 	tmp = NULL;
-	while ((begin != NULL) && ((new->s_spec.tv_sec < begin->s_spec.tv_sec) ||
-		(((ft_strcmp(new->path, begin->path)) > 0) &&
-		(new->s_spec.tv_sec == begin->s_spec.tv_sec))))
+	while ((begin != NULL) && (new->s_spec.tv_sec < begin->s_spec.tv_sec))
 	{
 		tmp = begin;
 		begin = begin->next;
 	}
-	while ((begin != NULL) && (((new->s_spec.tv_sec == begin->s_spec.tv_sec) &&
-		(new->s_spec.tv_nsec < begin->s_spec.tv_nsec)) ||
-		(((ft_strcmp(new->path, begin->path)) > 0) &&
-		(new->s_spec.tv_sec == begin->s_spec.tv_sec))))
+	while ((begin != NULL) && ((new->s_spec.tv_sec == begin->s_spec.tv_sec) &&
+		(new->s_spec.tv_nsec <= begin->s_spec.tv_nsec)))
 	{
 		tmp = begin;
 		begin = begin->next;

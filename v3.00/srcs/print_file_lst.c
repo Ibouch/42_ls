@@ -108,14 +108,13 @@ void			print_file_lst(t_env *e, t_bool dir)
 {
 	size_t	max_l[4];
 
-	dir_lstdel(&e->dir->rec);
 	if ((*e).flg->aff == 'l')
 	{
 		max_l[0] = ft_strlen((*e).file->n_lnk);
 		max_l[1] = ft_strlen((*e).file->uid);
 		max_l[2] = ft_strlen((*e).file->gid);
 		max_l[3] = ft_strlen((*e).file->f_size);
-		if (dir == 1)
+		if (dir == TRUE)
 			display_data(e->file, NULL, 'l');
 		while (e->file != NULL)
 		{
