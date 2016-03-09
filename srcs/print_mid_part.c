@@ -29,8 +29,28 @@ static void	print_date(time_t mtime)
 	ft_strdel(&date);
 }
 
+void 		convert_id(t_stat *st)
+{
+	struct passwd	*uid;
+	struct group	*gid;
+
+	if ((uid = getpwuid(st->st_uid)) == NULL)
+		ft_putnbr(st->st_uid);
+	else
+		ft_putstr(uid->pw_name);
+	ft_putchar(' '); /* space */
+	if ((gid = getgrgid(st->st_gid)) == NULL)
+		ft_putnbr(st->st_gid);
+	else
+		ft_putstr(gid->gr_name);
+	uid = NULL;
+	gid = NULL;
+}
+
 void		print_mid_part(t_stat st)
 {
+	convert_id(&st);
+	ft_putchar(' '); /* space */
 	ft_putnbr(st.st_size);
 	ft_putchar(' ');
 	print_date(st.st_mtimespec.tv_sec);

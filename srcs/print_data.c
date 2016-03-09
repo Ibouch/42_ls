@@ -17,11 +17,11 @@ void	print_data(t_env *e, t_bool dir)
 				perror(e->file->path);
 			}
 			else
-				if ((print_first_part(st, e->flg->i)) != (-1))
-				{
-					print_mid_part(st);
-					print_end_part(e, dir);
-				}
+			{
+				print_first_part(st, e->flg->i);
+				print_mid_part(st);
+				print_end_part(e, dir);
+			}
 			e->file = e->file->next;
 		}
 	}
