@@ -1,148 +1,17 @@
+
 #include <ft_ls.h>
 
-static void	print_sp(size_t min, size_t max, int print)
+void	print_file_lst(t_env *e)
 {
-	size_t	sp;
+	t_file	*f_free;
 
-	sp = (max - min) + ((print == 1) ? 2 : 0);
-	while (sp-- > 0)
-		ft_putchar(' ');
-}
-
-static size_t	len_nlnk(t_file *file, size_t max_l)
-{
-	size_t		s_val;
-	size_t		max;
-	size_t		len;
-
-	s_val = ft_strlen(file->n_lnk);
-	max = ft_strlen(file->n_lnk);
-	while (file != NULL)
+	if (e->file != NULL)
 	{
-		len = ft_strlen(file->n_lnk);
-		len = ((max_l > len) ? max_l : len);
-		max = ((len >= max) ? len : max);
-		file = file->next;
+		f_free = e->file;
+		print_data(e, FALSE);
+		file_lstdel(&(f_free));
+		e->display_data = TRUE;
+		if (e->dir != NULL)
+			ft_putchar('\n');
 	}
-	print_sp(s_val, max, 1);
-	return (max);
-}
-
-static size_t	len_uid(t_file *file, size_t max_l)
-{
-	size_t		s_val;
-	size_t		max;
-	size_t		len;
-
-	s_val = ft_strlen(file->uid);
-	max = ft_strlen(file->uid);
-	while (file != NULL)
-	{
-		len = ft_strlen(file->uid);
-		len = ((max_l > len) ? max_l : len);
-		max = ((len >= max) ? len : max);
-		file = file->next;
-	}
-	print_sp(s_val, max, 1);
-	return (max);
-}
-
-static size_t	len_gid(t_file *file, size_t max_l)
-{
-	size_t		s_val;
-	size_t		max;
-	size_t		len;
-
-	s_val = ft_strlen(file->gid);
-	max = ft_strlen(file->gid);
-	while (file != NULL)
-	{
-		len = ft_strlen(file->gid);
-		len = ((max_l > len) ? max_l : len);
-		max = ((len >= max) ? len : max);
-		file = file->next;
-	}
-	print_sp(s_val, max, 0);
-	return (max);
-}
-
-static size_t	len_fsize(t_file *file, size_t max_l)
-{
-	size_t		s_val;
-	size_t		max;
-	size_t		len;
-
-	s_val = ft_strlen(file->f_size);
-	max = ft_strlen(file->f_size);
-	while (file != NULL)
-	{
-		len = ft_strlen(file->f_size);
-		len = ((max_l > len) ? max_l : len);
-		max = ((len >= max) ? len : max);
-		file = file->next;
-	}
-	print_sp(s_val, max, 1);
-	return (max);
-}
-
-void 			print_date(time_t mtime)
-{
-	char	*tmp;
-	char	*date;
-
-	if ((mtime - time(NULL)) > 0 || (mtime - time(NULL)) < SIX_MONTH)
-	{
-		date = ft_strnew(12);
-		tmp = ft_strsub(ctime(&mtime), 4, 20);
-		ft_strncpy(date, tmp, 7);
-		date = ft_strjoin(date, ft_strsub(tmp, 15, 5));
-		date[12] = '\0';
-	}
-	else
-		date = ft_strsub(ctime(&mtime), 4, 12);
-	ft_putstr(date);
-	ft_strdel(&date);
-}
-
-void			print_file_lst(t_file *lst, t_flag *flg, int dir)
-{
-	size_t	max_l[4];
-
-	if ((*flg).aff == 'l')
-	{
-		max_l[0] = ft_strlen((*lst).n_lnk);
-		max_l[1] = ft_strlen((*lst).uid);
-		max_l[2] = ft_strlen((*lst).gid);
-		max_l[3] = ft_strlen((*lst).f_size);
-		if (dir == 1)
-			display_data(lst, NULL, 'l');
-		while (lst != NULL)
-		{
-			if ((*flg).i == TRUE)
-			{
-				ft_putnbr((*lst).inoeud);
-				ft_putchar(' ');
-			}
-			ft_putstr((*lst).rights);
-			max_l[0] = len_nlnk(lst, max_l[0]);
-			ft_putstr((*lst).n_lnk);
-			ft_putchar(' ');
-			ft_putstr((*lst).uid);
-			max_l[1] = len_uid(lst, max_l[1]);
-			ft_putstr((*lst).gid);
-			max_l[2] = len_gid(lst, max_l[2]);
-			max_l[3] = len_fsize(lst, max_l[3]);
-			ft_putstr((*lst).f_size);
-			ft_putchar(' ');
-			print_date(lst->s_spec.tv_sec);
-			ft_putchar(' ');
-			if (dir == 1)
-				ft_putendl((*lst).name);
-			else
-				ft_putendl((*lst).path);
-			lst = (*lst).next;
-		}
-	}
-	else
-		print_file_endl(lst, flg, dir);
 }

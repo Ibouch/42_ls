@@ -16,8 +16,10 @@ int main(int ac, char **av)
 {
     t_env   *e;
 
-    e = ft_memalloc(sizeof(t_env));
+    if ((e = (t_env *)ft_memalloc(sizeof(t_env))) == NULL)
+		error_system();
 	params_parsing(ac, av, e);
-	delimit_flags(e);
-    return (0);
+	print_file_lst(e);
+	print_dir_lst(e);
+	return (0);
 }

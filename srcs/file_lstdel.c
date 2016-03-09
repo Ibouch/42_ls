@@ -11,11 +11,6 @@ void	file_lstdel(t_file **alst)
 	{
 		while (begin != NULL)
 		{
-			ft_strdel(&(begin->rights));
-			ft_strdel(&(begin->n_lnk));
-			ft_strdel(&(begin->uid));
-			ft_strdel(&(begin->gid));
-			ft_strdel(&(begin->f_size));
 			ft_strdel(&(begin->name));
 			ft_strdel(&(begin->path));
 			to_free = begin;

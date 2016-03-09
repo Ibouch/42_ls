@@ -37,16 +37,11 @@ typedef struct			s_flag
 
 typedef struct			s_file
 {
-	ino_t				inoeud;
-	char				*rights;
-	char				*n_lnk;
-	char				*uid;
-	char				*gid;
-	char				*f_size;
 	blkcnt_t			blocks;
 	struct timespec		s_spec;
 	char				*name;
 	char				*path;
+	t_bool				is_dir;
 	struct s_file		*next;
 }						t_file;
 
@@ -54,6 +49,7 @@ typedef struct			s_dir
 {
 	char				*path;
 	struct timespec		s_spec;
+	struct s_dir		*rec;
 	struct s_dir		*next;
 }						t_dir;
 
@@ -66,16 +62,25 @@ typedef struct			s_env
 	t_bool				display_data;
 }						t_env;
 
+void					error_system(void);
 void					params_parsing(int ac, char **av, t_env *e);
 void					delimit_flags(t_env *e);
 void					display_data(t_file *lst, char *path, char aff);
-void 					dir_lstadd(t_env *e, char *dir_name);
-void					print_file_lst(t_file *lst, t_flag *flg, t_bool dir);
-void					print_file_endl(t_file *lst, t_flag *flg, t_bool dir);
-void					file_lstadd(t_env *e, char *path_name);
+void 					dir_lstadd(t_dir **alst, t_flag *flg, char *dir_name);
+void					dir_addback(t_dir **alst, char *dir_path);
+void					dir_lstdel(t_dir **alst);
+t_dir					*new_dirstat(char *dir_path);
+void					print_data(t_env *e, t_bool dir);
+void					print_data_endl(t_env *e, t_bool dir);
+void					print_first_part(t_stat st, t_bool inoeud_opt);
+void					print_mid_part(t_stat st);
+void					print_end_part(t_env *e, t_bool is_dir);
+void					print_file_lst(t_env *e);
+void					print_dir_lst(t_env *e);
+void					file_lstadd(t_env *e, char *path_name, int dir);
 void					file_lstdel(t_file **alst);
-t_file					*new_fstat(char *path_name);
-void					convert_rights(t_file *new_node, t_stat *st);
+t_file					*new_fstat(char *path_name, int dir);
+void					convert_rights(t_stat *st);
 int						myopendir(char *path, t_env *e);
 
 #endif
