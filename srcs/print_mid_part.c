@@ -29,7 +29,7 @@ static void	print_date(time_t mtime)
 	ft_strdel(&date);
 }
 
-void 		convert_id(t_stat *st)
+static void	convert_id(t_stat *st)
 {
 	struct passwd	*uid;
 	struct group	*gid;
