@@ -56,7 +56,7 @@ static void	print_error(char *path, t_env *e)
 		ft_putchar('\n');
 }
 
-int			myopendir(char *path, t_env *e)
+int			myopendir(t_env *e, char *path, int i)
 {
 	DIR				*directory;
 	struct dirent	*e_dir;
@@ -66,7 +66,12 @@ int			myopendir(char *path, t_env *e)
 		print_error(path, e);
 		return (-1);
 	}
-	if ((*e).flg->all == TRUE)
+	if ((e->display_data == TRUE || i > 0) || e->dir->next != NULL)
+	{
+		ft_putstr(path);
+		ft_putendl(":");
+	}
+	if (e->flg->all == TRUE)
 		while ((e_dir = readdir(directory)) != NULL)
 			file_lstadd(e, storage_path(path, e_dir->d_name), TRUE);
 	else

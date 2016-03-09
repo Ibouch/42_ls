@@ -71,7 +71,7 @@ Ne pas oublier les permission avec un chmod 6000 par exemple.
 
 Pour l'option -i gerer les espaces.
 
-
+tester les leaks avec le pid et leaks + dans /usr + ft_ls -1 /etc/
 
 ./-
 libft/

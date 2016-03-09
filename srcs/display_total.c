@@ -1,12 +1,12 @@
 
 #include <ft_ls.h>
 
-void	display_data(t_file *lst, char *path, char aff)
+void	display_total(t_file *lst)
 {
 	blkcnt_t	nb;
 
 	nb = 0;
-	if (aff == 'l' && lst != NULL)
+	if (lst != NULL)
 	{
 		while (lst != NULL)
 		{
@@ -15,10 +15,5 @@ void	display_data(t_file *lst, char *path, char aff)
 		}
 		ft_putstr("total ");
 		ft_putnbr_endl(nb);
-	}
-	else
-	{
-		ft_putstr(path);
-		ft_putendl(":");
 	}
 }

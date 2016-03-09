@@ -35,7 +35,7 @@ SRC_NAME =	main.c \
 			print_data_endl.c \
 			print_file_lst.c \
 			print_dir_lst.c \
-			display_data.c
+			display_total.c
 
 CC_FLAGS = clang -Wall -Wextra -Werror
 

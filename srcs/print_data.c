@@ -8,7 +8,7 @@ void	print_data(t_env *e, t_bool dir)
 	if (e->flg->aff == 'l')
 	{
 		if (dir == TRUE)
-			display_data(e->file, NULL, 'l');
+			display_total(e->file);
 		while (e->file != NULL)
 		{
 			if ((lstat(e->file->path, &st)) != 0)
@@ -17,11 +17,11 @@ void	print_data(t_env *e, t_bool dir)
 				perror(e->file->path);
 			}
 			else
-			{
-				print_first_part(st, e->flg->i);
-				print_mid_part(st);
-				print_end_part(e, dir);
-			}
+				if ((print_first_part(st, e->flg->i)) != (-1))
+				{
+					print_mid_part(st);
+					print_end_part(e, dir);
+				}
 			e->file = e->file->next;
 		}
 	}

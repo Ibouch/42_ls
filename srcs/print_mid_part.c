@@ -29,22 +29,8 @@ static void	print_date(time_t mtime)
 	ft_strdel(&date);
 }
 
-static void	convert_id(t_stat *st)
-{
-	struct passwd	*uid;
-	struct group	*gid;
-
-	uid = getpwuid((*st).st_uid);
-	gid = getgrgid((*st).st_gid);
-	ft_putstr((*uid).pw_name);
-	ft_putchar(' '); /* space */
-	ft_putstr((*gid).gr_name);
-}
-
 void		print_mid_part(t_stat st)
 {
-	convert_id(&st);
-	ft_putchar(' '); /* space */
 	ft_putnbr(st.st_size);
 	ft_putchar(' ');
 	print_date(st.st_mtimespec.tv_sec);

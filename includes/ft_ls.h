@@ -65,14 +65,14 @@ typedef struct			s_env
 void					error_system(void);
 void					params_parsing(int ac, char **av, t_env *e);
 void					delimit_flags(t_env *e);
-void					display_data(t_file *lst, char *path, char aff);
+void					display_total(t_file *lst);
 void 					dir_lstadd(t_dir **alst, t_flag *flg, char *dir_name);
 void					dir_addback(t_dir **alst, char *dir_path);
 void					dir_lstdel(t_dir **alst);
 t_dir					*new_dirstat(char *dir_path);
 void					print_data(t_env *e, t_bool dir);
 void					print_data_endl(t_env *e, t_bool dir);
-void					print_first_part(t_stat st, t_bool inoeud_opt);
+int						print_first_part(t_stat st, t_bool inoeud_opt);
 void					print_mid_part(t_stat st);
 void					print_end_part(t_env *e, t_bool is_dir);
 void					print_file_lst(t_env *e);
@@ -81,6 +81,6 @@ void					file_lstadd(t_env *e, char *path_name, int dir);
 void					file_lstdel(t_file **alst);
 t_file					*new_fstat(char *path_name, int dir);
 void					convert_rights(t_stat *st);
-int						myopendir(char *path, t_env *e);
+int						myopendir(t_env *e, char *path, int i);
 
 #endif

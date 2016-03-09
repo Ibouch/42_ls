@@ -11,21 +11,15 @@ void	print_dir_lst(t_env *e)
 	i = 0;
 	while (e->dir != NULL)
 	{
-		printf("~~~~~~~ DEBUG ~~~~~~~~\n");
-		printf("%s\n", e->dir->path);
-		printf("~~~~~~~ DEBUG ~~~~~~~~\n");
-		if ((myopendir(e->dir->path, e)) == (-1))
-		{
+		//printf("~~~~~~~ DEBUG ~~~~~~~~\n");
+		//printf("%s\n", e->dir->path);
+		//printf("~~~~~~~ DEBUG ~~~~~~~~\n");
+		if ((myopendir(e, e->dir->path, i)) == (-1))
 			e->display_data = TRUE;
-			e->dir = e->dir->next;
-		}
 		else
 		{
 			if ((e->display_data == TRUE || i > 0) || e->dir->next != NULL)
-			{
-				display_data(e->file, e->dir->path, FALSE);
 				e->display_data = TRUE;
-			}
 			if (e->file != NULL)
 			{
 				f_free = e->file;
@@ -44,10 +38,10 @@ void	print_dir_lst(t_env *e)
 				e->dir->rec->next = e->dir->next;
 				e->dir->next = tmp;
 			}
-			d_free = e->dir;
-			e->dir = e->dir->next;
-			dir_lstdel(&d_free);
 		}
+		d_free = e->dir;
+		e->dir = e->dir->next;
+		dir_lstdel(&d_free);
 		++i;
 	}
 }
