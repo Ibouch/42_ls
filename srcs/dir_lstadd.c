@@ -1,13 +1,13 @@
 #include <ft_ls.h>
 
-static void		sort_lexico(t_dir **alst, t_dir *new)
+static void		sort_lexico(t_dir **alst, t_dir *new, int rev)
 {
 	t_dir	*begin;
 	t_dir	*tmp;
 
 	begin = *alst;
 	tmp = NULL;
-	while ((begin != NULL) && ((ft_strcmp(new->path, begin->path)) > 0))
+	while ((begin != NULL) && (((ft_strcmp(new->path, begin->path)) * rev) > 0))
 	{
 		tmp = begin;
 		begin = begin->next;
@@ -53,5 +53,5 @@ void			dir_lstadd(t_dir **alst, t_flag *flg, char *dir_path)
 	if ((*flg).t == TRUE)
 		sort_time(alst, new);
 	else
-		sort_lexico(alst, new);
+		sort_lexico(alst, new, ((flg->rev == TRUE) ? (-1) : 1));
 }
