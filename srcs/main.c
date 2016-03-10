@@ -19,7 +19,9 @@ int main(int ac, char **av)
     if ((e = (t_env *)ft_memalloc(sizeof(t_env))) == NULL)
 		error_system();
 	params_parsing(ac, av, e);
+	if (e->err == NULL && (e->dir == NULL && e->file == NULL))
+		dir_lstadd(&e->dir, e->flg, ".");
 	print_file_lst(e);
 	print_dir_lst(e);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
