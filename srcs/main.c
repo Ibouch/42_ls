@@ -20,7 +20,12 @@ int main(int ac, char **av)
 		error_system();
 	params_parsing(ac, av, e);
 	if (e->err == NULL && (e->dir == NULL && e->file == NULL))
-		dir_lstadd(&e->dir, e->flg, ".");
+	{
+		if (e->flg->d == TRUE)
+			file_lstadd(e, ".", FALSE);
+		else
+			dir_lstadd(&e->dir, e->flg, ".");
+	}
 	print_file_lst(e);
 	print_dir_lst(e);
 	exit(EXIT_SUCCESS);
