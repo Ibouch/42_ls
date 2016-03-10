@@ -74,7 +74,7 @@ void					print_data(t_env *e, t_bool dir);
 void					print_data_endl(t_env *e, t_bool dir);
 void					print_first_part(t_stat st, t_bool inoeud_opt);
 void					print_mid_part(t_stat st);
-void					print_end_part(t_env *e, t_bool is_dir);
+void					print_end_part(t_env *e, t_stat st, t_bool is_dir);
 void					print_file_lst(t_env *e);
 void					print_dir_lst(t_env *e);
 void					file_lstadd(t_env *e, char *path_name, int dir);

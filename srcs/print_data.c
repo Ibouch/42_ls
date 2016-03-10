@@ -1,7 +1,7 @@
 
 #include <ft_ls.h>
 
-void	print_data(t_env *e, t_bool dir)
+void		print_data(t_env *e, t_bool dir)
 {
 	t_stat	st;
 
@@ -20,7 +20,7 @@ void	print_data(t_env *e, t_bool dir)
 			{
 				print_first_part(st, e->flg->i);
 				print_mid_part(st);
-				print_end_part(e, dir);
+				print_end_part(e, st, dir);
 			}
 			e->file = e->file->next;
 		}

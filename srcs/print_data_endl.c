@@ -31,6 +31,10 @@ void	print_data_endl(t_env *e, t_bool dir)
 				if ((ft_strcmp(".", e->file->name)) != 0 &&
 					(ft_strcmp("..", e->file->name)) != 0)
 					dir_addback(&e->dir->rec, e->file->path);
+		/*
+			Il faudra rajouter l'insertion des char * renvoyer par
+			readlink dans la liste chainee
+		*/
 		}
 		e->file = e->file->next;
 	}
