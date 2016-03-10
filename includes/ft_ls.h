@@ -33,6 +33,7 @@ typedef struct			s_flag
 	t_bool				rev;
 	t_bool				t;
 	t_bool				i;
+	t_bool				d;
 }						t_flag;
 
 typedef struct			s_file

@@ -38,45 +38,16 @@ ft_putstr("option -t : ");
 ft_putnbr(e->flg->t);
 ft_putchar('\n');
 
-
 l'option -S et -h -i -G sont tres simple -n egalement ;) -d ya plus bidon juste dire qu'au debut les path vont avec les files
-Ne pas oublier print list error de le faire en fd 2 --Done
-
-**********(./ft_ls -l) ***********
-
-[
-	Si dans les arguments on a minimum 1 dossier valide alors les fichiers sont print avant.
-		-- Si quelque chose a ete print une erreur ou un file ou un dossier alors (ce qui fait mini 2 en somme):
-			path:
-			total xx
-			...
-]
--- Si on a que des fichiers on ne met pas le total
--- Sinon si on nous passe uniquement des options donc ni fichier ou dossier valide on traite repertoire courant.
 
 Pour les espace : predfinition d'un sp de 2 admettons, et je vais lui ajouter de cb la plus grande taille a depassser
 sur la plus petite.
-
-/*
-	if ((e->arg == NULL && e->err == NULL) && e->file == NULL)
-	myopendr(".", e);
-*/
-
-Bon mainenant fonction de suppression -
+A FINIR -- Bon mainenant fonction de suppression -
 recuperation de la bonne date; -- Done A VOIR AVEC V3T3A
-recuperation des mineures majeures ainsi que aff link -> dir/
-Fonction de tries -r et -R.
+recuperation des mineures majeures
 
 Ne pas oublier les permission avec un chmod 6000 par exemple.
 
 Pour l'option -i gerer les espaces.
 
 tester les leaks avec le pid et leaks + dans /usr + ft_ls -1 /etc/
-
-./-
-libft/
-include/
-last/  -> next ............................. ->next NULL
-
-
-Je perd un temps monstre sur l'affichage du -l donc voir pour l'optimiser

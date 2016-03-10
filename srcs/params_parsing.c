@@ -17,7 +17,7 @@ static void	print_iusage(char c)
 	ft_putstr_fd("ft_ls: illegal option -- ", 2);
 	ft_putchar_fd(c, 2);
 	ft_putchar_fd('\n', 2);
-	ft_putendl_fd("usage: ft_ls [-Railrt1] [file ...]", 2);
+	ft_putendl_fd("usage: ft_ls [-Radilrt1] [file ...]", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -42,6 +42,8 @@ static void	check_flags(char *av, t_env *e)
 			e->flg->t = TRUE;
 		else if (av[id] == 'i')
 			e->flg->i = TRUE;
+		else if (av[id] == 'd')
+			e->flg->d = TRUE;
 		else
 			print_iusage(av[id]);
 	}
@@ -56,7 +58,11 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 	if ((lstat(path, &st)) == 0)
 	{
 		if ((S_ISDIR(st.st_mode)))
-			dir_lstadd(&e->dir, e->flg, path);
+		{	if (e->flg->d == TRUE)
+				file_lstadd(e, path, FALSE);
+			else
+				dir_lstadd(&e->dir, e->flg, path);
+		}
 		else
 			file_lstadd(e, path, FALSE);
 	}
