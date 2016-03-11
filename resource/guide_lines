@@ -44,7 +44,7 @@ Pour les espace : predfinition d'un sp de 2 admettons, et je vais lui ajouter de
 sur la plus petite.
 A FINIR -- Bon mainenant fonction de suppression -
 recuperation de la bonne date; -- Done A VOIR AVEC V3T3A
-recuperation des mineures majeures
+recuperation des mineures majeures -- DONE
 
 Ne pas oublier les permission avec un chmod 6000 par exemple.
 

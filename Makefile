@@ -23,6 +23,7 @@ SRC_NAME =	main.c \
 			dir_lstdel.c \
 			error_system.c \
 			file_lstadd.c \
+			file_addback.c \
 			file_lstdel.c \
 			new_fstat.c \
 			new_dirstat.c \

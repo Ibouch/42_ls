@@ -62,8 +62,13 @@ void			file_lstadd(t_env *e, char *path_name, int dir)
 
 	if ((new = new_fstat(path_name, dir)) == NULL)
 		return ;
-	if (e->flg->t == TRUE)
-		sort_time(&(*e).file, new);
+	if (e->flg->f == TRUE)
+		file_addback(&(e->file), new);
 	else
-		sort_lexico(&(*e).file, new, ((e->flg->rev == TRUE) ? (-1) : 1));
+	{
+		if (e->flg->t == TRUE)
+			sort_time(&(e->file), new);
+		else
+			sort_lexico(&(e->file), new, ((e->flg->rev == TRUE) ? (-1) : 1));
+	}
 }

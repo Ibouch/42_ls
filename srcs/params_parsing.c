@@ -17,7 +17,7 @@ static void	print_iusage(char c)
 	ft_putstr_fd("ft_ls: illegal option -- ", 2);
 	ft_putchar_fd(c, 2);
 	ft_putchar_fd('\n', 2);
-	ft_putendl_fd("usage: ft_ls [-Radilrt1] [file ...]", 2);
+	ft_putendl_fd("usage: ft_ls [-Radfilrt1] [file ...]", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -44,6 +44,11 @@ static void	check_flags(char *av, t_env *e)
 			e->flg->i = TRUE;
 		else if (av[id] == 'd')
 			e->flg->d = TRUE;
+		else if (av[id] == 'f')
+		{
+			e->flg->f = TRUE;
+			e->flg->all = TRUE;
+		}
 		else
 			print_iusage(av[id]);
 	}
@@ -73,7 +78,10 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 		er = ft_strjoin(er, strerror(errno));
 		if (er == NULL)
 			error_system();
-		ft_lstadd(&e->err, (char *)er, ft_strlen(er) + 1);
+		if (e->flg->f == TRUE)
+			ft_lstadd_back(&(e->err), (char *)er, ft_strlen(er) + 1);
+		else
+			ft_lstadd(&(e->err), (char *)er, ft_strlen(er) + 1);
 	}
 }
 
@@ -109,7 +117,8 @@ void		params_parsing(int ac, char **av, t_env *e)
 	}
 	if (e->err != NULL)
 	{
-		ft_lst_sort(&(e->err), &ft_strcmp);
+		if (e->flg->f == FALSE)
+			ft_lst_sort(&(e->err), &ft_strcmp);
 		ft_print_lst(e->err, 2);
 		e->display_data = TRUE;
 	}

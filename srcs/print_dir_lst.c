@@ -11,9 +11,6 @@ void	print_dir_lst(t_env *e)
 	i = 0;
 	while (e->dir != NULL)
 	{
-		//printf("~~~~~~~ DEBUG ~~~~~~~~\n");
-		//printf("%s\n", e->dir->path);
-		//printf("~~~~~~~ DEBUG ~~~~~~~~\n");
 		if ((myopendir(e, e->dir->path, i)) == (-1))
 			e->display_data = TRUE;
 		else

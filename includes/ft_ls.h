@@ -34,6 +34,7 @@ typedef struct			s_flag
 	t_bool				t;
 	t_bool				i;
 	t_bool				d;
+	t_bool				f;
 }						t_flag;
 
 typedef struct			s_file
@@ -79,6 +80,7 @@ void					print_end_part(t_env *e, t_stat st, t_bool is_dir);
 void					print_file_lst(t_env *e);
 void					print_dir_lst(t_env *e);
 void					file_lstadd(t_env *e, char *path_name, int dir);
+void					file_addback(t_file **alst, t_file *new);
 void					file_lstdel(t_file **alst);
 t_file					*new_fstat(char *path_name, int dir);
 void					convert_rights(t_stat *st);

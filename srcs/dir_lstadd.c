@@ -48,10 +48,15 @@ void			dir_lstadd(t_dir **alst, t_flag *flg, char *dir_path)
 {
 	t_dir	*new;
 
-	if ((new = new_dirstat(dir_path)) == NULL)
-		return ;
-	if ((*flg).t == TRUE)
-		sort_time(alst, new);
+	if (flg->f == TRUE)
+		dir_addback(alst, dir_path);
 	else
-		sort_lexico(alst, new, ((flg->rev == TRUE) ? (-1) : 1));
+	{
+		if ((new = new_dirstat(dir_path)) == NULL)
+			return ;
+		if (flg->t == TRUE)
+			sort_time(alst, new);
+		else
+			sort_lexico(alst, new, ((flg->rev == TRUE) ? (-1) : 1));
+	}
 }
