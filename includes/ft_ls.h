@@ -44,7 +44,6 @@ typedef struct			s_file
 	struct timespec		s_spec;
 	char				*name;
 	char				*path;
-	t_bool				is_dir;
 	struct s_file		*next;
 }						t_file;
 

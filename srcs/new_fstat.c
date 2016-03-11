@@ -43,7 +43,6 @@ t_file		*new_fstat(char *path_name, int dir)
 	if (dir == TRUE)
 		ft_strdel(&path_name);
 	new_node->blocks = st.st_blocks;
-	new_node->is_dir = S_ISDIR(st.st_mode);
 	new_node->next = NULL;
 	return (new_node);
 }

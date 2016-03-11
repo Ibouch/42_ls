@@ -42,7 +42,7 @@ void	print_end_part(t_env *e, t_stat st, t_bool is_dir)
 		else
 			ft_putendl(e->file->path);
 	}
-	if ((e->file->is_dir == TRUE && e->flg->rec == TRUE) && e->flg->d == FALSE)
+	if (((S_ISDIR(st.st_mode)) && e->flg->rec == TRUE) && e->flg->d == FALSE)
 	{
 		if ((ft_strcmp(".", e->file->name)) != 0 &&
 			(ft_strcmp("..", e->file->name)) != 0)
