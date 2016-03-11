@@ -19,7 +19,7 @@ void		print_data(t_env *e, t_bool dir)
 			else
 			{
 				print_first_part(st, e->flg->i);
-				print_mid_part(st);
+				print_mid_part(st, e->flg->g);
 				print_end_part(e, st, dir);
 			}
 			e->file = e->file->next;

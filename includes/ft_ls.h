@@ -35,6 +35,7 @@ typedef struct			s_flag
 	t_bool				i;
 	t_bool				d;
 	t_bool				f;
+	t_bool				g;
 }						t_flag;
 
 typedef struct			s_file
@@ -75,7 +76,7 @@ t_dir					*new_dirstat(char *dir_path);
 void					print_data(t_env *e, t_bool dir);
 void					print_data_endl(t_env *e, t_bool dir);
 void					print_first_part(t_stat st, t_bool inoeud_opt);
-void					print_mid_part(t_stat st);
+void					print_mid_part(t_stat st, t_bool g_opt);
 void					print_end_part(t_env *e, t_stat st, t_bool is_dir);
 void					print_file_lst(t_env *e);
 void					print_dir_lst(t_env *e);

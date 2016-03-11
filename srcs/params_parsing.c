@@ -12,12 +12,12 @@
 
 #include <ft_ls.h>
 
-static void	print_iusage(char c)
+static void	print_iusage(char c) /* EN GLOBAL PLUTOT QUE STATIC */
 {
 	ft_putstr_fd("ft_ls: illegal option -- ", 2);
 	ft_putchar_fd(c, 2);
 	ft_putchar_fd('\n', 2);
-	ft_putendl_fd("usage: ft_ls [-Radfilrt1] [file ...]", 2);
+	ft_putendl_fd("usage: ft_ls [-Radfgilrt1] [file ...]", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -49,6 +49,8 @@ static void	check_flags(char *av, t_env *e)
 			e->flg->f = TRUE;
 			e->flg->all = TRUE;
 		}
+		else if (av[id] == 'g')
+			e->flg->g = TRUE;
 		else
 			print_iusage(av[id]);
 	}

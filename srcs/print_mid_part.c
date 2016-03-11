@@ -29,27 +29,30 @@ static void	print_date(time_t mtime)
 	ft_strdel(&date);
 }
 
-static void	convert_id(t_stat *st)
+static void	convert_id(t_stat st, t_bool g_opt)
 {
 	struct passwd	*uid;
 	struct group	*gid;
 
-	if ((uid = getpwuid(st->st_uid)) == NULL)
-		ft_putnbr(st->st_uid);
-	else
-		ft_putstr(uid->pw_name);
-	ft_putchar(' '); /* space */
-	if ((gid = getgrgid(st->st_gid)) == NULL)
-		ft_putnbr(st->st_gid);
+	if (g_opt == FALSE)
+	{
+		if ((uid = getpwuid(st.st_uid)) == NULL)
+			ft_putnbr(st.st_uid);
+		else
+			ft_putstr(uid->pw_name);
+		ft_putchar(' '); /* space */
+	}
+	if ((gid = getgrgid(st.st_gid)) == NULL)
+		ft_putnbr(st.st_gid);
 	else
 		ft_putstr(gid->gr_name);
 	uid = NULL;
 	gid = NULL;
 }
 
-void		print_mid_part(t_stat st)
+void		print_mid_part(t_stat st, t_bool g_opt)
 {
-	convert_id(&st);
+	convert_id(st, g_opt);
 	ft_putchar(' '); /* space */
 	if ((S_ISBLK(st.st_mode)) == TRUE || (S_ISCHR(st.st_mode)) == TRUE)
 	{
