@@ -51,7 +51,15 @@ void		print_mid_part(t_stat st)
 {
 	convert_id(&st);
 	ft_putchar(' '); /* space */
-	ft_putnbr(st.st_size);
+	if ((S_ISBLK(st.st_mode)) == TRUE || (S_ISCHR(st.st_mode)) == TRUE)
+	{
+		ft_putnbr(major(st.st_rdev));
+		ft_putchar(',');
+		ft_putchar(' '); /* space */
+		ft_putnbr(minor(st.st_rdev));
+	}
+	else
+		ft_putnbr(st.st_size);
 	ft_putchar(' ');
 	print_date(st.st_mtimespec.tv_sec);
 	ft_putchar(' ');
