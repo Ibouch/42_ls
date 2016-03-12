@@ -47,7 +47,7 @@ t_file		*new_fstat(t_max_l *len, char *path_name, t_flag *flg, int dir)
 	t_stat			st;
 
 	if ((new_node = (t_file *)ft_memalloc(sizeof(t_file))) == NULL)
- 		error_system();
+ 		ft_error_system();
 	if ((lstat(path_name, &st)) != 0)
 	{
 		ft_putstr_fd("ft_ls: ", 2);
@@ -57,9 +57,9 @@ t_file		*new_fstat(t_max_l *len, char *path_name, t_flag *flg, int dir)
 	}
 	new_node->st = st;
 	if ((new_node->name = storage_name(path_name)) == NULL)
-		error_system();
+		ft_error_system();
 	if ((new_node->path = ft_strdup(path_name)) == NULL)
-		error_system();
+		ft_error_system();
 	if (dir == TRUE)
 		ft_strdel(&path_name);
 	if (flg->aff == 'l')

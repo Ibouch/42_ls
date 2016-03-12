@@ -32,10 +32,10 @@ static void	del_env(t_env **alst)
 
 int			main(int ac, char **av)
 {
-    t_env   *e;
+	t_env	*e;
 
-    if ((e = (t_env *)ft_memalloc(sizeof(t_env))) == NULL)
-		error_system();
+	if ((e = (t_env *)ft_memalloc(sizeof(t_env))) == NULL)
+		ft_error_system();
 	params_parsing(ac, av, e);
 	if (e->err == NULL && (e->dir == NULL && e->file == NULL))
 	{

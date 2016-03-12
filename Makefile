@@ -21,7 +21,6 @@ SRC_NAME =	main.c \
 			dir_lstadd.c \
 			dir_addback.c \
 			dir_lstdel.c \
-			error_system.c \
 			file_lstadd.c \
 			file_addback.c \
 			file_lstdel.c \

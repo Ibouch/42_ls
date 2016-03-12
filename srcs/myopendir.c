@@ -28,7 +28,7 @@ static char	*storage_path(char *path, char *name)
 		ft_strdel(&tmp);
 	}
 	if (path_file == NULL)
-		error_system();
+		ft_error_system();
 	return (path_file);
 }
 

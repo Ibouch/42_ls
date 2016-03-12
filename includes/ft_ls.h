@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/11 03:27:22 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/03/12 23:52:41 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <dirent.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-# include <errno.h>
-# include <stdio.h>
 # include <time.h>
 # include <grp.h>
 # include <pwd.h>
@@ -76,9 +74,7 @@ typedef struct			s_env
 	t_bool				display_data;
 }						t_env;
 
-void					error_system(void);
 void					params_parsing(int ac, char **av, t_env *e);
-void					delimit_flags(t_env *e);
 void					display_total(t_file *lst);
 void 					dir_lstadd(t_dir **alst, t_flag *flg, char *dir_name);
 void					dir_addback(t_dir **alst, char *dir_path);

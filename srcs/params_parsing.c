@@ -82,7 +82,7 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 		er = ft_strjoin(tmp, strerror(errno));
 		ft_strdel(&tmp);
 		if (er == NULL)
-			error_system();
+			ft_error_system();
 		if (e->flg->f == TRUE)
 			ft_lstadd_back(&(e->err), (char *)er, ft_strlen(er) + 1);
 		else
@@ -112,9 +112,9 @@ void		params_parsing(int ac, char **av, t_env *e)
 	x = 0;
 	end_opt = FALSE;
 	if ((e->flg = (t_flag *)ft_memalloc(sizeof(t_flag))) == NULL)
-		error_system();
+		ft_error_system();
 	if ((e->len = (t_max_l *)ft_memalloc(sizeof(t_max_l))) == NULL)
-		error_system();
+		ft_error_system();
 	while (++x < ac)
 	{
 		if (av[x][0] == '-' && end_opt == FALSE)

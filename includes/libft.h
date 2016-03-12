@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:47:12 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/03/11 23:14:07 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/03/12 23:52:29 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 # define TRUE 1
 # define FALSE 0
 # include <string.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <errno.h>
 
 typedef int			t_bool;
 
@@ -27,6 +29,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+void				ft_error_system(void);
 void				ft_print_lst(t_list *lst, int fd);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 t_list				*ft_lst_at(t_list *begin_lst, unsigned int id);
@@ -100,5 +103,6 @@ int					ft_biggest_str(char *s1, char *s2, char *to_check);
 int					ft_isspace(int c);
 void				ft_strswap(char **as1, char **as2);
 int					ft_strsort(char **as, int len);
+char				*ft_readlink(char *path, off_t size);
 
 #endif

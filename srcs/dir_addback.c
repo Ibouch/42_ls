@@ -7,9 +7,9 @@ void	dir_addback(t_dir **alst, char *dir_path)
 	t_dir	*tmp;
 
 	if ((new = (t_dir *)ft_memalloc(sizeof(t_dir))) == NULL)
-		error_system();
+		ft_error_system();
 	if ((new->path = ft_strdup(dir_path)) == NULL)
-		error_system();
+		ft_error_system();
 	if (*alst != NULL)
 	{
 		tmp = *alst;

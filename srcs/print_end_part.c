@@ -1,47 +1,41 @@
 
 #include <ft_ls.h>
 
+static void	print_path(char *path, char *lnk_name, t_stat st)
+{
+	if ((S_ISLNK(st.st_mode)) == TRUE)
+	{
+		ft_putstr(path);
+		ft_putstr(" -> ");
+		ft_putendl(lnk_name);
+	}
+	else
+		ft_putendl(path);
+}
+
+static void	print_name(char *name, char *lnk_name, t_stat st)
+{
+	if ((S_ISLNK(st.st_mode)) == TRUE)
+	{
+		ft_putstr(name);
+		ft_putstr(" -> ");
+		ft_putendl(lnk_name);
+	}
+	else
+		ft_putendl(name);
+}
+
 void	print_end_part(t_env *e, t_stat st, t_bool is_dir)
 {
 	char	*lnk_name;
-	ssize_t	len;
 
 	if ((S_ISLNK(st.st_mode)) == TRUE)
-	{
-		if ((lnk_name = ft_strnew(st.st_size)) == NULL)
-			error_system();
-		if ((len = readlink(e->file->path, lnk_name, st.st_size)) == (-1))
-		{
-			ft_putstr_fd("ft_ls: ", 2);
-			perror(e->file->path);
+		if ((lnk_name = ft_readlink(e->file->path, st.st_size)) == NULL)
 			return ;
-		}
-		lnk_name[len] = '\0';
-	}
 	if (is_dir == 1)
-	{
-		if ((S_ISLNK(st.st_mode)) == TRUE)
-		{
-			ft_putstr(e->file->name);
-			ft_putstr(" -> ");
-			ft_putendl(lnk_name);
-			ft_strdel(&lnk_name);
-		}
-		else
-			ft_putendl(e->file->name);
-	}
+		print_name(e->file->name, lnk_name, st);
 	else
-	{
-		if ((S_ISLNK(st.st_mode)) == TRUE)
-		{
-			ft_putstr(e->file->path);
-			ft_putstr(" -> ");
-			ft_putendl(lnk_name);
-			ft_strdel(&lnk_name);
-		}
-		else
-			ft_putendl(e->file->path);
-	}
+		print_path(e->file->path, lnk_name, st);
 	if (((S_ISDIR(st.st_mode)) && e->flg->rec == TRUE) && e->flg->d == FALSE)
 	{
 		if ((ft_strcmp(".", e->file->name)) != 0 &&

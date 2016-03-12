@@ -6,7 +6,7 @@
 	length of space.
 */
 
-void		print_first_part(t_env	*e, t_bool inoeud_opt)
+void		print_first_part(t_env *e, t_bool inoeud_opt)
 {
 	if (inoeud_opt == TRUE)
 	{
