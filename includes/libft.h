@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 12:47:12 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/03/04 18:37:54 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/03/11 23:14:07 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lst_sort(t_list **alst, int (*f_cmp)());
 int					ft_strcmp(const char *s1, const char *s2);
 size_t				ft_strlen(const char *s);
+size_t				ft_nbrlen(int nbr);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strdup(const char *s1);
 void				ft_strdel(char **as);

@@ -60,6 +60,7 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 {
 	t_stat	st;
 	char	*er;
+	char	*tmp;
 
 	*end_opt = TRUE;
 	if ((lstat(path, &st)) == 0)
@@ -76,8 +77,10 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 	else
 	{
 		er = ft_strjoin("ft_ls: ", path);
-		er = ft_strjoin(er, ": ");
-		er = ft_strjoin(er, strerror(errno));
+		tmp = ft_strjoin(er, ": ");
+		ft_strdel(&er);
+		er = ft_strjoin(tmp, strerror(errno));
+		ft_strdel(&tmp);
 		if (er == NULL)
 			error_system();
 		if (e->flg->f == TRUE)

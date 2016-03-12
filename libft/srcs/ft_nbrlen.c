@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/23 12:48:02 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/03/11 22:52:10 by ibouchla         ###   ########.fr       */
+/*   Created: 2016/03/11 23:08:37 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/03/11 23:27:36 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-size_t	ft_strlen(const char *s)
+size_t	ft_nbrlen(int nbr)
 {
-	register const char	*str;
+	size_t	len;
 
-	str = s;
-	while (*str != '\0')
-		++str;
-	return (str - s);
+	len = 0;
+	if (nbr == 0)
+		return (1);
+	if (nbr < 0)
+		nbr = nbr * (-1);
+	while (nbr > 0)
+	{
+		nbr = nbr / 10;
+		++len;
+	}
+	return (len);
 }

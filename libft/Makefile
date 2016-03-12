@@ -6,7 +6,7 @@
 #    By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#              #
-#    Updated: 2016/03/07 21:40:01 by ibouchla         ###   ########.fr        #
+#    Updated: 2016/03/11 23:13:09 by ibouchla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC_NAME =	ft_bzero.c \
 		ft_striteri.c \
 		ft_strjoin.c \
 		ft_strlen.c \
+		ft_nbrlen.c \
 		ft_strmap.c \
 		ft_strmapi.c \
 		ft_strncat.c \

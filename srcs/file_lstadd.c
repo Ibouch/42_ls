@@ -60,7 +60,7 @@ void			file_lstadd(t_env *e, char *path_name, int dir)
 {
 	t_file	*new;
 
-	if ((new = new_fstat(path_name, dir)) == NULL)
+	if ((new = new_fstat(e->len, path_name, e->flg, dir)) == NULL)
 		return ;
 	if (e->flg->f == TRUE)
 		file_addback(&(e->file), new);

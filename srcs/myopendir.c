@@ -16,14 +16,16 @@ static char	*storage_path(char *path, char *name)
 {
 	size_t	end;
 	char	*path_file;
+	char	*tmp;
 
 	end = (ft_strlen(path) - 1);
 	if (path[end] == '/')
 		path_file = ft_strjoin(path, name);
 	else
 	{
-		path_file = ft_strjoin(path, "/");
-		path_file = ft_strjoin(path_file, name);
+		tmp = ft_strjoin(path, "/");
+		path_file = ft_strjoin(tmp, name);
+		ft_strdel(&tmp);
 	}
 	if (path_file == NULL)
 		error_system();

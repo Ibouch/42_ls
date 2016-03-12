@@ -18,6 +18,8 @@ int main(int ac, char **av)
 
     if ((e = (t_env *)ft_memalloc(sizeof(t_env))) == NULL)
 		error_system();
+	if ((e->len = (t_max_l *)ft_memalloc(sizeof(t_max_l))) == NULL)
+		error_system();
 	params_parsing(ac, av, e);
 	if (e->err == NULL && (e->dir == NULL && e->file == NULL))
 	{
@@ -28,5 +30,7 @@ int main(int ac, char **av)
 	}
 	print_file_lst(e);
 	print_dir_lst(e);
+	free(e->len);
+	free(e->flg);
 	exit(EXIT_SUCCESS);
 }
