@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 17:13:49 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/03 19:44:18 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/03/12 18:26:36 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,5 @@
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	int	i;
-
-	i = ft_strlen(s);
-	while (i--)
-		ft_putchar_fd(*s++, fd);
+	write(fd, s, ft_strlen(s));
 }
