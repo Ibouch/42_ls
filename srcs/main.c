@@ -12,13 +12,29 @@
 
 #include <ft_ls.h>
 
-int main(int ac, char **av)
+static void	del_env(t_env **alst)
+{
+	if (*alst != NULL)
+	{
+		if ((*alst)->flg != NULL)
+			free((*alst)->flg);
+		if ((*alst)->err != NULL)
+			free((*alst)->err);
+		if ((*alst)->file != NULL)
+			free((*alst)->file);
+		if ((*alst)->dir != NULL)
+			free((*alst)->dir);
+		if ((*alst)->len != NULL)
+			free((*alst)->len);
+		free(*alst);
+	}
+}
+
+int			main(int ac, char **av)
 {
     t_env   *e;
 
     if ((e = (t_env *)ft_memalloc(sizeof(t_env))) == NULL)
-		error_system();
-	if ((e->len = (t_max_l *)ft_memalloc(sizeof(t_max_l))) == NULL)
 		error_system();
 	params_parsing(ac, av, e);
 	if (e->err == NULL && (e->dir == NULL && e->file == NULL))
@@ -30,7 +46,6 @@ int main(int ac, char **av)
 	}
 	print_file_lst(e);
 	print_dir_lst(e);
-	free(e->len);
-	free(e->flg);
+	del_env(&e);
 	exit(EXIT_SUCCESS);
 }

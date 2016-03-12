@@ -6,15 +6,16 @@
 	length of space.
 */
 
-void	print_first_part(t_stat st, t_bool inoeud_opt)
+void		print_first_part(t_env	*e, t_bool inoeud_opt)
 {
 	if (inoeud_opt == TRUE)
 	{
-		ft_putnbr(st.st_ino);
-		ft_putchar(' '); /* space */
+		print_sp(ft_nbrlen(e->file->st.st_ino), e->len->ino, FALSE);
+		ft_putnbr(e->file->st.st_ino);
+		ft_putchar(' ');
 	}
-	convert_rights(&st);
-	ft_putchar(' '); /* space */
-	ft_putnbr(st.st_nlink);
+	convert_rights(&(e->file->st));
+	print_sp(ft_nbrlen(e->file->st.st_nlink), e->len->n_lnk, TRUE);
+	ft_putnbr(e->file->st.st_nlink);
 	ft_putchar(' ');
 }

@@ -1,11 +1,6 @@
 
 #include <ft_ls.h>
 
-/*
-	We need to remove all space comment by appropriate
-	length of space.
-*/
-
 static void	print_date(time_t mtime)
 {
 	char	*tmp;
@@ -29,40 +24,64 @@ static void	print_date(time_t mtime)
 	ft_strdel(&date);
 }
 
-static void	convert_id(t_stat st, t_bool g_opt)
+static void	get_value_gid(t_max_l *len, t_stat st)
+{
+	struct group	*gid;
+	size_t			l_gid;
+
+	if ((gid = getgrgid(st.st_gid)) == NULL)
+	{
+		ft_putnbr(st.st_gid);
+		l_gid = ft_nbrlen(st.st_gid);
+	}
+	else
+	{
+		ft_putstr(gid->gr_name);
+		l_gid = ft_strlen(gid->gr_name);
+	}
+	print_sp(l_gid, len->gid, FALSE);
+	gid = NULL;
+}
+
+static void	convert_id(t_max_l *len, t_stat st, t_bool g_opt)
 {
 	struct passwd	*uid;
-	struct group	*gid;
+	size_t			l_uid;
 
 	if (g_opt == FALSE)
 	{
 		if ((uid = getpwuid(st.st_uid)) == NULL)
+		{
 			ft_putnbr(st.st_uid);
+			l_uid = ft_nbrlen(st.st_uid);
+		}
 		else
+		{
 			ft_putstr(uid->pw_name);
-		ft_putchar(' '); /* space */
+			l_uid = ft_strlen(uid->pw_name);
+		}
+		print_sp(l_uid, len->uid, TRUE);
 	}
-	if ((gid = getgrgid(st.st_gid)) == NULL)
-		ft_putnbr(st.st_gid);
-	else
-		ft_putstr(gid->gr_name);
+	get_value_gid(len, st);
 	uid = NULL;
-	gid = NULL;
 }
 
-void		print_mid_part(t_stat st, t_bool g_opt)
+void		print_mid_part(t_max_l *len, t_stat st, t_bool g_opt)
 {
-	convert_id(st, g_opt);
-	ft_putchar(' '); /* space */
+	convert_id(len, st, g_opt);
 	if ((S_ISBLK(st.st_mode)) == TRUE || (S_ISCHR(st.st_mode)) == TRUE)
 	{
+		print_sp(ft_nbrlen(major(st.st_rdev)), len->major, TRUE);
 		ft_putnbr(major(st.st_rdev));
 		ft_putchar(',');
-		ft_putchar(' '); /* space */
+		print_sp(ft_nbrlen(minor(st.st_rdev)), len->minor, TRUE);
 		ft_putnbr(minor(st.st_rdev));
 	}
 	else
+	{
+		print_sp(ft_nbrlen(st.st_size), len->f_size, TRUE);
 		ft_putnbr(st.st_size);
+	}
 	ft_putchar(' ');
 	print_date(st.st_mtimespec.tv_sec);
 	ft_putchar(' ');

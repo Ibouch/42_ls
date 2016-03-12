@@ -36,6 +36,7 @@ SRC_NAME =	main.c \
 			print_data_endl.c \
 			print_file_lst.c \
 			print_dir_lst.c \
+			print_sp.c \
 			display_total.c \
 			storage_m_len_id.c \
 			storage_maj_min.c \

@@ -35,16 +35,20 @@ static void		sort_time(t_file **alst, t_file *new)
 {
 	t_file	*begin;
 	t_file	*tmp;
+	time_t	sec;
+	long	nsec;
 
 	begin = *alst;
 	tmp = NULL;
-	while ((begin != NULL) && (new->s_spec.tv_sec < begin->s_spec.tv_sec))
+	sec = new->st.st_mtimespec.tv_sec;
+	nsec = new->st.st_mtimespec.tv_nsec;
+	while ((begin != NULL) && (sec < begin->st.st_mtimespec.tv_sec))
 	{
 		tmp = begin;
 		begin = begin->next;
 	}
-	while ((begin != NULL) && ((new->s_spec.tv_sec == begin->s_spec.tv_sec) &&
-		(new->s_spec.tv_nsec <= begin->s_spec.tv_nsec)))
+	while ((begin != NULL) && ((sec == begin->st.st_mtimespec.tv_sec) &&
+		(nsec <= begin->st.st_mtimespec.tv_nsec)))
 	{
 		tmp = begin;
 		begin = begin->next;

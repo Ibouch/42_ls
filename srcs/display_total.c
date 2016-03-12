@@ -10,7 +10,7 @@ void	display_total(t_file *lst)
 	{
 		while (lst != NULL)
 		{
-			nb += (*lst).blocks;
+			nb += lst->st.st_blocks;
 			lst = lst->next;
 		}
 		ft_putstr("total ");
