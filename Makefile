@@ -17,6 +17,7 @@ INC_PATH = -I includes
 SRC_PATH = srcs
 
 SRC_NAME =	main.c \
+			check_argument.c \
 			params_parsing.c \
 			dir_lstadd.c \
 			dir_addback.c \
@@ -36,6 +37,7 @@ SRC_NAME =	main.c \
 			print_file_lst.c \
 			print_dir_lst.c \
 			print_sp.c \
+			print_iusage.c \
 			display_total.c \
 			storage_m_len_id.c \
 			storage_maj_min.c \

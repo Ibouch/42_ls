@@ -1,10 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_first_part.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/13 22:06:11 by ibouchla          #+#    #+#             */
+/*   Updated: 2016/03/13 22:06:31 by ibouchla         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <ft_ls.h>
-
-/*
-	We need to remove all space comment by appropriate
-	length of space.
-*/
 
 void		print_first_part(t_env *e, t_bool inoeud_opt)
 {

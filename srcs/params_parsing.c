@@ -6,19 +6,23 @@
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 00:52:27 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/02/19 00:52:31 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/03/13 22:05:38 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ls.h>
 
-static void	print_iusage(char c) /* EN GLOBAL PLUTOT QUE STATIC */
+static void	check_flags_bonus(char c, t_flag *flg)
 {
-	ft_putstr_fd("ft_ls: illegal option -- ", 2);
-	ft_putchar_fd(c, 2);
-	ft_putchar_fd('\n', 2);
-	ft_putendl_fd("usage: ft_ls [-Radfgilrt1] [file ...]", 2);
-	exit(EXIT_FAILURE);
+	if (c == 'f')
+	{
+		flg->f = TRUE;
+		flg->all = TRUE;
+	}
+	else if (c == 'g')
+		flg->g = TRUE;
+	else
+		print_iusage(c);
 }
 
 static void	check_flags(char *av, t_env *e)
@@ -44,59 +48,8 @@ static void	check_flags(char *av, t_env *e)
 			e->flg->i = TRUE;
 		else if (av[id] == 'd')
 			e->flg->d = TRUE;
-		else if (av[id] == 'f')
-		{
-			e->flg->f = TRUE;
-			e->flg->all = TRUE;
-		}
-		else if (av[id] == 'g')
-			e->flg->g = TRUE;
 		else
-			print_iusage(av[id]);
-	}
-}
-
-static void	check_argument(char *path, t_env *e, t_bool *end_opt)
-{
-	t_stat	st;
-	char	*er;
-	char	*tmp;
-
-	*end_opt = TRUE;
-	if ((lstat(path, &st)) == 0)
-	{
-		if ((S_ISDIR(st.st_mode)) || ((S_ISLNK(st.st_mode)) == TRUE &&
-			e->flg->aff != 'l'))
-		{
-			if (e->flg->d == TRUE)
-			{
-				path = ((S_ISLNK(st.st_mode)) ? ft_strjoin(path, "/") : path);
-				file_lstadd(e, path, FALSE);
-			}
-			else
-			{
-				path = ((S_ISLNK(st.st_mode)) ? ft_strjoin(path, "/") : path);
-				dir_lstadd(&e->dir, e->flg, path);
-			}
-			if ((S_ISLNK(st.st_mode)) == TRUE && path != NULL)
-				ft_strdel(&path);
-		}
-		else
-			file_lstadd(e, path, FALSE);
-	}
-	else
-	{
-		er = ft_strjoin("ft_ls: ", path);
-		tmp = ft_strjoin(er, ": ");
-		ft_strdel(&er);
-		er = ft_strjoin(tmp, strerror(errno));
-		ft_strdel(&tmp);
-		if (er == NULL)
-			ft_error_system();
-		if (e->flg->f == TRUE)
-			ft_lstadd_back(&(e->err), (char *)er, ft_strlen(er) + 1);
-		else
-			ft_lstadd(&(e->err), (char *)er, ft_strlen(er) + 1);
+			check_flags_bonus(av[id], e->flg);
 	}
 }
 

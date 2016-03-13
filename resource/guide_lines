@@ -7,22 +7,34 @@
 	  Pour celle là, test la commande système xattr depuis ton shell...
 
 
-ft_putendl("......... DEGUG ZONE .........");
-ft_putstr("Option d'affichage : ");
-ft_putchar(e->flg->aff);
-ft_putchar('\n');
-ft_putstr("option -a : ");
-ft_putnbr(e->flg->all);
-ft_putchar('\n');
-ft_putstr("option -R : ");
-ft_putnbr(e->flg->rec);
-ft_putchar('\n');
-ft_putstr("option -r : ");
-ft_putnbr(e->flg->rev);
-ft_putchar('\n');
-ft_putstr("option -t : ");
-ft_putnbr(e->flg->t);
-ft_putchar('\n');
+	  ft_putendl("......... DEGUG ZONE .........");
+	  ft_putstr("Option d'affichage : ");
+	  ft_putchar(e->flg->aff);
+	  ft_putchar('\n');
+	  ft_putstr("option -a : ");
+	  ft_putnbr(e->flg->all);
+	  ft_putchar('\n');
+	  ft_putstr("option -R : ");
+	  ft_putnbr(e->flg->rec);
+	  ft_putchar('\n');
+	  ft_putstr("option -r : ");
+	  ft_putnbr(e->flg->rev);
+	  ft_putchar('\n');
+	  ft_putstr("option -t : ");
+	  ft_putnbr(e->flg->t);
+	  ft_putchar('\n');
+	  ft_putstr("option -i : ");
+	  ft_putnbr(e->flg->i);
+	  ft_putchar('\n');
+	  ft_putstr("option -d : ");
+	  ft_putnbr(e->flg->d);
+	  ft_putchar('\n');
+	  ft_putstr("option -f : ");
+	  ft_putnbr(e->flg->f);
+	  ft_putchar('\n');
+	  ft_putstr("option -g : ");
+	  ft_putnbr(e->flg->g);
+	  ft_putchar('\n');
 
 l'option -S et -h -i -G sont tres simple -n egalement ;) -d ya plus bidon juste dire qu'au debut les path vont avec les files
 
