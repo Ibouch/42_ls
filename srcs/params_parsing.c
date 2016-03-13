@@ -65,11 +65,21 @@ static void	check_argument(char *path, t_env *e, t_bool *end_opt)
 	*end_opt = TRUE;
 	if ((lstat(path, &st)) == 0)
 	{
-		if ((S_ISDIR(st.st_mode)))
-		{	if (e->flg->d == TRUE)
+		if ((S_ISDIR(st.st_mode)) || ((S_ISLNK(st.st_mode)) == TRUE &&
+			e->flg->aff != 'l'))
+		{
+			if (e->flg->d == TRUE)
+			{
+				path = ((S_ISLNK(st.st_mode)) ? ft_strjoin(path, "/") : path);
 				file_lstadd(e, path, FALSE);
+			}
 			else
+			{
+				path = ((S_ISLNK(st.st_mode)) ? ft_strjoin(path, "/") : path);
 				dir_lstadd(&e->dir, e->flg, path);
+			}
+			if ((S_ISLNK(st.st_mode)) == TRUE && path != NULL)
+				ft_strdel(&path);
 		}
 		else
 			file_lstadd(e, path, FALSE);

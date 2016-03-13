@@ -28,7 +28,7 @@ static void	storage_max_len(t_max_l *len, t_stat *st, t_flag *flg)
 	if (((S_ISBLK(st->st_mode)) == TRUE || (S_ISCHR(st->st_mode)) == TRUE))
 		storage_maj_min(len, st);
 	else
-	len->f_size = ((m_fsize > len->f_size) ? m_fsize : len->f_size);
+		len->f_size = ((m_fsize > len->f_size) ? m_fsize : len->f_size);
 }
 
 static char	*storage_name(char *path_name)
@@ -47,7 +47,7 @@ t_file		*new_fstat(t_max_l *len, char *path_name, t_flag *flg, int dir)
 	t_stat			st;
 
 	if ((new_node = (t_file *)ft_memalloc(sizeof(t_file))) == NULL)
- 		ft_error_system();
+		ft_error_system();
 	if ((lstat(path_name, &st)) != 0)
 	{
 		ft_putstr_fd("ft_ls: ", 2);

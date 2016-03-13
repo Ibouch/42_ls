@@ -17,9 +17,8 @@ static void	print_date(time_t mtime)
 		ft_strdel(&tmp);
 		date[12] = '\0';
 	}
-	else
-		if ((date = ft_strsub(ctime(&mtime), 4, 12)) == NULL)
-			ft_error_system();
+	else if ((date = ft_strsub(ctime(&mtime), 4, 12)) == NULL)
+		ft_error_system();
 	ft_putstr(date);
 	ft_strdel(&date);
 }

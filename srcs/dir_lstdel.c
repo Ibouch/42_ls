@@ -1,5 +1,4 @@
 
-
 #include <ft_ls.h>
 
 void	dir_lstdel(t_dir **alst)

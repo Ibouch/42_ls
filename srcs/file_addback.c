@@ -1,5 +1,3 @@
-
-
 #include <ft_ls.h>
 
 void	file_addback(t_file **alst, t_file *new)

@@ -1,17 +1,3 @@
-
-TOUT A LA FIN VERIFIER QUE TOUT EST FREE liste chainee comme allocation
-
-#1.		Faire un Makefile -- Done.
-
-#2. 	Gestion d'erreur -- Done.
-
-		2.1	Parser les options [-options] -- Done.
-		2.2 Parser les files ou directory -- Done.
-
-#3. 	Implementation des fonctions d'affichages [current].
-
-#4. 	Implementation des fonctions de tries [not current].
-
 ###.	Tools :
 
 	- /|\ "drwxrwxr-x+" ou "drwxr-xr-x@"
@@ -40,14 +26,6 @@ ft_putchar('\n');
 
 l'option -S et -h -i -G sont tres simple -n egalement ;) -d ya plus bidon juste dire qu'au debut les path vont avec les files
 
-Pour les espace : predfinition d'un sp de 2 admettons, et je vais lui ajouter de cb la plus grande taille a depassser
-sur la plus petite.
-A FINIR -- Bon mainenant fonction de suppression -
 recuperation de la bonne date; -- Done A VOIR AVEC V3T3A
-recuperation des mineures majeures -- DONE
 
 Ne pas oublier les permission avec un chmod 6000 par exemple.
-
-Pour l'option -i gerer les espaces.
-
-tester les leaks avec le pid et leaks + dans /usr + ft_ls -1 /etc/

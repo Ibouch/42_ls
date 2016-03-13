@@ -1,6 +1,6 @@
 #include <ft_ls.h>
 
-void 	storage_maj_min(t_max_l *len, t_stat *st)
+void	storage_maj_min(t_max_l *len, t_stat *st)
 {
 	size_t	maj;
 	size_t	min;

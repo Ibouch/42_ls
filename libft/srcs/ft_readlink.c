@@ -23,6 +23,7 @@ char	*ft_readlink(char *path, off_t size)
 	{
 		ft_putstr_fd("Error: ", 2);
 		perror(path);
+		ft_strdel(&lnk_name);
 		return (NULL);
 	}
 	lnk_name[len] = '\0';

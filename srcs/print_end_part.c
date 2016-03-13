@@ -25,7 +25,7 @@ static void	print_name(char *name, char *lnk_name, t_stat st)
 		ft_putendl(name);
 }
 
-void	print_end_part(t_env *e, t_stat st, t_bool is_dir)
+void		print_end_part(t_env *e, t_stat st, t_bool is_dir)
 {
 	char	*lnk_name;
 
@@ -36,6 +36,8 @@ void	print_end_part(t_env *e, t_stat st, t_bool is_dir)
 		print_name(e->file->name, lnk_name, st);
 	else
 		print_path(e->file->path, lnk_name, st);
+	if ((S_ISLNK(st.st_mode)) == TRUE)
+		ft_strdel(&lnk_name);
 	if (((S_ISDIR(st.st_mode)) && e->flg->rec == TRUE) && e->flg->d == FALSE)
 	{
 		if ((ft_strcmp(".", e->file->name)) != 0 &&
