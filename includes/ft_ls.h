@@ -22,7 +22,7 @@
 # include <pwd.h>
 
 typedef struct stat		t_stat;
-typedef	size_t			max_len;
+typedef	size_t			t_max_len;
 
 typedef struct			s_flag
 {
@@ -39,13 +39,13 @@ typedef struct			s_flag
 
 typedef struct			s_max_l
 {
-	max_len				ino;
-	max_len				n_lnk;
-	max_len				uid;
-	max_len				gid;
-	max_len				major;
-	max_len				minor;
-	max_len				f_size;
+	t_max_len			ino;
+	t_max_len			n_lnk;
+	t_max_len			uid;
+	t_max_len			gid;
+	t_max_len			major;
+	t_max_len			minor;
+	t_max_len			f_size;
 }						t_max_l;
 
 typedef struct			s_file
@@ -72,6 +72,7 @@ typedef struct			s_env
 	struct s_max_l		*len;
 	struct s_dir		*dir;
 	t_bool				display_data;
+	t_bool				global_err;
 }						t_env;
 
 void					check_argument(char *path, t_env *e, t_bool *end_opt);
@@ -81,21 +82,22 @@ void					dir_lstadd(t_dir **alst, t_flag *flg, char *dir_name);
 void					dir_addback(t_dir **alst, char *dir_path);
 void					dir_lstdel(t_dir **alst);
 t_dir					*new_dirstat(char *dir_path);
+void					print_color(char *s, mode_t type, t_bool endl);
 void					print_data(t_env *e, t_bool dir);
 void					print_data_endl(t_env *e, t_bool dir);
 void					print_first_part(t_env *e, t_bool inoeud_opt);
 void					print_mid_part(t_max_l *len, t_stat st, t_bool g_opt);
-void					print_end_part(t_env *e, t_stat st, t_bool is_dir);
+void					print_end_part(t_env *e, t_stat *st, t_bool is_dir);
 void					print_file_lst(t_env *e);
 void					print_dir_lst(t_env *e);
-void					print_sp(size_t min, max_len max, int print);
+void					print_sp(size_t min, t_max_len max, int print);
 void					print_iusage(char c);
 void					file_lstadd(t_env *e, char *path_name, int dir);
 void					file_addback(t_file **alst, t_file *new);
 void					file_lstdel(t_file **alst);
 t_file					*new_fstat(t_max_l *len, char *path_name,
 						t_flag *flg, int dir);
-void					convert_rights(t_stat *st);
+void					convert_rights(mode_t mode);
 int						myopendir(t_env *e, char *path, int i);
 void					storage_m_len_id(t_max_l *len, t_stat *st,
 						t_bool g_opt);

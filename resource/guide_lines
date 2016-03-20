@@ -1,12 +1,4 @@
-###.	Tools :
-
-	- /|\ "drwxrwxr-x+" ou "drwxr-xr-x@"
-	- Le + signifie qu'il y a des ACL sur le fichier/répertoire, c'est a dire une gestion des droits plus complètes
-	  que le simple "user/groupe/autres".
-	- Le @ quant à lui signifie qu'il y a des attributs étendus sur le fichier / dossier.
-	  Pour celle là, test la commande système xattr depuis ton shell...
-
-
+/*
 	  ft_putendl("......... DEGUG ZONE .........");
 	  ft_putstr("Option d'affichage : ");
 	  ft_putchar(e->flg->aff);
@@ -35,9 +27,16 @@
 	  ft_putstr("option -g : ");
 	  ft_putnbr(e->flg->g);
 	  ft_putchar('\n');
+*/
+
+###.	Tools :
+
+	- /|\ "drwxrwxr-x+" ou "drwxr-xr-x@"
+	- Le + signifie qu'il y a des ACL sur le fichier/répertoire, c'est a dire une gestion des droits plus complètes
+	  que le simple "user/groupe/autres".
+	- Le @ quant à lui signifie qu'il y a des attributs étendus sur le fichier / dossier.
+	  Pour celle là, test la commande système xattr depuis ton shell...
 
 l'option -S et -h -i -G sont tres simple -n egalement ;) -d ya plus bidon juste dire qu'au debut les path vont avec les files
-
-recuperation de la bonne date; -- Done A VOIR AVEC V3T3A
 
 Ne pas oublier les permission avec un chmod 6000 par exemple.

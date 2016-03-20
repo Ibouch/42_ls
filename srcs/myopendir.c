@@ -56,6 +56,7 @@ static void	print_error(char *path, t_env *e)
 	ft_putendl_fd(strerror(errno), 2);
 	if (e->dir->next != NULL)
 		ft_putchar('\n');
+	e->global_err = TRUE;
 }
 
 int			myopendir(t_env *e, char *path, int i)

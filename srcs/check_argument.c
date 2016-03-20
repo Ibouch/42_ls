@@ -28,22 +28,24 @@ static void	storage_error(t_env *e, char *path)
 		ft_lstadd_back(&(e->err), (char *)er, ft_strlen(er) + 1);
 	else
 		ft_lstadd(&(e->err), (char *)er, ft_strlen(er) + 1);
+	e->global_err = TRUE;
 }
 
-static void	storage_argument(t_env *e, char *path, t_stat *st)
+static void	storage_link(t_env *e, char *path)
 {
-	if (e->flg->d == TRUE)
-	{
-		path = ((S_ISLNK(st->st_mode)) ? ft_strjoin(path, "/") : path);
+	DIR		*dir;
+
+	if ((dir = opendir(path)) == NULL)
 		file_lstadd(e, path, FALSE);
-	}
 	else
 	{
-		path = ((S_ISLNK(st->st_mode)) ? ft_strjoin(path, "/") : path);
-		dir_lstadd(&e->dir, e->flg, path);
+		if (e->flg->d == TRUE)
+			file_lstadd(e, path, FALSE);
+		else
+			dir_lstadd(&e->dir, e->flg, path);
+		if ((closedir(dir)) == (-1))
+			exit(EXIT_FAILURE);
 	}
-	if ((S_ISLNK(st->st_mode)) == TRUE && path != NULL)
-		ft_strdel(&path);
 }
 
 void		check_argument(char *path, t_env *e, t_bool *end_opt)
@@ -53,9 +55,15 @@ void		check_argument(char *path, t_env *e, t_bool *end_opt)
 	*end_opt = TRUE;
 	if ((lstat(path, &st)) == 0)
 	{
-		if ((S_ISDIR(st.st_mode)) || ((S_ISLNK(st.st_mode)) == TRUE &&
-			e->flg->aff != 'l'))
-			storage_argument(e, path, &st);
+		if ((S_ISLNK(st.st_mode)) == TRUE && e->flg->aff != 'l')
+			storage_link(e, path);
+		else if (S_ISDIR(st.st_mode))
+		{
+			if (e->flg->d == TRUE)
+				file_lstadd(e, path, FALSE);
+			else
+				dir_lstadd(&e->dir, e->flg, path);
+		}
 		else
 			file_lstadd(e, path, FALSE);
 	}

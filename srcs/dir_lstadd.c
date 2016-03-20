@@ -31,20 +31,36 @@ static void		sort_lexico(t_dir **alst, t_dir *new, int rev)
 		*alst = new;
 }
 
-static void		sort_time(t_dir **alst, t_dir *new)
+static int		sort_nano_sec(t_dir *new, t_dir *begin, int rev)
+{
+	return ((new->s_spec.tv_sec == begin->s_spec.tv_sec
+		&& ((new->s_spec.tv_nsec * rev)
+		< (begin->s_spec.tv_nsec * rev)
+		|| (new->s_spec.tv_nsec == begin->s_spec.tv_nsec
+		&& (ft_strcmp(new->path, begin->path)) > 0))) ? 1 : 0);
+}
+
+static int		sort_bysec(t_dir *new, t_dir *begin, int rev)
+{
+	return (((new->s_spec.tv_sec * rev)
+		< (begin->s_spec.tv_sec * rev)
+		|| (new->s_spec.tv_sec == begin->s_spec.tv_sec &&
+		(ft_strcmp(new->path, begin->path) > 0))) ? 1 : 0);
+}
+
+static void		sort_time(t_dir **alst, t_dir *new, int rev)
 {
 	t_dir	*begin;
 	t_dir	*tmp;
 
 	begin = *alst;
 	tmp = NULL;
-	while ((begin != NULL) && (new->s_spec.tv_sec < begin->s_spec.tv_sec))
+	while ((begin != NULL) && (sort_bysec(new, begin, rev)) == TRUE)
 	{
 		tmp = begin;
 		begin = begin->next;
 	}
-	while ((begin != NULL) && ((new->s_spec.tv_sec == begin->s_spec.tv_sec) &&
-		(new->s_spec.tv_nsec <= begin->s_spec.tv_nsec)))
+	while ((begin != NULL) && (sort_nano_sec(new, begin, rev)) == TRUE)
 	{
 		tmp = begin;
 		begin = begin->next;
@@ -67,7 +83,7 @@ void			dir_lstadd(t_dir **alst, t_flag *flg, char *dir_path)
 		if ((new = new_dirstat(dir_path)) == NULL)
 			return ;
 		if (flg->t == TRUE)
-			sort_time(alst, new);
+			sort_time(alst, new, ((flg->rev == TRUE) ? (-1) : 1));
 		else
 			sort_lexico(alst, new, ((flg->rev == TRUE) ? (-1) : 1));
 	}

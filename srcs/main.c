@@ -47,5 +47,5 @@ int			main(int ac, char **av)
 	print_file_lst(e);
 	print_dir_lst(e);
 	del_env(&e);
-	exit(EXIT_SUCCESS);
+	return (e->global_err);
 }

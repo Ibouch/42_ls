@@ -20,7 +20,7 @@ void		print_first_part(t_env *e, t_bool inoeud_opt)
 		ft_putnbr(e->file->st.st_ino);
 		ft_putchar(' ');
 	}
-	convert_rights(&(e->file->st));
+	convert_rights(e->file->st.st_mode);
 	print_sp(ft_nbrlen(e->file->st.st_nlink), e->len->n_lnk, TRUE);
 	ft_putnbr(e->file->st.st_nlink);
 	ft_putchar(' ');

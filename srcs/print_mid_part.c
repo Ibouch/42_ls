@@ -14,24 +14,25 @@
 
 static void	print_date(time_t mtime)
 {
-	char	*tmp;
 	char	*date;
 
-	if ((mtime - time(NULL)) > 0 || (mtime - time(NULL)) < SIX_MONTH)
+	if ((mtime - time(NULL)) > 3600 || (mtime - time(NULL)) < SIX_MONTH)
 	{
-		if ((tmp = ft_strsub(ctime(&mtime), 4, 20)) == NULL)
-			ft_error_system();
-		if ((date = ft_strsub(tmp, 0, 7)) == NULL)
-			ft_error_system();
-		if ((date = ft_strjoin(date, ft_strsub(tmp, 15, 5))) == NULL)
-			ft_error_system();
-		ft_strdel(&tmp);
-		date[12] = '\0';
+		date = ft_strsub(ctime(&mtime), 4, 6);
+		ft_putstr(date);
+		ft_strdel(&date);
+		ft_putstr("  ");
+		date = ft_strsub(ctime(&mtime), 20, 4);
+		ft_putstr(date);
+		ft_strdel(&date);
 	}
-	else if ((date = ft_strsub(ctime(&mtime), 4, 12)) == NULL)
-		ft_error_system();
-	ft_putstr(date);
-	ft_strdel(&date);
+	else
+	{
+		if ((date = ft_strsub(ctime(&mtime), 4, 12)) == NULL)
+			ft_error_system();
+		ft_putstr(date);
+		ft_strdel(&date);
+	}
 }
 
 static void	get_value_gid(t_max_l *len, t_stat st)

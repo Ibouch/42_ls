@@ -12,34 +12,58 @@
 
 #include <ft_ls.h>
 
-static void	define_type(t_stat *st)
+static void	define_gid_exec(mode_t mode)
 {
-	if (S_ISDIR(st->st_mode))
-		ft_putchar('d');
-	else if (S_ISREG(st->st_mode))
+	if (!(mode & S_IXGRP) & S_ISGID)
+		ft_putchar('S');
+	else if ((mode & S_IXGRP) & S_ISGID)
+		ft_putchar('s');
+	else if (mode & S_IXGRP)
+		ft_putchar('x');
+	else
 		ft_putchar('-');
-	else if (S_ISCHR(st->st_mode))
+}
+
+static void	define_uid_exec(mode_t mode)
+{
+	if (!(mode & S_IXUSR) & S_ISUID)
+		ft_putchar('S');
+	else if ((mode & S_IXUSR) & S_ISUID)
+		ft_putchar('s');
+	else if (mode & S_IXUSR)
+		ft_putchar('x');
+	else
+		ft_putchar('-');
+}
+
+static void	define_type(mode_t mode)
+{
+	if (S_ISDIR(mode))
+		ft_putchar('d');
+	else if (S_ISREG(mode))
+		ft_putchar('-');
+	else if (S_ISCHR(mode))
 		ft_putchar('c');
-	else if (S_ISBLK(st->st_mode))
+	else if (S_ISBLK(mode))
 		ft_putchar('b');
-	else if (S_ISFIFO(st->st_mode))
+	else if (S_ISFIFO(mode))
 		ft_putchar('p');
-	else if (S_ISLNK(st->st_mode))
+	else if (S_ISLNK(mode))
 		ft_putchar('l');
-	else if (S_ISSOCK(st->st_mode))
+	else if (S_ISSOCK(mode))
 		ft_putchar('s');
 }
 
-void		convert_rights(t_stat *st)
+void		convert_rights(mode_t mode)
 {
-	define_type(st);
-	ft_putchar(((st->st_mode & S_IRUSR) ? 'r' : '-'));
-	ft_putchar(((st->st_mode & S_IWUSR) ? 'w' : '-'));
-	ft_putchar(((st->st_mode & S_IXUSR) ? 'x' : '-'));
-	ft_putchar(((st->st_mode & S_IRGRP) ? 'r' : '-'));
-	ft_putchar(((st->st_mode & S_IWGRP) ? 'w' : '-'));
-	ft_putchar(((st->st_mode & S_IXGRP) ? 'x' : '-'));
-	ft_putchar(((st->st_mode & S_IROTH) ? 'r' : '-'));
-	ft_putchar(((st->st_mode & S_IWOTH) ? 'w' : '-'));
-	ft_putchar(((st->st_mode & S_IXOTH) ? 'x' : '-'));
+	define_type(mode);
+	ft_putchar(((mode & S_IRUSR) ? 'r' : '-'));
+	ft_putchar(((mode & S_IWUSR) ? 'w' : '-'));
+	define_uid_exec(mode);
+	ft_putchar(((mode & S_IRGRP) ? 'r' : '-'));
+	ft_putchar(((mode & S_IWGRP) ? 'w' : '-'));
+	define_gid_exec(mode);
+	ft_putchar(((mode & S_IROTH) ? 'r' : '-'));
+	ft_putchar(((mode & S_IWOTH) ? 'w' : '-'));
+	ft_putchar(((mode & S_IXOTH) ? 'x' : '-'));
 }

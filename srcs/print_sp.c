@@ -12,9 +12,9 @@
 
 #include <ft_ls.h>
 
-void	print_sp(size_t min, max_len max, int print)
+void	print_sp(size_t min, t_max_len max, int print)
 {
-	max_len	sp;
+	t_max_len	sp;
 
 	sp = (max - min) + ((print == 1) ? 2 : 0);
 	while (sp-- > 0)
