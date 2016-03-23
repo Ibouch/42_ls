@@ -12,8 +12,32 @@
 
 #include <ft_ls.h>
 
+static int	determine_xattr(char *path)
+{
+	acl_t	acl;
+
+	if ((listxattr(path, NULL, 4096, XATTR_NOFOLLOW)) > 0)
+	{
+		ft_putchar('@');
+		return (1);
+	}
+	else
+	{
+		if ((acl = acl_get_link_np(path, ACL_TYPE_EXTENDED))
+			|| (acl = acl_get_file(path, ACL_TYPE_EXTENDED)))
+		{
+			ft_putchar('+');
+			acl_free((void *)acl);
+			return (1);
+		}
+	}
+	return (0);
+}
+
 void		print_first_part(t_env *e, t_bool inoeud_opt)
 {
+	int	ret;
+
 	if (inoeud_opt == TRUE)
 	{
 		print_sp(ft_nbrlen(e->file->st.st_ino), e->len->ino, FALSE);
@@ -21,7 +45,8 @@ void		print_first_part(t_env *e, t_bool inoeud_opt)
 		ft_putchar(' ');
 	}
 	convert_rights(e->file->st.st_mode);
-	print_sp(ft_nbrlen(e->file->st.st_nlink), e->len->n_lnk, TRUE);
+	ret = determine_xattr(e->file->path);
+	print_sp(ft_nbrlen(e->file->st.st_nlink) + ret, e->len->n_lnk, TRUE);
 	ft_putnbr(e->file->st.st_nlink);
 	ft_putchar(' ');
 }

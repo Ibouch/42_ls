@@ -12,29 +12,31 @@
 
 #include <ft_ls.h>
 
-void	print_color(char *s, mode_t type, t_bool endl)
+void	print_color(char *s, mode_t type, t_bool endl, int opt)
 {
-	if (S_ISDIR(type))
-		ft_putstr(H_BLUE);
-	else if (S_ISREG(type))
+	if (opt == TRUE)
 	{
-		if ((type & S_IXUSR) || (type & S_IXGRP) || (type & S_IXOTH))
-			ft_putstr(H_RED);
-		else
-			ft_putstr(H_WHITE);
+		if (S_ISDIR(type))
+			ft_putstr(H_BLUE);
+		else if (S_ISREG(type))
+		{
+			ft_putstr(((type & S_IXUSR) || (type & S_IXGRP) || (type & S_IXOTH))
+			? H_RED : H_WHITE);
+		}
+		else if (S_ISCHR(type))
+			ft_putstr(H_GREEN);
+		else if (S_ISBLK(type))
+			ft_putstr(H_CYAN);
+		else if (S_ISFIFO(type))
+			ft_putstr(H_BLACK);
+		else if (S_ISLNK(type))
+			ft_putstr(H_YELLOW);
+		else if (S_ISSOCK(type))
+			ft_putstr(H_PURPLE);
 	}
-	else if (S_ISCHR(type))
-		ft_putstr(H_GREEN);
-	else if (S_ISBLK(type))
-		ft_putstr(H_CYAN);
-	else if (S_ISFIFO(type))
-		ft_putstr(H_BLACK);
-	else if (S_ISLNK(type))
-		ft_putstr(H_YELLOW);
-	else if (S_ISSOCK(type))
-		ft_putstr(H_PURPLE);
 	ft_putstr(s);
-	ft_putstr(INIT);
+	if (opt == TRUE)
+		ft_putstr(INIT);
 	if (endl == TRUE)
 		ft_putchar('\n');
 }

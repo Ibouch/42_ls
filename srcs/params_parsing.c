@@ -6,7 +6,7 @@
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 00:52:27 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/03/13 22:05:38 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/03/22 01:14:48 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	check_flags_bonus(char c, t_flag *flg)
 	}
 	else if (c == 'g')
 		flg->g = TRUE;
+	else if (c == 'G')
+		flg->col = TRUE;
 	else
 		print_iusage(c);
 }

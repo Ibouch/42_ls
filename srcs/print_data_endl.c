@@ -6,7 +6,7 @@
 /*   By: ibouchla <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/13 22:05:49 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/03/13 22:05:52 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/03/22 01:14:23 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	print_data_endl(t_env *e, t_bool dir)
 			ft_putchar(' ');
 		}
 		if (dir == TRUE)
-			print_color(e->file->name, e->file->st.st_mode, TRUE);
+			print_color(e->file->name, e->file->st.st_mode, TRUE, e->flg->col);
 		else
-			print_color(e->file->path, e->file->st.st_mode, TRUE);
+			print_color(e->file->path, e->file->st.st_mode, TRUE, e->flg->col);
 		if (((S_ISDIR(e->file->st.st_mode)) && e->flg->rec == TRUE) &&
 			e->flg->d == FALSE)
 			if ((ft_strcmp(".", e->file->name)) != 0 &&

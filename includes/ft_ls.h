@@ -6,7 +6,7 @@
 /*   By: ibouchla <ibouchla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 12:21:30 by ibouchla          #+#    #+#             */
-/*   Updated: 2016/03/12 23:52:41 by ibouchla         ###   ########.fr       */
+/*   Updated: 2016/03/22 01:14:59 by ibouchla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <dirent.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/xattr.h>
+# include <sys/acl.h>
 # include <time.h>
 # include <grp.h>
 # include <pwd.h>
@@ -35,6 +37,7 @@ typedef struct			s_flag
 	t_bool				d;
 	t_bool				f;
 	t_bool				g;
+	t_bool				col;
 }						t_flag;
 
 typedef struct			s_max_l
@@ -82,7 +85,7 @@ void					dir_lstadd(t_dir **alst, t_flag *flg, char *dir_name);
 void					dir_addback(t_dir **alst, char *dir_path);
 void					dir_lstdel(t_dir **alst);
 t_dir					*new_dirstat(char *dir_path);
-void					print_color(char *s, mode_t type, t_bool endl);
+void					print_color(char *s, mode_t type, t_bool endl, int opt);
 void					print_data(t_env *e, t_bool dir);
 void					print_data_endl(t_env *e, t_bool dir);
 void					print_first_part(t_env *e, t_bool inoeud_opt);

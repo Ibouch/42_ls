@@ -38,5 +38,3 @@
 	  Pour celle là, test la commande système xattr depuis ton shell...
 
 l'option -S et -h -i -G sont tres simple -n egalement ;) -d ya plus bidon juste dire qu'au debut les path vont avec les files
-
-Ne pas oublier les permission avec un chmod 6000 par exemple.
