@@ -38,11 +38,15 @@ static void	print_name(char *name, char *lnk_name, t_stat *st, int opt)
 
 void		print_end_part(t_env *e, t_stat *st, t_bool is_dir)
 {
+	off_t	to_rd;
 	char	*lnk_name;
 
 	if ((S_ISLNK(st->st_mode)) == TRUE)
-		if ((lnk_name = ft_readlink(e->file->path, st->st_size)) == NULL)
+	{
+		to_rd = ((st->st_size == 0) ? 1024 : st->st_size);
+		if ((lnk_name = ft_readlink(e->file->path, to_rd)) == NULL)
 			return ;
+	}
 	if (is_dir == 1)
 		print_name(e->file->name, lnk_name, st, e->flg->col);
 	else
